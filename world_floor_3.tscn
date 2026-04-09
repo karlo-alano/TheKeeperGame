@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bydna6buhkako"]
+
+[ext_resource type="PackedScene" uid="uid://cbkjl7qflhuur" path="res://Imports/Floor/WorldFloor3.glb" id="1_vpj76"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n5cw5"]
+points = PackedVector3Array(-81.39381, 0.9327564, 57.18036, -26.051872, -0.79735637, -25.865059, -26.051872, 0.9327564, -25.865059, 25.865059, -0.79735637, 26.022068, -84.86216, -0.79735637, 32.947937, 25.865059, 0.9327564, 26.022068, 25.865059, -0.79735637, -25.865059, -43.317776, -0.79735637, 57.18036, 25.865059, 0.9327564, -25.865059, -84.86216, 0.9327564, 32.947937, -43.317776, 0.9327564, 57.18036, -81.39381, -0.79735637, 57.18036, -84.86216, 0.9327564, 48.523018, -84.86216, -0.79735637, 48.523018)
+
+[node name="WorldFloor3" unique_id=1225852812 instance=ExtResource("1_vpj76")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" parent_id_path=PackedInt32Array(484595126) index="0" unique_id=1636334679]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" index="0" unique_id=1654666217]
+shape = SubResource("ConvexPolygonShape3D_n5cw5")

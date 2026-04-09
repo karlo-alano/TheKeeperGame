@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://ckavqb25bdaul"]
+
+[ext_resource type="PackedScene" uid="uid://c4rab6vw6lgyp" path="res://Scenes/world_floor.tscn" id="1_go701"]
+[ext_resource type="PackedScene" uid="uid://bb7kypywpp7q0" path="res://Scenes/better_dorm_building.tscn" id="2_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://p1r8mieasu1" path="res://Scenes/BetterCabin.glb" id="3_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://cnbf356hea2e3" path="res://Imports/Skybox/DAYSKY.hdr" id="4_k7acu"]
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://dksobbw4f2gqi" path="res://Scenes/Trees/tree_2.tscn" id="7_k7acu"]
+[ext_resource type="PackedScene" uid="uid://7y8wmitboexn" path="res://Scenes/Trees/tree_1.tscn" id="7_o06y3"]
+[ext_resource type="PackedScene" uid="uid://dbtxw1jpbbb5i" path="res://Scenes/UI.tscn" id="8_k7acu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
+panorama = ExtResource("4_k7acu")
+
+[sub_resource type="Sky" id="Sky_5a7ea"]
+sky_material = SubResource("PanoramaSkyMaterial_5v1tr")
+
+[sub_resource type="Environment" id="Environment_8j60k"]
+background_mode = 2
+sky = SubResource("Sky_5a7ea")
+ambient_light_source = 3
+ambient_light_color = Color(0.8864819, 0.703426, 0.6744064, 1)
+reflected_light_source = 2
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.13
+ssil_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.8676692, 0.6078498, 0.54949254, 1)
+volumetric_fog_anisotropy = 0.45
+volumetric_fog_ambient_inject = 0.23
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fo5ed"]
+
+[sub_resource type="Compositor" id="Compositor_5ukr8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o06y3"]
+size = Vector2(50, 50)
+
+[node name="World" type="Node3D" unique_id=1036162655]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1961387881]
+environment = SubResource("Environment_8j60k")
+camera_attributes = SubResource("CameraAttributesPractical_fo5ed")
+compositor = SubResource("Compositor_5ukr8")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1457872507]
+transform = Transform3D(0.6709835, -0.4419663, 0.59535456, -0.16306214, 0.69532293, 0.69995487, -0.7233201, -0.56673795, 0.39448223, 8.426759, 14.408354, 45.79812)
+light_color = Color(0.8794132, 0.77144325, 0.7093011, 1)
+light_energy = 1.2
+light_volumetric_fog_energy = 6.015
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=240356642 instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6815906, 0.37807333, 14.854067)
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=437157393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+mesh = SubResource("PlaneMesh_o06y3")
+
+[node name="WorldFloor" parent="Ground" unique_id=1848328778 instance=ExtResource("1_go701")]
+
+[node name="Dorm Building" parent="." unique_id=1939428700 instance=ExtResource("2_5a7ea")]
+transform = Transform3D(-1.0000001, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1.0000001, -19.44, 0.35, 33.086)
+
+[node name="Cabin" parent="." unique_id=1874375592 instance=ExtResource("3_5a7ea")]
+transform = Transform3D(0.0038920492, 0, -0.99999255, 0, 1, 0, 0.99999255, 0, 0.0038920492, -0.8909066, 0.3872472, 12.702198)
+
+[node name="Tree1" parent="." unique_id=614295700 instance=ExtResource("7_o06y3")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 8.382965, 0.18360358, 14.08987)
+
+[node name="Tree2" parent="Tree1" unique_id=1221255625 instance=ExtResource("7_o06y3")]
+transform = Transform3D(0.60791993, 0, 0.29619446, 0.009271575, 0.81317544, -0.030602662, -0.23338144, 0.03230512, 0.77032167, 6.1479807, 0.18360361, -34.818565)
+
+[node name="Tree3" parent="Tree1" unique_id=1374844535 instance=ExtResource("7_o06y3")]
+transform = Transform3D(1.2272373, 0.021147495, 0.17159495, -0.037890624, 1.1405393, 0.09198077, -0.18149295, -0.09511525, 1.1411049, -12.63242, 0.18360361, -45.799614)
+
+[node name="tree2" parent="." unique_id=443961717 instance=ExtResource("7_k7acu")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7795912, 0, 0, 0, 0.7, 18, 0.12070227, 7)
+
+[node name="tree3" parent="tree2" unique_id=361890328 instance=ExtResource("7_k7acu")]
+transform = Transform3D(0.70000005, 0, 0, 0, 0.7795912, 0, 0, 0, 0.70000005, -16.994183, 0.12070225, -18.688732)
+
+[node name="tree4" parent="tree2" unique_id=1602232099 instance=ExtResource("7_k7acu")]
+transform = Transform3D(0.68015456, 0, 0, 0, 0.7488912, 0, 0, 0, 0.78158176, -6.6160297, 0.288159, -9.696585)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1840368350]
+
+[node name="UI" parent="CanvasLayer" unique_id=1864939403 instance=ExtResource("8_k7acu")]
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
