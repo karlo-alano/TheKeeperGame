@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xxxcfmoim08q"
-path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_Foods_07.jpg-c14cb9ac8f9475612ceed60da88b64a4.s3tc.ctex"
+path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_Foods_07.jpg-4911323021053b0c99760213dc4de899.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Imports/Cabin/2/BetterCabinw_completefurniture_Foods_07.jpg"
-dest_files=["res://.godot/imported/BetterCabinw_completefurniture_Foods_07.jpg-c14cb9ac8f9475612ceed60da88b64a4.s3tc.ctex"]
+source_file="res://Imports/Cabin/1/BetterCabinw_completefurniture_Foods_07.jpg"
+dest_files=["res://.godot/imported/BetterCabinw_completefurniture_Foods_07.jpg-4911323021053b0c99760213dc4de899.s3tc.ctex"]
 
 [params]
 

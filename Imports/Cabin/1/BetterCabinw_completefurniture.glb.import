@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bqi3domldve1o"
-path="res://.godot/imported/BetterCabinw_completefurniture.glb-fd6f7a6c6c6bc96f7884ef126eabc073.scn"
+path="res://.godot/imported/BetterCabinw_completefurniture.glb-216001f974b51c154e5c7dc7e13a803d.scn"
 
 [deps]
 
-source_file="res://Imports/Cabin/2/BetterCabinw_completefurniture.glb"
-dest_files=["res://.godot/imported/BetterCabinw_completefurniture.glb-fd6f7a6c6c6bc96f7884ef126eabc073.scn"]
+source_file="res://Imports/Cabin/1/BetterCabinw_completefurniture.glb"
+dest_files=["res://.godot/imported/BetterCabinw_completefurniture.glb-216001f974b51c154e5c7dc7e13a803d.scn"]
 
 [params]
 

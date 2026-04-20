@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3w7cdt55jr0w"
-path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp-15571b709cd66b84d071b560dd6c2f73.s3tc.ctex"
+path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp-c590d9ae6f18f7150d7199951ac0bc35.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Imports/Cabin/2/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp"
-dest_files=["res://.godot/imported/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp-15571b709cd66b84d071b560dd6c2f73.s3tc.ctex"]
+source_file="res://Imports/Cabin/1/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp"
+dest_files=["res://.godot/imported/BetterCabinw_completefurniture_old-interior-kitchen-cabinets-showing-260nw-2738517297.webp-c590d9ae6f18f7150d7199951ac0bc35.s3tc.ctex"]
 
 [params]
 

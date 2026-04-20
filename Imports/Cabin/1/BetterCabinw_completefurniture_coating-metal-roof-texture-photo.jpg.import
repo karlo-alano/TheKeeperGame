@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d048tuuch8jx8"
-path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg-a5cd78ea27934fea996bc69e1b66af97.s3tc.ctex"
+path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg-822a5aa9f8304d941bcc28a99a35998e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Imports/Cabin/2/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg"
-dest_files=["res://.godot/imported/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg-a5cd78ea27934fea996bc69e1b66af97.s3tc.ctex"]
+source_file="res://Imports/Cabin/1/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg"
+dest_files=["res://.godot/imported/BetterCabinw_completefurniture_coating-metal-roof-texture-photo.jpg-822a5aa9f8304d941bcc28a99a35998e.s3tc.ctex"]
 
 [params]
 

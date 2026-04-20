@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bsyf33mgwvcmc"]
+
+[node name="BookContents" type="Control" unique_id=1237440061]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=273365389]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 451.0
+offset_right = 476.0
+offset_bottom = 506.0
+rotation = -1.5707964
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Do the Dishes Bitch"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=657112934]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 443.0
+offset_right = 518.17773
+offset_bottom = 599.7991
+rotation = -1.5707964
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Water the fucking plants"

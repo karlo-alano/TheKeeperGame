@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgfn57oxcu7qc"
-path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_Entertainment.png-4e0bd0a1f56e708ac115dee4bd559a06.s3tc.ctex"
+path.s3tc="res://.godot/imported/BetterCabinw_completefurniture_Entertainment.png-74c4756d2593efc70ae96e5864a29d05.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Imports/Cabin/2/BetterCabinw_completefurniture_Entertainment.png"
-dest_files=["res://.godot/imported/BetterCabinw_completefurniture_Entertainment.png-4e0bd0a1f56e708ac115dee4bd559a06.s3tc.ctex"]
+source_file="res://Imports/Cabin/1/BetterCabinw_completefurniture_Entertainment.png"
+dest_files=["res://.godot/imported/BetterCabinw_completefurniture_Entertainment.png-74c4756d2593efc70ae96e5864a29d05.s3tc.ctex"]
 
 [params]
 
