@@ -17,21 +17,37 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 Globals="*uid://c1f0kq68bytn6"
+DaySystem="*uid://hwgbujqthpck"
+GlobalTracker="*uid://fff305pojt32"
 Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
 directories/dch_directory={
+"Lolo Aurelio": "res://Dialog/Characters/Lolo Aurelio.dch",
+"Monologue": "res://Dialog/Characters/Monologue.dch",
+"Monologue2": "res://Dialog/Timelines/Monologue2.dch",
+"Nanay Angelina": "res://Dialog/Characters/Nanay Angelina.dch",
+"tip": "res://Dialog/Characters/tip.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"monologue": "res://Scripts/monologue.dtl"
+"Intro": "res://Dialog/Timelines/Intro.dtl",
+"Lolo_Day1_A": "res://Dialog/Timelines/Lolo_Day1_A.dtl",
+"Lolo_Day1_B": "res://Dialog/Timelines/Lolo_Day1_B.dtl",
+"Monologue1": "res://Dialog/Timelines/monologue.dtl",
+"Monologue1B": "res://Dialog/Timelines/Monologue1B.dtl",
+"Monologue2": "res://Dialog/Timelines/Monologue2.dtl",
+"Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
+"Monologue3": "res://Dialog/Timelines/Monologue3.dtl"
 }
 layout/style_directory={
 "": "res://Dialog/Styles/New_File.tres",
-"New_File": "res://Dialog/Styles/New_File.tres"
+"Dialog": "res://Dialog/Styles/Dialog.tres",
+"New_File": "res://Dialog/Styles/New_File.tres",
+"tip": "res://Dialog/Characters/tip.tres"
 }
-layout/style_list=["res://Dialog/Styles/New_File.tres"]
+layout/style_list=["res://Dialog/Styles/New_File.tres", "res://Dialog/Styles/Dialog.tres", "res://Dialog/Characters/tip.tres"]
 layout/default_style="res://Dialog/Styles/New_File.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
@@ -79,6 +95,7 @@ glossary/default_case_sensitive=true
 window/size/mode=3
 window/size/initial_position=Vector2i(434, 0)
 window/size/resizable=false
+window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
 
 [editor_plugins]

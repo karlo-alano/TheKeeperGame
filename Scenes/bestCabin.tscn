@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://d0otj7buyem7b"]
 
 [ext_resource type="PackedScene" uid="uid://bqi3domldve1o" path="res://Imports/Cabin/1/BetterCabinw_completefurniture.glb" id="1_lxhp2"]
-[ext_resource type="PackedScene" uid="uid://cu86qb42cevvq" path="res://Scenes/book.tscn" id="2_a7ue3"]
 [ext_resource type="Texture2D" uid="uid://b3yae638x0eo5" path="res://Imports/Cabin/1/BetterCabinw_completefurniture_Plastic_02.jpg" id="2_lgj25"]
 [ext_resource type="Script" uid="uid://dy23tk5p2w58c" path="res://Scenes/bed.gd" id="2_uy7ya"]
 [ext_resource type="Script" uid="uid://bqmqrixpdmouv" path="res://Scripts/cabinDoor.gd" id="2_x68sl"]
 [ext_resource type="Texture2D" uid="uid://xxxcfmoim08q" path="res://Imports/Cabin/1/BetterCabinw_completefurniture_Foods_07.jpg" id="3_a7ue3"]
+[ext_resource type="Script" uid="uid://d2oy6ur4fluqh" path="res://Scripts/kitchen_area.gd" id="7_8b2mg"]
+[ext_resource type="PackedScene" uid="uid://b3gmeiv5458mv" path="res://Imports/Cabin/CabinItems/pan.tscn" id="7_p8u1a"]
 
 [sub_resource type="Animation" id="Animation_uy7ya"]
 resource_name = "CloseDoor"
@@ -131,6 +132,9 @@ points = PackedVector3Array(0, 0.10000001, -0.2, -0.09138518, -0.04210277, -0.07
 [sub_resource type="BoxShape3D" id="BoxShape3D_lgj25"]
 size = Vector3(2, 0.28660822, 1.9900392)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8u1a"]
+size = Vector3(13.444827, 1.1335912, 2.4325233)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0e0i5"]
 size = Vector3(0.4815451, 5.76869, 2.8528795)
 
@@ -176,17 +180,11 @@ libraries/ = SubResource("AnimationLibrary_p8u1a")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1240796888]
 root_node = NodePath("../Door_001")
 
-[node name="book" parent="." index="2" unique_id=1613977017 instance=ExtResource("2_a7ue3")]
-transform = Transform3D(1.1920929e-07, 0, -1, 0, 1, 0, 1, 0, 1.1920929e-07, 2.4864516, 0.77947104, -8.714845)
-
-[node name="Roof_001" parent="." index="3" unique_id=1358036744]
+[node name="Rice Bowl_001" parent="." index="3" unique_id=193103520 groups=["pickable"]]
 visible = false
 
-[node name="Rice Bowl_001" parent="." index="4" unique_id=193103520 groups=["pickable"]]
-visible = false
-
-[node name="RiceBowl" type="RigidBody3D" parent="." index="5" unique_id=876216441 groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5590746, 0.8935287, -5.4240193)
+[node name="RiceBowl" type="RigidBody3D" parent="." index="4" unique_id=876216441 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3142638, 0.81829774, -8.739693)
 
 [node name="Rice Bowl" type="MeshInstance3D" parent="RiceBowl" index="0" unique_id=1704975705]
 mesh = SubResource("ArrayMesh_p8u1a")
@@ -194,7 +192,7 @@ mesh = SubResource("ArrayMesh_p8u1a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RiceBowl" index="1" unique_id=222205108]
 shape = SubResource("ConvexPolygonShape3D_8b2mg")
 
-[node name="Mattress_001" parent="." index="6" unique_id=163454939 groups=["interactable"]]
+[node name="Mattress_001" parent="." index="5" unique_id=163454939 groups=["interactable"]]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mattress_001" index="0" unique_id=1792516525 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5211604, -0.0049806237)
@@ -203,7 +201,19 @@ script = ExtResource("2_uy7ya")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mattress_001/StaticBody3D" index="0" unique_id=1826016834]
 shape = SubResource("BoxShape3D_lgj25")
 
-[node name="Door_001" parent="." index="8" unique_id=192315920 groups=["interactable"]]
+[node name="StaticBody3D" type="Area3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="0" unique_id=1859053885 groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2724234, -0.8047634, 0.2592209)
+script = ExtResource("7_8b2mg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Induction Stove_001/StaticBody3D" index="0" unique_id=200508954]
+transform = Transform3D(0.9999895, 0, 6.4801498e-12, 0, 0.9999887, 0, 3.6948222e-13, 0, 0.9999999, -0.09790802, 0.37155533, -0.22026157)
+shape = SubResource("BoxShape3D_p8u1a")
+
+[node name="pan" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="1" unique_id=652526463 instance=ExtResource("7_p8u1a")]
+transform = Transform3D(4.9251475, 0, 2.5033216, 0, 5.524825, 0, -1.5233493, 0, 2.9971058, 0.948246, -0.54645014, 0.4536543)
+visible = false
+
+[node name="Door_001" parent="." index="7" unique_id=192315920 groups=["interactable"]]
 transform = Transform3D(0.38136902, 0, 0, 0, 0.38136902, 0, 0, 0, 0.38136902, 0.047684193, 1.0999999, -8.987417)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door_001" index="0" unique_id=197132787 groups=["interactable"]]
@@ -272,7 +282,10 @@ transform = Transform3D(1.3852857, -0.11272292, 0, 0.11272292, 1.3852857, 0, 0, 
 light_energy = 1.792
 shadow_enabled = true
 
-[node name="Radio_01" parent="." index="28" unique_id=119938743]
+[node name="Cooking_pot_01" parent="." index="25" unique_id=110185055]
+visible = false
+
+[node name="Radio_01" parent="." index="27" unique_id=119938743]
 transform = Transform3D(-0.11095826, 0, 0.040385514, 0, -0.118079305, 0, -0.040385514, 0, -0.11095826, 0.43615872, 0.77374154, -7.635172)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_001" parent_id_path=PackedInt32Array(1213035264) index="0" unique_id=1720023370]

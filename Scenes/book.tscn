@@ -246,6 +246,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uu3s8")
 
 [node name="SubViewport" type="SubViewport" parent="Cube_003/Page1" unique_id=1103311394]
 transparent_bg = true
+size = Vector2i(856, 512)
 
 [node name="BookContents" parent="Cube_003/Page1/SubViewport" unique_id=1237440061 instance=ExtResource("4_gr7b7")]
 

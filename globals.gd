@@ -11,6 +11,7 @@ func start_dialogue(timeline: String, is_monologue: bool = false):
 		Player.set_process_input(false)
 		Player.set_physics_process(false)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Dialogic.timeline_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 	Dialogic.start(timeline)
 	
 	if is_monologue:
@@ -29,4 +30,9 @@ func _set_mouse_filter_recursive(node: Node) -> void:
 		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	for child in node.get_children():
 		_set_mouse_filter_recursive(child)
+		
+func _on_dialogue_ended():
+	Player.set_process_input(true)
+	Player.set_physics_process(true)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	

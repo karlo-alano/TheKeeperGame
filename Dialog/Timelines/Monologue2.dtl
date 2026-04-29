@@ -1,0 +1,8 @@
+[background arg="res://Imports/Background.png" fade="0.5" wait="true"]
+Monologue: Oh right.
+Monologue: Forsythe has school.
+Monologue: I should get her lunch ready.
+Monologue: ...
+[wait time="0.5" hide_text="false"]
+tip: [Tab] to open Journal
+[wait time="1.0"]

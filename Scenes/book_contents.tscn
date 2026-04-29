@@ -1,31 +1,49 @@
 [gd_scene format=3 uid="uid://bsyf33mgwvcmc"]
 
+[ext_resource type="FontFile" uid="uid://dahfxh6kvs10o" path="res://Materials/fonts/Caveat-VariableFont_wght.ttf" id="1_4btx7"]
+[ext_resource type="Script" uid="uid://cyo762xb601lh" path="res://Scripts/book_contents.gd" id="1_mskd3"]
+
 [node name="BookContents" type="Control" unique_id=1237440061]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -131.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mskd3")
 
-[node name="Label" type="Label" parent="." unique_id=273365389]
+[node name="DayLabel" type="RichTextLabel" parent="." unique_id=1584017759]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 451.0
-offset_right = 476.0
-offset_bottom = 506.0
-rotation = -1.5707964
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Do the Dishes Bitch"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=657112934]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 443.0
-offset_right = 518.17773
-offset_bottom = 599.7991
+offset_left = 27.0
+offset_top = 479.0
+offset_right = 452.24234
+offset_bottom = 588.655
 rotation = -1.5707964
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 40
-text = "Water the fucking plants"
+theme_override_fonts/normal_font = ExtResource("1_4btx7")
+theme_override_font_sizes/normal_font_size = 70
+text = "June 31"
+
+[node name="Tasks" type="RichTextLabel" parent="." unique_id=657112934]
+layout_mode = 0
+offset_left = 116.00001
+offset_top = 503.37994
+offset_right = 607.21735
+offset_bottom = 1083.5822
+rotation = -1.5707964
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_4btx7")
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="DayCounter" type="RichTextLabel" parent="." unique_id=15207266]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 412.0
+offset_right = 1028.0
+offset_bottom = 543.0
+rotation = -1.5707964
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_4btx7")
+theme_override_font_sizes/normal_font_size = 35
+text = "N more days to go"

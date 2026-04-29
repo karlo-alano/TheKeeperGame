@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 3.5
 const MOUSE_SENSITIVITY = 0.005
 
 @onready var camera: Camera3D = $Camera3D
 @onready var ray := $Camera3D/RayCast3D
 @onready var hand := $Hand
+@onready var blip := $Blip
 
 @onready var journalAnimation := $JournalAnimation
 @onready var journal := $book
@@ -21,9 +22,16 @@ func _ready() -> void:
 	floor_snap_length = 1
 	floor_stop_on_slope = true
 	max_slides = 6
+	journal.visible = isJournalOpen
 	
-	await get_tree().create_timer(2.0).timeout
-	Globals.start_dialogue("monologue", true)
+	await get_tree().create_timer(3.0).timeout
+	Globals.start_dialogue("Monologue1", true)
+	await get_tree().create_timer(3.0).timeout
+	journalAnimation.play("OpenJournal")
+	journal.openJournal()
+	isJournalOpen = true
+	journal.visible = isJournalOpen
+	
 	
 
 	
@@ -63,28 +71,34 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float):
 	if ray.is_colliding():
-			var hit = ray.get_collider()
-			if hit.is_in_group("interactable"):
-				Globals.show_interact_prompt.emit(true)
-				if Input.is_action_just_pressed("interact"):
-					if hit.has_method("interact"):
-						hit.interact()
-			elif hit.is_in_group("pickable"):
-				Globals.show_interact_prompt.emit(true)
-				if Input.is_action_just_pressed("interact") and held_object == null:
-					held_object = hit
-					hit.freeze = true
-					hit.reparent(hand)
-					hit.position = Vector3.ZERO
-					hit.rotation = Vector3.ZERO
-					if hit.has_method("onPickup"):
-						hit.onPickup()
-			elif hit.is_in_group("actionable") and held_object:
-				if Input.is_action_just_pressed("use"):
-					if held_object.has_method("use"):
-						held_object.use() 
-			else:
-				Globals.show_interact_prompt.emit(false)
+		var hit = ray.get_collider()
+		if hit == null or not is_instance_valid(hit):
+			Globals.show_interact_prompt.emit(false)
+			return
+		if hit.is_in_group("interactable"):
+			Globals.show_interact_prompt.emit(true)
+			if Input.is_action_just_pressed("interact"):
+				if hit.has_method("interact"):
+					hit.interact()
+				if hit.has_method("obtain"):
+					blip.play()
+					hit.obtain()
+		elif hit.is_in_group("pickable"):
+			Globals.show_interact_prompt.emit(true)
+			if Input.is_action_just_pressed("interact") and held_object == null:
+				held_object = hit
+				hit.freeze = true
+				hit.reparent(hand)
+				hit.position = Vector3.ZERO
+				hit.rotation = Vector3.ZERO
+				if hit.has_method("onPickup"):
+					hit.onPickup()
+		elif hit.is_in_group("actionable") and held_object:
+			if Input.is_action_just_pressed("use"):
+				if held_object.has_method("use"):
+					held_object.use() 
+		else:
+			Globals.show_interact_prompt.emit(false)
 	else:
 		Globals.show_interact_prompt.emit(false)
 	
@@ -105,3 +119,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
+
+
+func _on_detection_area_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.

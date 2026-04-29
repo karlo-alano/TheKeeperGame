@@ -19,6 +19,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="." unique_id=99976449]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
 size = Vector2i(1151, 651)
 render_target_update_mode = 4
 
