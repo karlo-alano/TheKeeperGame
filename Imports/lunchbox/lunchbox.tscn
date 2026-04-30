@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bcltrn0egl211"]
+
+[node name="lunchbox" type="Node3D" unique_id=960154286 groups=["pickable"]]

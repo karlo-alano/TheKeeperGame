@@ -2107,7 +2107,7 @@ transform = Transform3D(0.00051042106, 0.00039963346, 1.4292005e-10, 0, -2.31834
 script = ExtResource("8_t3q0i")
 
 [node name="WateringCan" type="MeshInstance3D" parent="WateringCan" unique_id=1558638647 groups=["pickable"]]
-transform = Transform3D(0.7662692, -0.6419155, 0.027849609, 0.6415454, 0.76677513, 0.021804912, -0.03535127, 0.0011583591, 0.99937403, -48.870117, 64.72119, 7.734375)
+transform = Transform3D(0.7662692, -0.6419155, 0.027849609, 0.64154536, 0.76677513, 0.021804912, -0.03535127, 0.0011583591, 0.99937403, -48.870117, 64.72119, 7.734375)
 mesh = SubResource("ArrayMesh_fsjsr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WateringCan" unique_id=1998800518]

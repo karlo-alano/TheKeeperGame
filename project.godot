@@ -28,6 +28,7 @@ directories/dch_directory={
 "Monologue": "res://Dialog/Characters/Monologue.dch",
 "Monologue2": "res://Dialog/Timelines/Monologue2.dch",
 "Nanay Angelina": "res://Dialog/Characters/Nanay Angelina.dch",
+"Penny": "res://Dialog/Characters/Penny.dch",
 "tip": "res://Dialog/Characters/tip.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
@@ -39,7 +40,8 @@ directories/dtl_directory={
 "Monologue1B": "res://Dialog/Timelines/Monologue1B.dtl",
 "Monologue2": "res://Dialog/Timelines/Monologue2.dtl",
 "Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
-"Monologue3": "res://Dialog/Timelines/Monologue3.dtl"
+"Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
+"Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl"
 }
 layout/style_directory={
 "": "res://Dialog/Styles/New_File.tres",
@@ -108,6 +110,7 @@ interactable=""
 pickable=""
 actionable=""
 Player=""
+door2c=""
 
 [input]
 

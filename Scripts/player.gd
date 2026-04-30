@@ -24,13 +24,13 @@ func _ready() -> void:
 	max_slides = 6
 	journal.visible = isJournalOpen
 	
-	await get_tree().create_timer(3.0).timeout
-	Globals.start_dialogue("Monologue1", true)
-	await get_tree().create_timer(3.0).timeout
-	journalAnimation.play("OpenJournal")
-	journal.openJournal()
-	isJournalOpen = true
-	journal.visible = isJournalOpen
+	#await get_tree().create_timer(3.0).timeout
+	#Globals.start_dialogue("Monologue1", true)
+	#await get_tree().create_timer(3.0).timeout
+	#journalAnimation.play("OpenJournal")
+	#journal.openJournal()
+	#isJournalOpen = true
+	#journal.visible = isJournalOpen
 	
 	
 
@@ -74,6 +74,7 @@ func _process(_delta: float):
 		var hit = ray.get_collider()
 		if hit == null or not is_instance_valid(hit):
 			Globals.show_interact_prompt.emit(false)
+			Globals.show_action_prompt.emit(false)
 			return
 		if hit.is_in_group("interactable"):
 			Globals.show_interact_prompt.emit(true)
@@ -83,7 +84,7 @@ func _process(_delta: float):
 				if hit.has_method("obtain"):
 					blip.play()
 					hit.obtain()
-		elif hit.is_in_group("pickable"):
+		if hit.is_in_group("pickable"):
 			Globals.show_interact_prompt.emit(true)
 			if Input.is_action_just_pressed("interact") and held_object == null:
 				held_object = hit
@@ -93,14 +94,17 @@ func _process(_delta: float):
 				hit.rotation = Vector3.ZERO
 				if hit.has_method("onPickup"):
 					hit.onPickup()
-		elif hit.is_in_group("actionable") and held_object:
-			if Input.is_action_just_pressed("use"):
-				if held_object.has_method("use"):
-					held_object.use() 
-		else:
-			Globals.show_interact_prompt.emit(false)
+		if hit.is_in_group("actionable") and held_object:
+			if !Globals.is_in_dialogue:
+				Globals.show_action_prompt.emit(true)
+				if hit.slot == held_object.key:
+					if Input.is_action_just_pressed("use"):
+						if held_object.has_method("use"):
+							held_object.use() 
+				
 	else:
 		Globals.show_interact_prompt.emit(false)
+		Globals.show_action_prompt.emit(false)
 	
 
 func _physics_process(delta: float) -> void:

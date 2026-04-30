@@ -9,6 +9,10 @@ var eggCounter := 0:
 signal egg_collected
 
 var eggTaskCompleted := false
+var dialogDone := false
+
+# LunchBox
+var isHoldingLunchbox := false
 
 # TaskTracker
 var allTasksCompleted := false

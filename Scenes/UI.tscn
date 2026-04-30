@@ -57,3 +57,12 @@ offset_left = 46.0
 offset_top = 28.0
 offset_right = 259.0
 offset_bottom = 189.0
+
+[node name="ActionLabel" type="Label" parent="." unique_id=1393830777]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 333.0
+offset_right = 630.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 10
+text = "Press [LMB] to interact"

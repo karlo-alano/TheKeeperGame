@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ndc3w1snwoyg" path="res://Imports/NewDorm/BetterDormBuildingw_furniture.glb" id="1_tirfk"]
 [ext_resource type="Script" uid="uid://jq1fj6tgyonx" path="res://Scripts/Door2C.gd" id="2_pant0"]
+[ext_resource type="PackedScene" uid="uid://dvg3hrs74hfha" path="res://Imports/Characters/forsythe.tscn" id="2_yv3cs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dio4c"]
 size = Vector3(0.29479724, 5.4192824, 2.5806108)
@@ -307,10 +308,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069981724, 0, 1.2903049)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_016/StaticBody3D" index="0" unique_id=1932525345]
 shape = SubResource("BoxShape3D_bpkwg")
 
-[node name="Door_015" parent="." index="12" unique_id=954974954 groups=["interactable"]]
+[node name="Forsythe" parent="." index="12" unique_id=252410366 instance=ExtResource("2_yv3cs")]
+transform = Transform3D(-0.05263267, 0, -0.39652213, 0, 0.4, 0, 0.39652213, 0, -0.05263267, -2.4937713, 3.296791, 34.325718)
+
+[node name="Door_015" parent="." index="13" unique_id=954974954 groups=["actionable"]]
 transform = Transform3D(0.3875051, 0, 0, 0, 0.38750502, 0, 0, 0, 0.3875051, -3.049975, 4.349994, 33.661163)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_015" index="0" unique_id=475760804 groups=["interactable"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_015" index="0" unique_id=475760804 groups=["actionable", "door2c"]]
 transform = Transform3D(1.0000004, 0, -1.4901167e-08, 0, 1, 0, 1.4901167e-08, 0, 1.0000004, -0.069984436, 0, 1.2903051)
 script = ExtResource("2_pant0")
 
@@ -329,7 +333,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049999952, 5e-06, 6)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor_003/StaticBody3D" index="0" unique_id=1154683878]
 shape = SubResource("BoxShape3D_bqmeq")
 
-[node name="Door_017" parent="." index="16" unique_id=339993036]
+[node name="Door_017" parent="." index="17" unique_id=339993036]
 transform = Transform3D(1.2164423e-07, 0, -0.3875051, 0, 0.38750508, 0, 0.3875051, 0, 1.2164423e-07, 0, 4.349994, 37.109264)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door_017" index="0" unique_id=447987922]
@@ -373,7 +377,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.039778277, -0.39999998, 5.9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Railings/StaticBody3D" index="0" unique_id=1151365524]
 shape = SubResource("BoxShape3D_62dfs")
 
-[node name="Cube" parent="." index="22" unique_id=572061338]
+[node name="Cube" parent="." index="23" unique_id=572061338]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Table_01" parent_id_path=PackedInt32Array(201746848) index="0" unique_id=380340883]
@@ -482,9 +486,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08369148, 0.03897609, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Video_player_02/StaticBody3D" index="0" unique_id=936661739]
 shape = SubResource("BoxShape3D_aquim")
 
-[node name="Door2C" type="AnimationPlayer" parent="." index="61" unique_id=1293476194]
+[node name="Door2C" type="AnimationPlayer" parent="." index="62" unique_id=1293476194]
 root_node = NodePath("../Door_015")
 libraries/ = SubResource("AnimationLibrary_48cbq")
 
-[node name="Bathroom2C" type="AnimationPlayer" parent="." index="62" unique_id=845310936]
+[node name="Bathroom2C" type="AnimationPlayer" parent="." index="63" unique_id=845310936]
 libraries/ = SubResource("AnimationLibrary_4u3hk")
