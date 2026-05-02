@@ -1,0 +1,26 @@
+Monologue: Lord...
+[wait time="1.0"]
+Monologue: Thank You for bringing her home safe.
+Monologue: The roads at night — I still can't hear a truck horn without my chest doing that thing.
+[wait time="1.5"]
+Monologue: She was angry this morning. She had a right to be.
+[wait time="1.0"]
+Monologue:  I brought him up again at the gate. I don't know why I keep doing that.
+Monologue: It's like I want to remind her so she doesn't forget him. But she doesn't forget him.
+Monologue: She just doesn't want to talk about it with me.
+if {Day1.penny_allowance} == "50":
+	Monologue: Fifty pesos. That's what I had.
+	Monologue:  I know it wasn't enough. She knew it wasn't enough. We both just stood there knowing it.
+	Monologue: I'm not failing her because I want to.
+	I just don't know where the line is anymore between not having enough and being the reason she doesn't have enough.
+else:
+	Monologue: She smiled. A real one, almost.
+	Monologue: It cost me the rest of the week's budget and I would do it again.
+	Monologue: I know that's not sustainable. I know I can't buy her back one hundred pesos at a time.
+	Monologue: But today she didn't look at me with that face, and I don't have a word for how much that matters.
+[wait time="1.5"]
+Monologue: And you...
+Monologue: If you can hear this — tell me you're watching her.
+Monologue: Not me. Her. I can manage. She's the one I worry about.
+Monologue: I'm trying. I want you to know that. I'm really trying.
+Monologue:  Amen.

@@ -39,6 +39,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Intro": "res://Dialog/Timelines/Intro.dtl",
+"Intro_day1": "res://Dialog/Timelines/Intro_day1.dtl",
 "KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",
 "Leus_Day1_A": "res://Dialog/Timelines/Leus_Day1_A.dtl",
 "Lolo_Day1_A": "res://Dialog/Timelines/Lolo_Day1_A.dtl",
@@ -47,7 +48,9 @@ directories/dtl_directory={
 "Monologue2": "res://Dialog/Timelines/Monologue2.dtl",
 "Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
 "Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
+"Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
 "Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl",
+"Penny_Day1_C": "res://Dialog/Timelines/Penny_Day1_C.dtl",
 "Timelines/Lorie_Day1_A": "res://Dialog/Timelines/Lorie_Day1_A.dtl",
 "Timelines/Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
 "Timelines/Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
@@ -65,7 +68,7 @@ layout/style_list=["res://Dialog/Styles/New_File.tres", "res://Dialog/Styles/Dia
 layout/default_style="res://Dialog/Styles/New_File.tres"
 variables={
 "Day1": {
-"penny_allowance": "0"
+"penny_allowance": "50"
 }
 }
 extensions_folder="res://addons/dialogic_additions"

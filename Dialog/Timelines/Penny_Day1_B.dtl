@@ -1,9 +1,15 @@
-"Nanay Angelina": So your birthday is in two days, what do you want for a gift?
+Penny: Alright, mom, I'm going to go to school now.
+Penny: Thanks for everything.
+Penny: I love yaaa
+"Nanay Angelina": Wait...
+"Nanay Angelina": Before you go, I need to bring something up.
+"Nanay Angelina": Your birthday is in 2 days. Is there anything you want?
 Penny: ...
-[wait time="3.0"]
-"Nanay Angelina": If your dad was still alive, he would’ve bought you all the things you wanted. You know how he was with you.
-Penny: But he isn't. Bye, Mom.
-[wait time="5.0"]
-Monologue: I shouldn't have brought him up. I always do that.
-Monologue: I have the mail in my hand—I should deliver these to the tenants.
-Monologue: It's better than standing here staring at the dust.
+[wait time="1.5" hide_text="false"]
+Penny: You know what I really want, mom...
+Penny: But I know it's impossible.
+[wait time="2.0" hide_text="false"]
+Penny: I'll love whatever you'll give me. Dont worry.
+Penny: Alright - bye now, for real.
+[background arg="#000000ff" fade="0.5" wait="true"]
+[signal arg="cutscene2"]
