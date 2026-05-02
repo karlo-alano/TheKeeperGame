@@ -1,0 +1,30 @@
+audio "res://Audio/bgm/doorknock.ogg"
+"Nanay Angelina": Penny!!
+[wait time="1.0" hide_text="false"]
+audio "res://Audio/bgm/doorknockquick.ogg"
+"Nanay Angelina": Open the door - I got your lunch and allowance!
+Penny: Mom! Hold on, I'll be there in a sec!
+"Nanay Angelina": Alright, I'm waiting outside.
+[wait time="5.0"]
+[signal arg="cutscene1"]
+Penny: Okay... I'm ready.
+"Nanay Angelina": Here's your lunch, Penny.
+Penny: Thanks, Mom. But it's Forsythe. I told you over and over again to call me Forsythe
+"Nanay Angelina": Oh... right I forgot. Oh and here's your allowance, Forsythe.
+- Give 50 pesos
+	set {Day1.penny_allowance} = "50"
+	Penny: 50? Mom, seriously? This barely covers the tricycle and a drink. Is this really it?
+	"Nanay Angelina": You should learn how to save your money, Penny. It doesn't grow in the garden with the eggs.
+	Penny: Ugh, whatever. I'm going to shower. Just leave the bag there.
+	[wait time="4.0"]
+	Monologue: She's angry again. But where am I supposed to get more? Money doesn't just appear because she's unhappy. I should head down to the gate and wait for her to come out.
+- Give 100 pesos
+	set {Day1.penny_allowance} = "100"
+	Penny: Oh. 100? Thanks, Mom. I... I can actually buy that sketchbook for class now.
+	"Nanay Angelina": Don't go spending it on those punk nonsense things. Just eat your lunch.
+	Penny: Don't go spending it on those punk nonsense things. Just eat your lunch.
+	Penny: I love you so much, mom
+	[wait time="3.0"]
+	Monologue: It's the first time she hasn't looked at me with spite today. I'll wait for her at the gate to make sure she gets off to school safely.
+[wait time="1.5"]
+[background arg="#000000ff" fade="0.5"]

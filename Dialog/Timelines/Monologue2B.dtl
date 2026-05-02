@@ -1,0 +1,4 @@
+[background arg="res://Imports/Background.png" fade="0.5" wait="true"]
+Monologue: There aren't any eggs left
+Monologue: I should get some from the chicken coop. Its right beside the garden path
+[wait time="1.0"]

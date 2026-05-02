@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://tyk4hi4qvj1b"
+path.s3tc="res://.godot/imported/chickenCoop_chicken-mesh-9703420.webp-d20c801df76b0a4aeb3192691900c135.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c8f18e8b354f22ccafef17ff3bf404a3"
+}
+
+[deps]
+
+source_file="res://Imports/GardenPatch/chickenCoop_chicken-mesh-9703420.webp"
+dest_files=["res://.godot/imported/chickenCoop_chicken-mesh-9703420.webp-d20c801df76b0a4aeb3192691900c135.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

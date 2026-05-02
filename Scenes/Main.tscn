@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://155xx7s6y6ta"]
+
+[ext_resource type="Shader" uid="uid://bbh4xsk47f7s5" path="res://PS1.gdshader" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://bsf3o1465gd2x" path="res://Scenes/worldsave.tscn" id="2_kln2b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgh2o"]
+shader = ExtResource("1_idj7w")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" unique_id=866085454]
+material = SubResource("ShaderMaterial_rgh2o")
+offset_right = 1151.0
+offset_bottom = 651.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=99976449]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
+size = Vector2i(1151, 651)
+render_target_update_mode = 4
+
+[node name="World" parent="SubViewport" unique_id=1036162655 instance=ExtResource("2_kln2b")]

@@ -1,0 +1,265 @@
+[gd_scene format=4 uid="uid://cu86qb42cevvq"]
+
+[ext_resource type="Script" uid="uid://4o2q838j8s3x" path="res://Scripts/book.gd" id="1_0vt1r"]
+[ext_resource type="Texture2D" uid="uid://c02nkpmvhylts" path="res://Imports/Cabin/book_paper1.webp" id="1_khdek"]
+[ext_resource type="Texture2D" uid="uid://d3viuqpnmewpx" path="res://Imports/Cabin/book_Fabric_16.jpg" id="2_0vt1r"]
+[ext_resource type="PackedScene" uid="uid://bsyf33mgwvcmc" path="res://Scenes/book_contents.tscn" id="4_gr7b7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qspqj"]
+resource_name = "BookCover"
+cull_mode = 2
+albedo_texture = ExtResource("2_0vt1r")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws7e0"]
+resource_name = "Paper"
+cull_mode = 2
+albedo_texture = ExtResource("1_khdek")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yvj2t"]
+_surfaces = [{
+"aabb": AABB(-0.6899836, -0.056277152, -4.0978193e-08, 1.3811182, 0.056277156, 1.0942924),
+"format": 34359742465,
+"index_count": 90,
+"index_data": PackedByteArray("AAAQAAIAAwAAAAIAAwACAAQABQAAAAMAAAAFABAABgADAAQABQADAAYAEQAEAAIAEQACABAABgAEABEABQABABAABgAIAAUAEAABAAcAEAAHABEABQASAAEAEgAHAAEABQAIAAkABQAJABIAEQAHABMAEQATAAYAEgATAAcABgAKAAgACgAJAAgAEwAKAAYAEgAJAAsAEgALABMACgALAAkAEwALAAoADAANAA4ADAAPAA0A"),
+"lods": [0.00028540575, PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABAACAAEABQAAAAMAAAAFAAEABgADAAQABQADAAYABAAHAAYAAQAHAAQABgAIAAUABQAJAAEABQAIAAkACQAHAAEABgAKAAgACgAJAAgABwAKAAYACgALAAkACQALAAcABwALAAoADAANAA4ADAAPAA0A")],
+"name": "BookCover",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("xKIwv96C5rzGEYw/xKIwv9+CZr0AADCzxKIwv9+CZr3GEYw/Mu4wP96C5rzGEYw/Mu4wP9+CZr3GEYw/xKIwv96C5rygEgc9Mu4wP96C5rygEgc9Mu4wP9+CZr0AADCzxKIwvwAAALGgEgc9xKIwvwAAALEAADCzMu4wPwAAALGgEgc9Mu4wPwAAALEAADCzlsgjvwAAgDHgEgc9JkwgP96C5rzgEgc9lsgjv96C5rzgEgc9JkwgPwAAgDHgEgc9xKIwv9+CZr2gEgc9Mu4wP9+CZr2gEgc9xKIwv96C5rwAADCzMu4wP96C5rwAADCz")
+}, {
+"aabb": AABB(-0.63977945, -0.028138574, 0.032976985, 1.2659414, 0.028138578, 0.9728085),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAAAAQABAACAAUAAwAEAAYABgAEAAUABgAFAAcA"),
+"name": "Paper",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD/////AAAAAAAAAAAAAAAAAAD//wAAAAD//wAAAAD///////8AAP//AAD//wAA/////wAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r6h7a"]
+resource_local_to_scene = true
+resource_name = "book_Cube_008"
+_surfaces = [{
+"aabb": AABB(-0.6899836, -0.056277152, -4.0978193e-08, 1.3811182, 0.056277156, 1.0942924),
+"attribute_data": PackedByteArray("AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AAMA+AABAPwAAwD4AAEA/AAAgPwAAgD4AACA/AAAAPwAAwD4AAAA/AADAPgAAgD4AAMA+AAAAPwAAwD4AAAA/AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAAACOx4+QDx6PLhAZz8xXn0/AjsePi5efT+4QGc/QDx6PLhAZz8xXn0/uEBnP0A8ejzIZwY+QDx6PMhnBj4uXn0/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAAD8AAMA+AABAPwAAID8AAAA/AAAgPwAAQD8AAMA+AAAAPwI7Hj4uXn0/yGcGPkA8ejwCOx4+QDx6PMhnBj4uXn0/AADAPgAAAD8AAAA+AAAAPwAAAD4AAAA/AADAPgAAAD8AACA/AABAPwAAwD4AAEA/AAAgPwAAAD8AAMA+AAAAPwI7Hj4uXn0/AjsePkA8ejwAAMA+AABAPwAAwD4AAAA/"),
+"format": 34359742487,
+"index_count": 90,
+"index_data": PackedByteArray("AAAoAAIAAAADACgAAwABACgAAwApAAEAAwAEACkAAwAFAAQAKgArAAgAKgAHACsACAAGACoACAAJAAYAKwAKAAgAKwALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEALAAVAC0ALAAUABUALQAXACwALQAWABcAGAAZABoAGAAbABkALgAdAB4ALgAvAB0ALgAfAC8ALgAcAB8AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"lods": [0.00028540575, PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgACAAJAAYABwAKAAgABwALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFgAXABQAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA")],
+"material": SubResource("StandardMaterial3D_qspqj"),
+"name": "BookCover",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("xKIwv96C5rzGEYw/xKIwv9+CZr0AADCzxKIwv9+CZr3GEYw/xKIwv96C5rygEgc9xKIwvwAAALEAADCzxKIwvwAAALGgEgc9Mu4wP9+CZr3GEYw/Mu4wP9+CZr0AADCzMu4wP96C5rygEgc9Mu4wP96C5rzGEYw/Mu4wPwAAALGgEgc9Mu4wPwAAALEAADCzMu4wP96C5rzGEYw/xKIwv9+CZr3GEYw/Mu4wP9+CZr3GEYw/xKIwv96C5rzGEYw/xKIwv96C5rygEgc9Mu4wP96C5rzGEYw/Mu4wP96C5rygEgc9xKIwv96C5rzGEYw/Mu4wP9+CZr3GEYw/xKIwv9+CZr3GEYw/xKIwv9+CZr0AADCzMu4wP9+CZr0AADCzlsgjvwAAgDHgEgc9JkwgP96C5rzgEgc9lsgjv96C5rzgEgc9JkwgPwAAgDHgEgc9xKIwvwAAALEAADCzMu4wP9+CZr0AADCzxKIwv9+CZr0AADCzMu4wPwAAALEAADCzMu4wPwAAALGgEgc9xKIwvwAAALEAADCzxKIwvwAAALGgEgc9Mu4wPwAAALEAADCzMu4wP96C5rygEgc9xKIwvwAAALGgEgc9xKIwv96C5rygEgc9Mu4wPwAAALGgEgc9xKIwv9+CZr2gEgc9xKIwv96C5rwAADCzMu4wP9+CZr2gEgc9Mu4wP96C5rwAADCzMu4wP9+CZr2gEgc9xKIwv9+CZr2gEgc9xKIwv96C5rwAADCzMu4wP96C5rwAADCz////f/9/AID///9/////v////3//fwCA////f/9/AID///9/////v////3////+/AAD/f/9/AIAAAP9/////vwAA/3//fwCAAAD/f/9/AIAAAP9/////vwAA/3////+///////9/AID//////38AgP//////fwCA//////9/AID/fwAA/3//v/9/AAD/f/+//38AAP9//7//fwAA/3//v/9/////f/8//3////9//z//f////3//P/9/////f/8//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9/////P/9//3//fwCA/3//f/9/AID/f/9/////P/9/AAD/f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//////////7//////////v/////////+//////////7////9//38AgP///3////+/AAD/f/9/AIAAAP9/////v/9/////f/8//3////9//z//f/9//38AgP9//3//fwCA")
+}, {
+"aabb": AABB(-0.63977945, -0.028138574, 0.032976985, 1.2659414, 0.028138578, 0.9728085),
+"attribute_data": PackedByteArray("pJ0nvmexgrtnsSe+pJ2Cu6SdmJhnsdWTZ7GYmKSd1ZOknb6GZ7EKg2exvoaknQqD4U7/////E0/hThNP/v///w=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_ws7e0"),
+"name": "Paper",
+"primitive": 3,
+"uv_scale": Vector4(3.2383037, 3.22621, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD/////VNUAAAAAAABU1QAAAAD//1TVAAD//wAAVNX/////AABU1f//AAD//1TV//8AAAAAVNX///////9U1f//////////AAAAAP///////wAA/////wAA////////AAD//wAAqir///////+qKv////8AAKoqAAD/////qiqqqlRVqqpUVaqqVFWqqlRVVFWqqlRVqqpUVaqqVFWqqv8//7//P/+//z//v/8//7+qKlTVqipU1aoqVNWqKlTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yvj2t")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0vt1r"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgncb"]
+viewport_path = NodePath("Cube_003/Page1/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu3s8"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_dgncb")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4pfol"]
+_surfaces = [{
+"aabb": AABB(-0.64035493, 0.014069289, -0.9728085, 1.2659414, 0.028138578, 0.9728085),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQAAAAIAAwAAAAUABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Paper",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("Te4jvyjiLD0AAACATe4jv+CCZjz6CXm/Te4jv+CCZjwAAACATe4jvyjiLD36CXm/cCYgP+CCZjz6CXm/cCYgPyjiLD0AAACAcCYgP+CCZjwAAACAcCYgPyjiLD36CXm/")
+}, {
+"aabb": AABB(-0.690559, -0.014069289, -1.0613155, 1.3811182, 0.056277152, 1.0942928),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAwAAwAMAAEABAADAAEAAAAEAAEABAAFAAMAAwANAAwABQANAAMABAAHAAUABQAHAA0ABAAAAAcADQACAAwADQAGAAIABwAGAA0ADAACAA4ADAAOAAAADwACAAYABwAPAAYADwAOAAIAAAALAAcADwAIAA4ADgAKAAAAAAAKAAsADgAIAAoABwALAAkABwAJAA8ACgAJAAsADwAJAAgACgAIAAkA"),
+"lods": [0.00037035867, PackedByteArray("AAABAAIAAwACAAEABAADAAEAAAAEAAEABAAFAAMAAwAGAAIABQAGAAMABAAHAAUABQAHAAYABAAAAAcAAgAIAAAACQACAAYACQAIAAIABwAJAAYACAAKAAAACgAIAAkAAAALAAcAAAAKAAsABwALAAkACgAJAAsA")],
+"name": "BookCover",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("esgwv+CCZjwAAAA0esgwv+CCZrww2Ye/esgwv+CCZrwfEwc9fMgwP+CCZrww2Ye/esgwv+CCZjww2Ye/fMgwP+CCZjww2Ye/fMgwP+CCZrwfEwc9fMgwP+CCZjwAAAA0esgwvyfiLD0fEwc9fMgwPyfiLD0fEwc9esgwvyfiLD0AAAA0fMgwPyfiLD0AAAA0esgwv+CCZrwAAAA0fMgwP+CCZrwAAAA0esgwv+CCZjwfEwc9fMgwP+CCZjwfEwc9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hb2hs"]
+resource_local_to_scene = true
+resource_name = "book_Cube_007"
+_surfaces = [{
+"aabb": AABB(-0.64035493, 0.014069289, -0.9728085, 1.2659414, 0.028138578, 0.9728085),
+"attribute_data": PackedByteArray("qucVv+xWFL/ZSsw/8FYUv6rnFb/sVhS/2UrMP/BWFL/ZSsw/8FYUv9lKzD9gS8o/2UrMP/BWFL/ZSsw/YEvKP9lKzD9gS8o/qucVv2BLyj/ZSsw/YEvKP6rnFb9gS8o/AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAADZSsw/8FYUv6rnFb9gS8o/2UrMP2BLyj+q5xW/7FYUvw=="),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": SubResource("StandardMaterial3D_ws7e0"),
+"name": "Paper",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("Te4jvyjiLD0AAACATe4jv+CCZjz6CXm/Te4jv+CCZjwAAACATe4jvyjiLD36CXm/Te4jvyjiLD36CXm/cCYgP+CCZjz6CXm/Te4jv+CCZjz6CXm/cCYgPyjiLD36CXm/cCYgPyjiLD36CXm/cCYgP+CCZjwAAACAcCYgP+CCZjz6CXm/cCYgPyjiLD0AAACAcCYgPyjiLD0AAACATe4jv+CCZjwAAACAcCYgP+CCZjwAAACATe4jvyjiLD0AAACATe4jvyjiLD36CXm/cCYgPyjiLD0AAACAcCYgPyjiLD36CXm/Te4jvyjiLD0AAACA////f////7////9/////v////3////+/////f////7//f/9/////P/9//3////8//3//f////z//f/9/////PwAA/3////+/AAD/f////78AAP9/////vwAA/3////+///////9/AID//////38AgP//////fwCA//////9/AID/fwAA//8AAP9/AAD//wAA/38AAP//AAD/fwAA//8AAA==")
+}, {
+"aabb": AABB(-0.690559, -0.014069289, -1.0613155, 1.3811182, 0.056277152, 1.0942928),
+"attribute_data": PackedByteArray("MPuMPPK2Rz8w+4w8MHsIPjD7jDwk3Ew/MPuMPDB7CD4w+4w8JNxMPzD7jDzytkc/MPuMPDB7CD4/NIA/MHsIPjD7jDwwewg+PzSAPzB7CD4/NIA/MHsIPj80gD8k3Ew/PzSAPzB7CD4/NIA/8rZHPz80gD8k3Ew/PzSAP/K2Rz8w+4w8MHsIPj80gD/ytkc/PzSAPzB7CD4w+4w88rZHPz80gD8wewg+MPuMPCTcTD8w+4w8MHsIPj80gD8k3Ew/PzSAPyTcTD8w+4w8JNxMPz80gD8k3Ew/MPuMPCTcTD8w+4w88rZHPz80gD/ytkc/PzSAP/K2Rz8w+4w88rZHPzD7jDzytkc/PzSAPyTcTD8/NIA/8rZHPzD7jDwk3Ew/MPuMPPK2Rz8w+4w8JNxMPz80gD/ytkc/PzSAPyTcTD8w+4w88rZHPz80gD/ytkc/PzSAPyTcTD8w+4w8JNxMPw=="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABACQAAAADAAEAJAAlAAAAJAACACUAJQAFAAAAJQAEAAUABgAHAAgABgAJAAcACgAmAAwACgANACYADQALACYADQAnAAsADQAOACcADQAPAA4AEAARABIAEAATABEAFAAoABYAFAApACgAKQAVACgAKQAXABUAKgAZABoAKgArABkAKgAbACsAKgAYABsAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEA"),
+"lods": [0.00037035867, PackedByteArray("AAABAAIAAAADAAEAAgAEAAAABAAFAAAABgAHAAgABgAJAAcACgALAAwACgANAAsADQAOAAsADQAPAA4AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEA")],
+"material": SubResource("StandardMaterial3D_qspqj"),
+"name": "BookCover",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("esgwv+CCZjwAAAA0esgwv+CCZrww2Ye/esgwv+CCZrwfEwc9esgwv+CCZjww2Ye/esgwvyfiLD0fEwc9esgwvyfiLD0AAAA0esgwv+CCZjww2Ye/fMgwP+CCZrww2Ye/esgwv+CCZrww2Ye/fMgwP+CCZjww2Ye/fMgwP+CCZjww2Ye/fMgwP+CCZrwfEwc9fMgwP+CCZrww2Ye/fMgwP+CCZjwAAAA0fMgwPyfiLD0fEwc9fMgwPyfiLD0AAAA0esgwv+CCZjww2Ye/fMgwP+CCZjwAAAA0fMgwP+CCZjww2Ye/esgwv+CCZjwAAAA0fMgwP+CCZrww2Ye/esgwv+CCZrwfEwc9esgwv+CCZrww2Ye/fMgwP+CCZrwfEwc9fMgwPyfiLD0fEwc9esgwv+CCZrwfEwc9fMgwP+CCZrwfEwc9esgwvyfiLD0fEwc9esgwv+CCZjwAAAA0fMgwPyfiLD0AAAA0fMgwP+CCZjwAAAA0esgwvyfiLD0AAAA0esgwvyfiLD0AAAA0fMgwPyfiLD0fEwc9fMgwPyfiLD0AAAA0esgwvyfiLD0fEwc9esgwv+CCZrwAAAA0esgwv+CCZjwfEwc9fMgwP+CCZrwAAAA0fMgwP+CCZjwfEwc9esgwv+CCZrwAAAA0fMgwP+CCZrwAAAA0fMgwP+CCZjwfEwc9esgwv+CCZjwfEwc9////f////7////9/////v////3////+/////f////7////9/////v////3////+//3//f////z//f/9/////P/9//3////8//3//f////z8AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//fwAA////P/9/AAD///8//38AAP///z//fwAA////P/9///////+//3///////7//f///////v/9///////+//////////7//////////v/////////+//////////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9/AAD///8//38AAP///z//fwAA////P/9/AAD///8/////f////7////9/////vwAA/3////+/AAD/f////7//f///////v/9///////+//////////7//////////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4pfol")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gr7b7"]
+
+[sub_resource type="Animation" id="Animation_khdek"]
+resource_name = "BookClosing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_003:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.22807956, 0, 0), Vector3(-0.43936908, 0, 0), Vector3(-3.1415925, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.21128954, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0vt1r"]
+resource_name = "BookOpening"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_003:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.1415925, 0, 0), Vector3(-0.43936908, 0, 0), Vector3(-0.22807956, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.21128954, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gr7b7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_003:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.1415925, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgncb"]
+_data = {
+&"BookClosing": SubResource("Animation_khdek"),
+&"BookOpening": SubResource("Animation_0vt1r"),
+&"RESET": SubResource("Animation_gr7b7")
+}
+
+[node name="book" type="StaticBody3D" unique_id=1852177423 groups=["pickable"]]
+script = ExtResource("1_0vt1r")
+
+[node name="Cube_003" type="MeshInstance3D" parent="." unique_id=101584743]
+transform = Transform3D(0.28962037, 0, 0, 0, -0.28962043, 4.373147e-08, 0, -4.373147e-08, -0.28962043, -0.00016667377, 0.015161574, 0.54291064)
+mesh = SubResource("ArrayMesh_r6h7a")
+
+[node name="Page1" type="MeshInstance3D" parent="Cube_003" unique_id=347639343]
+transform = Transform3D(0.62187326, 0, 0, 0, 1.1195685, 7.450581e-09, 0, 5.9604645e-08, 0.45729035, 0, 0.011374682, 0.529232)
+mesh = SubResource("PlaneMesh_0vt1r")
+surface_material_override/0 = SubResource("StandardMaterial3D_uu3s8")
+
+[node name="SubViewport" type="SubViewport" parent="Cube_003/Page1" unique_id=1103311394]
+transparent_bg = true
+size = Vector2i(856, 512)
+
+[node name="BookContents" parent="Cube_003/Page1/SubViewport" unique_id=1237440061 instance=ExtResource("4_gr7b7")]
+
+[node name="Cube_002" type="MeshInstance3D" parent="." unique_id=1894696054]
+transform = Transform3D(0.28962037, 0, 0, 0, 0.2896204, 0, 0, 0, 0.2896204, 0, 0.005212188, 0.5310085)
+mesh = SubResource("ArrayMesh_hb2hs")
+
+[node name="Page2" type="MeshInstance3D" parent="Cube_002" unique_id=1076063611]
+transform = Transform3D(0.63842994, 0, 0, 0, 0.88780075, -7.450581e-09, 0, 2.9802322e-08, 0.47690418, 0, 0.05656004, -0.47971678)
+mesh = SubResource("PlaneMesh_gr7b7")
+
+[node name="Area3d" type="Area3D" parent="." unique_id=1871706030]
+transform = Transform3D(0.28962037, 0, 0, 0, -0.28962043, 4.373147e-08, 0, -4.373147e-08, -0.28962043, -2.2118911e-09, 0.01649681, 0.38444594)
+
+[node name="BookAnimation" type="AnimationPlayer" parent="." unique_id=1194226470]
+libraries/ = SubResource("AnimationLibrary_dgncb")

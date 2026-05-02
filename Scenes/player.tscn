@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://be8qbmt0fe144"]
+
+[ext_resource type="Script" uid="uid://mudfn1oj6fx5" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://cu86qb42cevvq" path="res://Scenes/book.tscn" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://bfr6ih6kb7k8u" path="res://Audio/UI/BlipConfusedOnce.mp3" id="3_6t5aa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+radius = 0.27490234
+height = 1.4480743
+
+[sub_resource type="Animation" id="Animation_v0iea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.4565886, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "headbob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0009999999, 0.36666667, 0.76666665, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.4565886, 0), Vector3(0, 1.4565886, 0), Vector3(0, 1.5102001, 0), Vector3(0, 1.4662174, 0), Vector3(0, 1.457, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t5aa"]
+_data = {
+&"RESET": SubResource("Animation_v0iea"),
+&"headbob": SubResource("Animation_cvnsp")
+}
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "CloseJournal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.545, 1.218, -0.318), Vector3(0.145, 0.8343437, -0.7825971), Vector3(0.145, 0.8343437, 0.15567327)]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "OpenJournal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.145, 0.8343437, 0.15567327), Vector3(0.145, 0.8343437, -0.7825971), Vector3(0.545, 1.218, -0.318)]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.145, 0.8343437, 0.15567327)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
+_data = {
+&"CloseJournal": SubResource("Animation_6t5aa"),
+&"OpenJournal": SubResource("Animation_vgqql"),
+&"RESET": SubResource("Animation_fkybt")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=240356642 groups=["Player"]]
+script = ExtResource("1_v0iea")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1433439965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4565886, 0)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=277475084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015969634, 0)
+target_position = Vector3(0, 0, -2)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1956566921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1849423078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7240372, 0)
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="HeadBob" type="AnimationPlayer" parent="." unique_id=1695739017]
+libraries/ = SubResource("AnimationLibrary_6t5aa")
+
+[node name="Hand" type="Node3D" parent="." unique_id=544930791]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.237, 1.263, -0.533)
+
+[node name="book" parent="." unique_id=1613977017 instance=ExtResource("2_cvnsp")]
+transform = Transform3D(-2.1524517e-08, -3.8044455e-08, -1, -0.87035567, 0.49242356, 0, 0.49242356, 0.87035567, -4.371139e-08, 0.145, 0.8343437, 0.15567327)
+
+[node name="JournalAnimation" type="AnimationPlayer" parent="." unique_id=1371793611]
+libraries/ = SubResource("AnimationLibrary_x3wgy")
+
+[node name="Blip" type="AudioStreamPlayer" parent="." unique_id=1814929526]
+stream = ExtResource("3_6t5aa")
+volume_db = -2.0
+parameters/looping = false

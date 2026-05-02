@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dbtxw1jpbbb5i"]
+
+[ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://Scripts/ui.gd" id="1_w371h"]
+
+[sub_resource type="Theme" id="Theme_3iaii"]
+default_font_size = 25
+
+[sub_resource type="Theme" id="Theme_w371h"]
+default_font_size = 10
+
+[node name="UI" type="Control" unique_id=1864939403]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w371h")
+
+[node name="Crosshair" type="Label" parent="." unique_id=416058117]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -42.0
+offset_right = 21.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3iaii")
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractLabel" type="Label" parent="." unique_id=1351993870]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 9.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w371h")
+text = "Press E to interact"
+
+[node name="Tracker" type="RichTextLabel" parent="." unique_id=1506791646]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 28.0
+offset_right = 259.0
+offset_bottom = 189.0
+
+[node name="ActionLabel" type="Label" parent="." unique_id=1393830777]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 333.0
+offset_right = 630.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 10
+text = "Press [LMB] to interact"

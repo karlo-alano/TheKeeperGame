@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cvoeb32dx1auu"]
+
+[ext_resource type="Texture2D" uid="uid://bxffupg8rdpc5" path="res://Imports/Trees1/PSX_Forest_AssetCollection_byStarkCrafts_9.png" id="1_nntqn"]
+
+[resource]
+resource_name = "Tree3"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nntqn")
+emission_enabled = true
