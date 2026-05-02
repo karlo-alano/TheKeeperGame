@@ -1,22 +1,21 @@
-audio "res://Audio/bgm/doorknock.ogg"
 "Nanay Angelina": Penny!!
-[wait time="1.0" hide_text="false"]
-audio "res://Audio/bgm/doorknockquick.ogg"
-"Nanay Angelina": Open the door - I got your lunch and allowance!
-Penny: Mom! Hold on, I'll be there in a sec!
-"Nanay Angelina": Alright, I'm waiting outside.
-[wait time="5.0"]
+audio "res://Audio/bgm/doorknock.ogg"
+[wait time="1.0"]
+"Nanay Angelina": Penny, open the door! I have your lunch with me.
+Penny: Hold on, mom! I'll be there in a sec.
+"Nanay Angelina": Oh...! I'll wait right here, okay?
+[wait time="5.0" hide_text="false"]
+Penny: Alright. I'm done!
+[wait time="1.0"]
 [signal arg="cutscene1"]
-Penny: Okay... I'm ready.
-"Nanay Angelina": Here's your lunch, Penny.
-Penny: Thanks, Mom. But it's Forsythe. I told you over and over again to call me Forsythe
-"Nanay Angelina": Oh... right I forgot. Oh and here's your allowance, Forsythe.
+"Nanay Angelina": Here's your lunch, Penny
+"Nanay Angelina": Oh, and here is your allowance too.
 - Give 200 pesos
-	Penny: Thanks, Mom. I'll be home before sun down.
+	Penny: Thanks, mom. I appreciate this.
 - Give 350 pesos
-	Penny: Oh... wow.
-	Penny: This is a lot, mom. I can finally buy that sketchbook I wanted.
-	Penny: Wahhh...
-	Penny: I love you so much, mom
-[wait time="1.5"]
-[background arg="#000000ff" fade="0.5"]
+	Penny: Oh, wow... I can finally buy that sketch book I wanted.
+	Penny: Wahhhh....
+	Penny: Thanks, mom. I love you a bunch!
+[wait time="1.5" hide_text="false"]
+[background arg="#000000ff" fade="0.0"]
+[signal arg="changescene1"]
