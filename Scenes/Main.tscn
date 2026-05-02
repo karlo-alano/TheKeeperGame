@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://155xx7s6y6ta"]
 
 [ext_resource type="Shader" uid="uid://bbh4xsk47f7s5" path="res://PS1.gdshader" id="1_idj7w"]
-[ext_resource type="PackedScene" uid="uid://bsf3o1465gd2x" path="res://Scenes/worldsave1.tscn" id="2_kln2b"]
+[ext_resource type="PackedScene" uid="uid://bsf3o1465gd2x" path="res://Scenes/worldsave.tscn" id="2_kln2b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rgh2o"]
 shader = ExtResource("1_idj7w")

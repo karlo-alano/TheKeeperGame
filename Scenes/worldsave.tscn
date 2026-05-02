@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b04xlced1rync"]
+[gd_scene format=3 uid="uid://bsf3o1465gd2x"]
 
 [ext_resource type="Texture2D" uid="uid://cnbf356hea2e3" path="res://Imports/Skybox/DAYSKY.hdr" id="1_f4ovp"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="2_sy3hk"]

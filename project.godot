@@ -24,25 +24,39 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"Dale": "res://Dialog/Characters/Dale.dch",
+"Kei": "res://Dialog/Characters/Kei.dch",
+"Leus": "res://Dialog/Characters/Leus.dch",
 "Lolo Aurelio": "res://Dialog/Characters/Lolo Aurelio.dch",
+"Lorie": "res://Dialog/Characters/Lorie.dch",
 "Monologue": "res://Dialog/Characters/Monologue.dch",
 "Monologue2": "res://Dialog/Timelines/Monologue2.dch",
+"MrsValenciano": "res://Dialog/Characters/MrsValenciano.dch",
 "Nanay Angelina": "res://Dialog/Characters/Nanay Angelina.dch",
 "Penny": "res://Dialog/Characters/Penny.dch",
 "tip": "res://Dialog/Characters/tip.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Intro": "res://Dialog/Timelines/Intro.dtl",
 "Intro_day1": "res://Dialog/Timelines/Intro_day1.dtl",
+"KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",
+"Leus_Day1_A": "res://Dialog/Timelines/Leus_Day1_A.dtl",
 "Lolo_Day1_A": "res://Dialog/Timelines/Lolo_Day1_A.dtl",
 "Lolo_Day1_B": "res://Dialog/Timelines/Lolo_Day1_B.dtl",
-"Monologue1": "res://Dialog/Timelines/monologue.dtl",
 "Monologue1B": "res://Dialog/Timelines/Monologue1B.dtl",
 "Monologue2": "res://Dialog/Timelines/Monologue2.dtl",
 "Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
 "Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
+"Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
 "Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl",
-"Penny_Day1_B": "res://Dialog/Timelines/Penny_Day1_B.dtl"
+"Penny_Day1_C": "res://Dialog/Timelines/Penny_Day1_C.dtl",
+"Timelines/Lorie_Day1_A": "res://Dialog/Timelines/Lorie_Day1_A.dtl",
+"Timelines/Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
+"Timelines/Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
+"Timelines/Penny_Day1_B": "res://Dialog/Timelines/Penny_Day1_B.dtl",
+"ValencianoFam_Day1_A": "res://Dialog/Timelines/ValencianoFam_Day1_A.dtl",
+"monologue": "res://Dialog/Timelines/monologue.dtl"
 }
 layout/style_directory={
 "": "res://Dialog/Styles/New_File.tres",
@@ -52,7 +66,11 @@ layout/style_directory={
 }
 layout/style_list=["res://Dialog/Styles/New_File.tres", "res://Dialog/Styles/Dialog.tres", "res://Dialog/Characters/tip.tres"]
 layout/default_style="res://Dialog/Styles/New_File.tres"
-variables={}
+variables={
+"Day1": {
+"penny_allowance": "50"
+}
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.03
 text/initial_text_reveal_skippable=false

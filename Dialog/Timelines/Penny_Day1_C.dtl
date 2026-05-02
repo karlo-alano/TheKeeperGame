@@ -1,0 +1,6 @@
+audio "res://Audio/bgm/doorOpening.mp3"
+[wait time="6.0"]
+"Nanay Angelina": You're back. Rice in the cooker.
+Penny: Thanks. I'm going up. Reading.
+[wait time="4.0"]
+Monologue: She's home. That's what matters. That's all that matters tonight.
