@@ -1,4 +1,10 @@
 "Nanay Angelina": Kei? Dale? Your electric bill is here. Try to pay it before they cut you off again.
-[wait time="2.0"]
+[wait time="2.0" hide_text="false"]
 Kei: Thanks, Nanay! Sorry for the noise, Dale is just being stubborn!
-Monologue: At least they're loud. Noise means there's still life in that room. In my house, the silence is what hurts.
+Monologue: This ever bickering couple...
+Monologue: What would our dormitory be without you two.
+[wait time="2.0" hide_text="false"]
+Monologue: Well, it seems like Lolo Aurelio got his mail already so...
+[wait time="1.0"]
+Monologue: Alright, the next one is addressed to Leus
+Monologue: He's on the 2nd floor. Farthest room

@@ -20,6 +20,8 @@ Globals="*uid://c1f0kq68bytn6"
 DaySystem="*uid://hwgbujqthpck"
 GlobalTracker="*uid://fff305pojt32"
 Dialogic="*uid://ds2q0uclmolvu"
+Characters="*uid://wcocs8aj1a5f"
+Items="*uid://cb1obnvmnnshw"
 
 [dialogic]
 
@@ -38,6 +40,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Dream_Trigger": "res://Dialog/Timelines/Dream_Trigger.dtl",
 "Intro": "res://Dialog/Timelines/Intro.dtl",
 "Intro_day1": "res://Dialog/Timelines/Intro_day1.dtl",
 "KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",

@@ -14,5 +14,11 @@ var dialogDone := false
 # LunchBox
 var isHoldingLunchbox := false
 
+# Letters
+var letterInventory := []
+
+# 
+
 # TaskTracker
+var cookingTaskCompleted := false
 var allTasksCompleted := false

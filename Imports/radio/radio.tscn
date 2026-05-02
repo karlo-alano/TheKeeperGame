@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://d2pfl86t5acox"]
 
 [ext_resource type="Texture2D" uid="uid://c5mm70ple7umf" path="res://Imports/radio/radio_Metal_02.jpg" id="1_52o0u"]
+[ext_resource type="Script" uid="uid://tyq0i76teilb" path="res://Imports/radio/radio.gd" id="1_ddfh8"]
 [ext_resource type="Texture2D" uid="uid://cqss2mo6jaigp" path="res://Imports/radio/radio_Electronics.jpg" id="2_ddfh8"]
 [ext_resource type="AudioStream" uid="uid://duwl1etm3vrpt" path="res://Audio/bgm/radioAudio.ogg" id="3_52o0u"]
 
@@ -76,6 +77,7 @@ shadow_mesh = SubResource("ArrayMesh_a4cre")
 
 [node name="radio" type="Node3D" unique_id=685848881]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+script = ExtResource("1_ddfh8")
 
 [node name="Radio" type="MeshInstance3D" parent="." unique_id=578581933]
 transform = Transform3D(1.100851e-08, 0.2263767, -3.2807915e-16, -5.504255e-09, 2.010629e-16, -0.18469214, -0.18469214, 1.3493103e-08, 5.504255e-09, 0, 0, 0)

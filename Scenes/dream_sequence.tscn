@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkhp867wx7nrp"]
+
+[ext_resource type="Script" uid="uid://dpondt66iaotq" path="res://Scripts/dream_sequence.gd" id="1_lb7nv"]
+
+[node name="Node3D" type="Node3D" unique_id=883704599]
+script = ExtResource("1_lb7nv")

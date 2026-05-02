@@ -36,6 +36,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InteractLabel" type="Label" parent="." unique_id=1351993870]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,6 +53,7 @@ theme = SubResource("Theme_w371h")
 text = "Press E to interact"
 
 [node name="Tracker" type="RichTextLabel" parent="." unique_id=1506791646]
+visible = false
 layout_mode = 0
 offset_left = 46.0
 offset_top = 28.0
@@ -59,6 +61,7 @@ offset_right = 259.0
 offset_bottom = 189.0
 
 [node name="ActionLabel" type="Label" parent="." unique_id=1393830777]
+visible = false
 layout_mode = 0
 offset_left = 520.0
 offset_top = 333.0

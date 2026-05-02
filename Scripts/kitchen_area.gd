@@ -3,12 +3,16 @@ extends Area3D
 
 
 func interact():
-	if GlobalTracker.eggTaskCompleted:
+	if !GlobalTracker.eggTaskCompleted:
 		Globals.start_dialogue("Monologue2B", true)
 	else:
 		pan.visible = true
 		$"../cookingSounds".play()
-		#await get_tree().create_timer(10.0).timeout
+		await get_tree().create_timer(10.0).timeout
 		$"../LunchBox".visible = true
 		$CollisionShape3D.disabled = true
+		print(Characters.characters["lolo"])
+		Characters.characters["lolo"].disappear()
+		Items.items["radio"].disappear()
+		
 	

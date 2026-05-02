@@ -10,12 +10,14 @@ const MOUSE_SENSITIVITY = 0.005
 
 @onready var journalAnimation := $JournalAnimation
 @onready var journal := $book
+@onready var letterAnimation := $GiveLetter
 var held_object = null
 var isJournalOpen := false
 
 
 
 func _ready() -> void:
+	Characters.characters["Player"] = self
 	Globals.show_interact_prompt.emit(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	floor_max_angle = deg_to_rad(45)
@@ -24,17 +26,14 @@ func _ready() -> void:
 	max_slides = 6
 	journal.visible = isJournalOpen
 	
-	#await get_tree().create_timer(3.0).timeout
-	#Globals.start_dialogue("Monologue1", true)
-	#await get_tree().create_timer(3.0).timeout
-	#journalAnimation.play("OpenJournal")
-	#journal.openJournal()
-	#isJournalOpen = true
-	#journal.visible = isJournalOpen
 	
+	await get_tree().create_timer(3.0).timeout
+	journalAnimation.play("OpenJournal")
+	journal.openJournal()
+	isJournalOpen = true
+	journal.visible = isJournalOpen
 	
 
-	
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)

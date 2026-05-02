@@ -31,6 +31,9 @@ scene = ExtResource("5_jhdlm")
 [sub_resource type="Resource" id="Resource_gwb0n"]
 script = ExtResource("2_o1f88")
 scene = ExtResource("6_e8vf7")
+overrides = {
+"autoadvance_progressbar": "false"
+}
 
 [sub_resource type="Resource" id="Resource_bpid7"]
 script = ExtResource("2_o1f88")
@@ -63,4 +66,4 @@ layer_info = {
 "16": SubResource("Resource_vlk2n"),
 "17": SubResource("Resource_upr8s")
 }
-metadata/_latest_layer = ""
+metadata/_latest_layer = "13"

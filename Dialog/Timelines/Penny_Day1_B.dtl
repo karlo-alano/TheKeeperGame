@@ -13,3 +13,5 @@ Penny: I'll love whatever you'll give me. Dont worry.
 Penny: Alright - bye now, for real.
 [background arg="#000000ff" fade="0.5" wait="true"]
 [signal arg="cutscene2"]
+[wait time="1.5" hide_text="false"]
+Monologue: Alright, time to deliver some letters.

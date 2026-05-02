@@ -8,41 +8,39 @@ var is_in_dialogue := false
 func _ready():
 	Player = get_tree().get_first_node_in_group("Player")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
+	start_dialogue("Dream_Trigger", true)
+	
+	#change_viewport_world("res://Scenes/World_day1B.tscn")
 	
 func _on_dialogic_signal(argument):
+	if argument == "startday":
+		change_viewport_world("res://Scenes/World_day1A.tscn")
+	if argument == "startdream":
+		change_viewport_world("res://Scenes/dream_sequence.tscn")
 	if argument == "cutscene1":
-		get_tree().get_first_node_in_group("door2c").openDoor()
-	
+		Items.items["door2c"].openDoor()
 	if argument == "changescene1":
-		change_viewport_world("res://Scenes/worldsave2.tscn")
-		
+		change_viewport_world("res://Scenes/World_day1B.tscn")
 	if argument == "cutscene2":
-		pass
+		Characters.characters["forsythe"].disappear()
+		DaySystem.dayInfo[1]["tasks"][0]["done"] = true
 		
 
 func change_viewport_world(new_scene_path: String):
-	# 1. Reach into the tree to find your SubViewport
-	# Adjust this path if your Main scene structure is different!
 	var viewport = get_tree().root.find_child("SubViewport", true, false)
 	
 	if viewport:
-		# 2. Find the current "World" and remove it
 		var old_world = viewport.get_node_or_null("World")
 		if old_world:
 			old_world.queue_free()
 		
-		# 3. Load and instance the new scene
 		var new_world_res = load(new_scene_path)
 		var new_world = new_world_res.instantiate()
-		new_world.name = "World" # Keep the name consistent
+		new_world.name = "World"
 		
-		# 4. Add it to the viewport
 		viewport.add_child(new_world)
 		
-		# 5. Re-assign the Player reference in Globals
-		# Since the old Player was deleted with the old world, 
-		# we find the new one in the new scene.
-		await get_tree().process_frame # Wait for the new scene to 'settle'
+		await get_tree().process_frame
 		Player = get_tree().get_first_node_in_group("Player")
 
 

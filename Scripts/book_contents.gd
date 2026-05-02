@@ -15,10 +15,12 @@ func showDay(day: int):
 	DayLabel.text = data["label"]
 	DayCounter.text = data["counter"]
 	
-	# Build tasks text
 	var tasks_text = ""
 	for task in data["tasks"]:
-		tasks_text += "• %s\n" % task["name"]
+		if task["done"]:
+			tasks_text += "• [strike]%s[/strike]\n" % task["name"]
+		else:
+			tasks_text += "• %s\n" % task["name"]
 	
 	Tasks.text = tasks_text
 	

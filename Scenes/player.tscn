@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mudfn1oj6fx5" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://cu86qb42cevvq" path="res://Scenes/book.tscn" id="2_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://bfr6ih6kb7k8u" path="res://Audio/UI/BlipConfusedOnce.mp3" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://dp37pcfbxmbat" path="res://Imports/letter/letter.glb" id="4_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
 
@@ -99,6 +100,66 @@ _data = {
 &"RESET": SubResource("Animation_fkybt")
 }
 
+[sub_resource type="Animation" id="Animation_x3wgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("letter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("letter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.152, 1.247, 0.20180738)]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "give_letter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("letter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("letter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8032909, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.152, 1.247, 0.20180738), Vector3(0.152, 1.247, -0.298), Vector3(0.152, 1.247, -0.298), Vector3(0.152, 1.247, -1.083)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8erm5"]
+_data = {
+&"RESET": SubResource("Animation_x3wgy"),
+&"give_letter": SubResource("Animation_3smsa")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=240356642 groups=["Player"]]
 script = ExtResource("1_v0iea")
 
@@ -129,6 +190,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.237, 1.263, -0.533)
 
 [node name="book" parent="." unique_id=1613977017 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-2.1524517e-08, -3.8044455e-08, -1, -0.87035567, 0.49242356, 0, 0.49242356, 0.87035567, -4.371139e-08, 0.145, 0.8343437, 0.15567327)
+visible = false
 
 [node name="JournalAnimation" type="AnimationPlayer" parent="." unique_id=1371793611]
 libraries/ = SubResource("AnimationLibrary_x3wgy")
@@ -137,3 +199,10 @@ libraries/ = SubResource("AnimationLibrary_x3wgy")
 stream = ExtResource("3_6t5aa")
 volume_db = -2.0
 parameters/looping = false
+
+[node name="letter" parent="." unique_id=60302985 instance=ExtResource("4_vgqql")]
+transform = Transform3D(-4.371139e-08, 0, -1, -0.5, 0.8660254, 2.1855694e-08, 0.8660254, 0.5, -3.7855173e-08, 0.152, 1.247, 0.20180738)
+visible = false
+
+[node name="GiveLetter" type="AnimationPlayer" parent="." unique_id=856452116]
+libraries/ = SubResource("AnimationLibrary_8erm5")
