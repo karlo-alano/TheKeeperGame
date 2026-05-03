@@ -1,0 +1,25 @@
+"Lolo Aurelio": Gising ka na pala.
+"Lolo Aurelio": Nasimulan ko na madiligan ang mga kamatis. Sana ay okay lang sa'yo.
+"Nanay Angelina": Hindi mo naman po kailangan gawin yan. Lolo. Salamat po.
+"Lolo Aurelio": Okay lang at nalilibang din naman ako.
+[wait time="2.0"]
+"Lolo Aurelio": Yung kaliwang gilid, damihan mo ang patubig dahil tuyo na.
+audio "res://Audio/bgm/loloHumming.mp3"
+[wait time="9.0"]
+"Nanay Angelina": Nakita niyo po bang umalis si Penny ngayong umaga?
+"Lolo Aurelio": Mm..Maaga pa. Sabi niya kailangan niya makarating sa school bago mag alas syete.
+[wait time="1.0"]
+"Lolo Aurelio": Tinanong niya kung meron ba raw akong mabibigay sa kanya na baon.
+"Lolo Aurelio": Ayaw ka raw niya kasing gisingin.
+if {Day1.penny_allowance} == "50":
+	"Lolo Aurelio": Ang baon niya raw kahapon ay hindi sapat kaya binigyan ko siya ng extra.
+	[wait time="1.0"]
+	"Lolo Aurelio": Wag mo na intindihin yon, Lina.
+	[wait time="1.0"]
+	Monologue: Kay Lolo siya nagtanong. Hindi sa akin...
+	Monologue: Hindi ko naman siya masisisi, yun pa ang mas nakakabahala.
+else:
+	"Lolo Aurelio": Kailangan niya raw ng kaunti pa pang-meryenda. Binigyan ko ng bente pesos.
+	"Lolo Aurelio": Nagpasalamat siya. Ang batang yon ay mabuting asal pag gusto niya.
+	[wait time="2.0"]
+	"Nanay Angelina": Nagpasalamat siya kay Lolo. Kahit papaano, nasasabi niya yon sa iba.

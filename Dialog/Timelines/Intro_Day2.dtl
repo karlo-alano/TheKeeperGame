@@ -1,0 +1,21 @@
+[background arg="#000000ff" fade="0.0"]
+audio "res://Audio/bgm/rainDrop.mp3"
+audio "res://Audio/bgm/churchBell.mp3"
+audio "res://Audio/bgm/rainDrop.mp3"
+audio "res://Audio/bgm/churchBell.mp3"
+"Nanay Angelina": Dito ko lang sa malapit sa'kin, anak.
+[wait time="1.0"]
+Penny: Natutulog po ba si Daddy dyan sa box?
+[wait time="1.0"]
+Penny: Ma-lelate kasi siya sa birthday ko.
+[wait time="1.0"]
+"Nanay Angelina": Si Daddy ay...nagpapahinga lang.
+[wait time="1.0"]
+Penny: Kailan pa po siya magigising? Tulad ng sabi doon sa mga stories?
+[wait time="1.0"]
+"Nanay Angelina": ...
+audio "res://Audio/bgm/closingCoffin.mp3"
+[wait time="4.0"]
+Penny: Mommy. babalik pa ba siya?
+[wait time="1.0"]
+audio "res://Audio/bgm/churchBell.mp3"
