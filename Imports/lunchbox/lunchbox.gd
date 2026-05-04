@@ -7,15 +7,13 @@ func onPickup():
 	collision.disabled = true
 	GlobalTracker.isHoldingLunchbox = true
 func use():
-	triggerCutscene()
+	Globals.start_dialogue("Penny_Day1_A", false)
 	
 func onDrop():
 	collision.disabled = false
 	GlobalTracker.isHoldingLunchbox = false
 
-
-func triggerCutscene():
-	Globals.start_dialogue("Penny_Day1_A", false)
+	
 	
 	
 		

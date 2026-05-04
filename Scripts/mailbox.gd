@@ -1,10 +1,11 @@
 extends StaticBody3D
-var letterInventory := [
-	{"reciever": "kei&dale", "delivered": false},
-	{"reciever": "leus", "delivered": false},
-	{"reciever": "lorie", "delivered": false},
-	{"reciever": "thevalencianos", "delivered": false}
-]
+var letterInventory = {
+	"lorie": {"delivered": false},
+	"leus": {"delivered": false},
+	"lolo": {"delivered": false},
+	"kei&dale": {"delivered": false},
+	"thevalencianos": {"delivered": false}
+}
 
 func interact(): 
 	GlobalTracker.letterInventory = letterInventory

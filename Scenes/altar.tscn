@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ccbejbue7iasx"]
 
 [ext_resource type="Texture2D" uid="uid://cr5bredsqsuab" path="res://Imports/altar/altra_Jesus_C_Jesus_O_Material_u1_v1.png" id="1_sax4r"]
+[ext_resource type="Script" uid="uid://doucyje67awwm" path="res://Scripts/altar.gd" id="2_gdwse"]
 [ext_resource type="Texture2D" uid="uid://165htlkqgg0j" path="res://Imports/altar/altra_LIBRA1_1_TXTR.jpg" id="2_nor2d"]
 [ext_resource type="Texture2D" uid="uid://vhra3syvgmj0" path="res://Imports/altar/altra_Image_0.png" id="3_gdwse"]
 [ext_resource type="Texture2D" uid="uid://dcw2dbihfkceg" path="res://Imports/altar/altra_Image_3.png" id="4_tvbwd"]
@@ -530,11 +531,12 @@ shadow_mesh = SubResource("ArrayMesh_1jyca")
 [node name="altra" type="Node3D" unique_id=651453821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2558297, 0)
 
-[node name="Jesus_C" type="MeshInstance3D" parent="." unique_id=253003662]
+[node name="Jesus_C" type="MeshInstance3D" parent="." unique_id=253003662 groups=["interactable"]]
 transform = Transform3D(0.1671192, 0, 0, 0, -5.976649e-08, -0.16711922, 0, 0.16711922, -5.976649e-08, 0.1203319, 0.24696001, -0.026278546)
 mesh = SubResource("ArrayMesh_yc8d7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Jesus_C" unique_id=2117314593]
+[node name="StaticBody3D" type="StaticBody3D" parent="Jesus_C" unique_id=2117314593 groups=["interactable"]]
+script = ExtResource("2_gdwse")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Jesus_C/StaticBody3D" unique_id=392109444]
 shape = SubResource("ConvexPolygonShape3D_aovav")

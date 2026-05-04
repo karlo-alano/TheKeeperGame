@@ -15,9 +15,10 @@ var dialogDone := false
 var isHoldingLunchbox := false
 
 # Letters
-var letterInventory := []
+var letterInventory := {}
 
-# 
+# Journal
+var isFirstTimeOpen := false
 
 # TaskTracker
 var cookingTaskCompleted := false

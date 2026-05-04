@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://jq1fj6tgyonx" path="res://Scripts/door2c.gd" id="2_pant0"]
 [ext_resource type="PackedScene" uid="uid://dvg3hrs74hfha" path="res://Imports/Characters/forsythe.tscn" id="2_yv3cs"]
 [ext_resource type="Script" uid="uid://d3d57svnkjcqu" path="res://Scripts/door1a.gd" id="3_0nuou"]
+[ext_resource type="Script" uid="uid://d1bmlmqhad4ak" path="res://Scripts/door1c.gd" id="3_y308v"]
+[ext_resource type="Script" uid="uid://dm3gshka53o4i" path="res://Scripts/door2b.gd" id="5_f48h3"]
+[ext_resource type="Script" uid="uid://bbgi82c50fhhd" path="res://Scripts/door2a.gd" id="7_stt0g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dio4c"]
 size = Vector3(0.29479724, 5.4192824, 2.5806108)
@@ -290,8 +293,11 @@ script = ExtResource("2_0nuou")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_007/StaticBody3D" index="0" unique_id=1295017822]
 shape = SubResource("BoxShape3D_dio4c")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_008" parent_id_path=PackedInt32Array(1002758641) index="0" unique_id=2091139856]
+[node name="Door_008" parent="." index="4" unique_id=1002758641 groups=["interactable"]]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_008" index="0" unique_id=2091139856 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069981724, 0, 1.2903049)
+script = ExtResource("3_y308v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_008/StaticBody3D" index="0" unique_id=544104117]
 shape = SubResource("BoxShape3D_g2v7b")
@@ -310,8 +316,11 @@ shape = SubResource("BoxShape3D_834yv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls_003/StaticBody3D" index="0" unique_id=1458107977]
 shape = SubResource("ConcavePolygonShape3D_s7ywu")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_016" parent_id_path=PackedInt32Array(1849753388) index="0" unique_id=997400377]
+[node name="Door_016" parent="." index="11" unique_id=1849753388 groups=["interactable"]]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_016" index="0" unique_id=997400377 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069981724, 0, 1.2903049)
+script = ExtResource("5_f48h3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_016/StaticBody3D" index="0" unique_id=1932525345]
 shape = SubResource("BoxShape3D_bpkwg")
@@ -329,8 +338,11 @@ script = ExtResource("2_pant0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_015/StaticBody3D" index="0" unique_id=248318666]
 shape = SubResource("BoxShape3D_pv7ga")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_012" parent_id_path=PackedInt32Array(1221026408) index="0" unique_id=227299001]
+[node name="Door_012" parent="." index="14" unique_id=1221026408 groups=["interactable"]]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_012" index="0" unique_id=227299001 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069981724, 0, 1.2903049)
+script = ExtResource("7_stt0g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_012/StaticBody3D" index="0" unique_id=1465308102]
 shape = SubResource("BoxShape3D_rk11x")

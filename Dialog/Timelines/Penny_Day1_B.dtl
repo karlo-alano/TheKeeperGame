@@ -1,17 +1,16 @@
-Penny: Alright, mom, I'm going to go to school now.
-Penny: Thanks for everything.
+Penny: Sige, paalis na ako.
+Penny: Salamat sa lahat.
 Penny: I love yaaa
-"Nanay Angelina": Wait...
-"Nanay Angelina": Before you go, I need to bring something up.
-"Nanay Angelina": Your birthday is in 2 days. Is there anything you want?
+"Nanay Angelina": Teka lang...
+"Nanay Angelina": Bago ka umalis, may gusto akong sabihin.
+"Nanay Angelina": Ang kaarawan mo ay nasa loob na ng dalawang araw. May gusto ka ba na regalo?
 Penny: ...
 [wait time="1.5" hide_text="false"]
-Penny: You know what I really want, mom...
-Penny: But I know it's impossible.
+Penny: Alam mo naman na ang gusto ko eh...
+Penny: Pero alam ko namang imposible iyon.
 [wait time="2.0" hide_text="false"]
-Penny: I'll love whatever you'll give me. Dont worry.
-Penny: Alright - bye now, for real.
+Penny: Oh sha... kahit ano naman ang ibibigay mo sakin ay magugustuhan ko.
+Penny: Late na ako hahah. Bye na
 [background arg="#000000ff" fade="0.5" wait="true"]
 [signal arg="cutscene2"]
-[wait time="1.5" hide_text="false"]
-Monologue: Alright, time to deliver some letters.
+Monologue: Oras nang mamigay ng mga sobre.

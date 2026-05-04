@@ -8,13 +8,15 @@ var is_in_dialogue := false
 func _ready():
 	Player = get_tree().get_first_node_in_group("Player")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	start_dialogue("Dream_Trigger", true)
+	#start_dialogue("Dream_Trigger", true)
 	
-	#change_viewport_world("res://Scenes/World_day1B.tscn")
+	change_viewport_world("res://Scenes/World_day1B.tscn")
 	
 func _on_dialogic_signal(argument):
-	if argument == "startday":
+	if argument == "startday1":
 		change_viewport_world("res://Scenes/World_day1A.tscn")
+	if argument == "startday2":
+		change_viewport_world("")
 	if argument == "startdream":
 		change_viewport_world("res://Scenes/dream_sequence.tscn")
 	if argument == "cutscene1":
@@ -24,6 +26,7 @@ func _on_dialogic_signal(argument):
 	if argument == "cutscene2":
 		Characters.characters["forsythe"].disappear()
 		DaySystem.dayInfo[1]["tasks"][0]["done"] = true
+	
 		
 
 func change_viewport_world(new_scene_path: String):

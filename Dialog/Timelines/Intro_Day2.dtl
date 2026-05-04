@@ -19,3 +19,4 @@ audio "res://Audio/bgm/closingCoffin.mp3"
 Penny: Mommy. babalik pa ba siya?
 [wait time="1.0"]
 audio "res://Audio/bgm/churchBell.mp3"
+[signal arg="startday2"]

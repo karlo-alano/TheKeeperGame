@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bccut718i1ifv" path="res://Imports/GardenPatch/GardenPatch_Plants.png" id="1_g8pwu"]
 [ext_resource type="Texture2D" uid="uid://waoiylpjwros" path="res://Imports/GardenPatch/GardenPatch_Wood_11.jpg" id="2_54sda"]
+[ext_resource type="Script" uid="uid://da0bsc2608h8f" path="res://Scripts/GardenPatchArea1.gd" id="3_54sda"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2skgs"]
 resource_name = "Dirt"
@@ -72,8 +73,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n5moe")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kgbb1"]
-size = Vector3(5.998585, 0.43125987, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8pwu"]
+size = Vector3(5.998585, 1.3287891, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8omgu"]
 resource_name = "Material.001"
@@ -657,7 +658,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_26bbl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kcfp8"]
-size = Vector3(5.998585, 0.43125987, 2)
+size = Vector3(5.998585, 1.1093067, 2)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8dfdr"]
 _surfaces = [{
@@ -1173,15 +1174,16 @@ shadow_mesh = SubResource("ArrayMesh_3eq6r")
 
 [node name="GardenPatch" type="Node3D" unique_id=630049115]
 
-[node name="Cube" type="MeshInstance3D" parent="." unique_id=40073244]
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=40073244 groups=["actionable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.55683565)
 mesh = SubResource("ArrayMesh_ndil4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cube" unique_id=946869884]
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" unique_id=51217119 groups=["actionable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992926, -0.78437006, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" unique_id=1261053100]
-shape = SubResource("BoxShape3D_kgbb1")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" unique_id=1196940879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44876462, 0)
+shape = SubResource("BoxShape3D_g8pwu")
 
 [node name="Plane_001" type="MeshInstance3D" parent="." unique_id=1758676843]
 transform = Transform3D(0.43828607, 0, 0, 0, 2.6123885e-08, -0.43828607, 0, 0.43828607, 2.6123885e-08, 0, 0.73719454, -0.55683565)
@@ -1247,14 +1249,16 @@ mesh = SubResource("ArrayMesh_2sba4")
 transform = Transform3D(0.6497529, 0, 0, 0, 0.6497529, 0, 0, 0, 0.6497529, 3.9138184, 0.9395647, -0.46696147)
 mesh = SubResource("ArrayMesh_61v0p")
 
-[node name="Cube_001" type="MeshInstance3D" parent="." unique_id=1439727455]
+[node name="Cube_001" type="MeshInstance3D" parent="." unique_id=1439727455 groups=["actionable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01131475, 1.0941302, -3.9271402)
 mesh = SubResource("ArrayMesh_jc0hm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" unique_id=505020240]
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" unique_id=505020240 groups=["actionable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992926, -0.78437006, 0)
+script = ExtResource("3_54sda")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" unique_id=1337435197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322133, 0)
 shape = SubResource("BoxShape3D_kcfp8")
 
 [node name="Plane_003" type="MeshInstance3D" parent="." unique_id=162662481]

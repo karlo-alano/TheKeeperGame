@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwpbjnrxs1a5c" path="res://Scripts/world_day_1b.gd" id="1_c3p7q"]
 [ext_resource type="Texture2D" uid="uid://cnbf356hea2e3" path="res://Imports/Skybox/DAYSKY.hdr" id="2_6rwhj"]
+[ext_resource type="Script" uid="uid://chc8m4e44rfpo" path="res://Scripts/environment.gd" id="3_6rwhj"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="3_7tqx7"]
 [ext_resource type="PackedScene" uid="uid://7y8wmitboexn" path="res://Scenes/Trees/tree_1.tscn" id="4_yl1j3"]
 [ext_resource type="PackedScene" uid="uid://dksobbw4f2gqi" path="res://Scenes/Trees/tree_2.tscn" id="5_5w5b7"]
@@ -56,11 +57,12 @@ camera_attributes = SubResource("CameraAttributesPractical_fo5ed")
 compositor = SubResource("Compositor_5ukr8")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1457872507]
-transform = Transform3D(0.6709835, -0.4419663, 0.59535456, -0.16306214, 0.69532293, 0.69995487, -0.7233201, -0.56673795, 0.39448223, 8.426759, 14.408354, 45.79812)
+transform = Transform3D(0.28386998, 0.92502254, 0.25249007, 0.032434657, -0.27243498, 0.9616274, 0.958314, -0.26478812, -0.10733899, -28.40747, 22.73144, 45.79812)
 light_color = Color(0.8794132, 0.77144325, 0.7093011, 1)
 light_energy = 1.2
 light_volumetric_fog_energy = 6.015
 shadow_enabled = true
+script = ExtResource("3_6rwhj")
 
 [node name="Player" parent="." unique_id=240356642 instance=ExtResource("3_7tqx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.418356, 0.29075813, -23.540476)
@@ -217,13 +219,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8050985, -0.0620656, -1.25
 
 [node name="MultiMeshInstance3D2" type="MultiMeshInstance3D" parent="." unique_id=1964007980]
 transform = Transform3D(0.28067887, 0, 9.234584, 0, 1.0000002, 0, -18.873888, 0, 0.13733003, -36.72151, -0.111442566, -8.12598)
-
-[node name="Window" type="Window" parent="." unique_id=949913025]
-oversampling_override = 1.0
-initial_position = 1
-size = Vector2i(500, 500)
-visible = false
-always_on_top = true
 
 [node name="BetterCabinw_completefurniture" parent="." unique_id=196858664 instance=ExtResource("11_jeihx")]
 transform = Transform3D(0.0273459, 0, -0.99962604, 0, 1.0875554, 0, 0.99962604, 0, 0.0273459, -7.556, 0.28, 14.564)

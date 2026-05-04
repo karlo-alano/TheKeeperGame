@@ -26,12 +26,12 @@ func _ready() -> void:
 	max_slides = 6
 	journal.visible = isJournalOpen
 	
-	
-	await get_tree().create_timer(3.0).timeout
-	journalAnimation.play("OpenJournal")
-	journal.openJournal()
-	isJournalOpen = true
-	journal.visible = isJournalOpen
+	if GlobalTracker.isFirstTimeOpen:
+		await get_tree().create_timer(3.0).timeout
+		journalAnimation.play("OpenJournal")
+		journal.openJournal()
+		isJournalOpen = true
+		journal.visible = isJournalOpen
 	
 
 func _input(event):
@@ -94,6 +94,7 @@ func _process(_delta: float):
 				if hit.has_method("onPickup"):
 					hit.onPickup()
 		if hit.is_in_group("actionable") and held_object:
+			print(hit)
 			if !Globals.is_in_dialogue:
 				Globals.show_action_prompt.emit(true)
 				if hit.slot == held_object.key:

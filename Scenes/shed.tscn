@@ -737,6 +737,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ri7kd")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3q0i"]
+size = Vector3(1.9498558, 2.0273285, 1.9009688)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_theu1"]
 resource_name = "obj_garden_watering_can"
 cull_mode = 2
@@ -1925,6 +1928,7 @@ shape = SubResource("ConcavePolygonShape3D_3yy5d")
 
 [node name="Roof" type="MeshInstance3D" parent="." unique_id=863745139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9087949, 2.3432777, -1.0999998)
+visible = false
 mesh = SubResource("ArrayMesh_0wp7j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Roof" unique_id=849707281]
@@ -2099,8 +2103,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9934173, 0, -0.44274455)
 shape = SubResource("BoxShape3D_scmqy")
 
 [node name="Cylinder" type="MeshInstance3D" parent="." unique_id=1734314321]
-transform = Transform3D(0.22128952, 0, 0, 0, 0.22128952, 0, 0, 0, 0.22128952, 2.353453, 0.22128952, 0.77134085)
+transform = Transform3D(0.22128952, 0, 0, 0, 0.22128952, 0, 0, 0, 0.22128952, 2.2955353, 0.22128952, 0.77134085)
 mesh = SubResource("ArrayMesh_87b3u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cylinder" unique_id=981025408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.049515605)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder/StaticBody3D" unique_id=717793463]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999997, 0, 0.013664186, 0)
+shape = SubResource("BoxShape3D_t3q0i")
 
 [node name="WateringCan" type="RigidBody3D" parent="." unique_id=368232214 groups=["pickable"]]
 transform = Transform3D(0.00051042106, 0.00039963346, 1.4292005e-10, 0, -2.3183463e-10, 0.00064825657, 0.00039963343, -0.0005104211, -1.8254082e-10, 2.346685, 0.52608687, -1.6101384)

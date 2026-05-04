@@ -7,5 +7,4 @@ func interact():
 	if is_open:
 		doorAnimation.play("OpenDoor")
 	else:
-		print("closing door")
 		doorAnimation.play("CloseDoor")

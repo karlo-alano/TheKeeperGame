@@ -2,6 +2,8 @@ extends RigidBody3D
 @onready var collision := $CollisionShape3D
 @onready var animation := $WateringCanAnimation
 
+var key := "Garden Area"
+
 func onPickup():
 	collision.disabled = true
 	rotation = Vector3(-PI/2, -19.5, -PI/2)

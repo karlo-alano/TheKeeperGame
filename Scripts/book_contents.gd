@@ -18,7 +18,7 @@ func showDay(day: int):
 	var tasks_text = ""
 	for task in data["tasks"]:
 		if task["done"]:
-			tasks_text += "• [strike]%s[/strike]\n" % task["name"]
+			tasks_text += "• [s]%s[/s]\n" % task["name"]
 		else:
 			tasks_text += "• %s\n" % task["name"]
 	
