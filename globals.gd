@@ -20,7 +20,7 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	#start_dialogue("Dream_Trigger", true)
 	
-	change_viewport_world("res://Scenes/World_day3A.tscn")
+	change_viewport_world("res://Scenes/World_day2A.tscn")
 	
 func _on_dialogic_signal(argument):
 	print("[Globals] Dialogic signal received:", argument)
@@ -29,7 +29,7 @@ func _on_dialogic_signal(argument):
 		change_viewport_world("res://Scenes/World_day1A.tscn")
 	if argument == "startday2":
 		GlobalTracker.set_current_day(2)
-		change_viewport_world("")
+		change_viewport_world("res://Scenes/World_day2A.tscn")
 	if argument == "startday3":
 		GlobalTracker.set_current_day(3)
 		change_viewport_world("res://Scenes/World_day3A.tscn")
@@ -241,7 +241,6 @@ func _set_mouse_filter_recursive(node: Node) -> void:
 		
 func _on_dialogue_ended():
 	is_in_dialogue = false
-
 	if _active_dialogue_timeline == "Lolo_Day3_A":
 		print("[Globals] Lolo_Day3_A ended; arming Mysterious watcher")
 		_wait_for_mysterious_after_lolo = true
@@ -382,4 +381,6 @@ func _on_journal_closed() -> void:
 		start_dialogue("Monologue3B", false)
 	else:
 		print("[Globals] Monologue3B already ran today; skipping")
+
+
 	

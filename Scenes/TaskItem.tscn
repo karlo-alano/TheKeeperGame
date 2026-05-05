@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://m6qh0pyktpfi"]
+
+[ext_resource type="Script" uid="uid://dda286py0cjuj" path="res://Scenes/TaskItem.gd" id="1_vra67"]
+
+[node name="TaskItem" type="HBoxContainer" unique_id=1787430171]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vra67")
+
+[node name="CheckIcon" type="TextureRect" parent="." unique_id=889447184]
+layout_mode = 2
+
+[node name="TaskName" type="Label" parent="." unique_id=890443599]
+layout_mode = 2

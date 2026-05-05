@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cb4td6w0rmhgv"]
+
+[sub_resource type="GDScript" id="GDScript_3cq81"]
+script/source = "extends HBoxContainer
+
+@onready var check_icon = $CheckIcon
+@onready var task_name = $TaskName
+
+func setup(name: String):
+	task_name.text = name
+"
+
+[node name="TaskItem" type="HBoxContainer" unique_id=404683460]
+script = SubResource("GDScript_3cq81")
+
+[node name="CheckIcon" type="TextureRect" parent="." unique_id=691056248]
+layout_mode = 2
+
+[node name="TaskName" type="Label" parent="." unique_id=1352794526]
+layout_mode = 2

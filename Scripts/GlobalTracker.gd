@@ -1,8 +1,7 @@
 extends Node
 
-#egg stuff
+# egg stuff
 signal egg_collected
-
 var _eggCounter: int = 0
 var eggCounter: int:
 	get:
@@ -13,7 +12,6 @@ var eggCounter: int:
 
 var eggTaskCompleted := false
 var dialogDone := false
-
 var current_day: int = 1
 var daily_event_flags := {}
 

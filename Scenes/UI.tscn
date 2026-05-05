@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbtxw1jpbbb5i"]
 
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://Scripts/ui.gd" id="1_w371h"]
+[ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scenes/task_bar.gd" id="2_nxvpl"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
 default_font_size = 25
@@ -79,3 +80,25 @@ offset_right = 724.0
 offset_bottom = 402.0
 theme_override_font_sizes/font_size = 14
 text = "Press G to open the journal"
+
+[node name="TaskBar" type="PanelContainer" parent="." unique_id=1765240496]
+layout_direction = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_nxvpl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskBar" unique_id=684834112]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskBar/VBoxContainer" unique_id=1863205502]
+layout_mode = 2
+
+[node name="DayLabel" type="Label" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=277441655]
+layout_mode = 2
+
+[node name="DayCounter" type="Label" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=321018580]
+layout_mode = 2
+
+[node name="TaskList" type="VBoxContainer" parent="TaskBar/VBoxContainer" unique_id=2092191060]
+layout_mode = 2

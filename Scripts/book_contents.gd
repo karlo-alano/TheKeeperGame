@@ -1,24 +1,27 @@
 extends Control
+
 @onready var DayLabel := $DayLabel
 @onready var Tasks := $Tasks
 @onready var DayCounter := $DayCounter
 
-
-
 var currentDay = 1
 var entries := {}
 
+
 func _ready():
 	showDay(currentDay)
-	
+
+
 func showDay(day: int):
 	var data = DaySystem.dayInfo[day]
 	DayLabel.text = data["label"]
 	DayCounter.text = data["counter"]
+
 	var supports_bbcode := Tasks is RichTextLabel
 	if supports_bbcode and not Tasks.bbcode_enabled:
 		Tasks.bbcode_enabled = true
-	
+
+	# Build tasks text
 	var tasks_text = ""
 	for task in data["tasks"]:
 		if task["done"]:
@@ -28,33 +31,28 @@ func showDay(day: int):
 				tasks_text += "• %s (done)\n" % task["name"]
 		else:
 			tasks_text += "• %s\n" % task["name"]
-	
 
-	# Append journal entries for this day after tasks
-	var entries_text := ""
-	for id in entries.keys():
-		var e = entries[id]
-		if not e.has("day") or e["day"] == day:
-			entries_text += "\n%s — %s\n%s\n" % [e.get("title", id), e.get("time", ""), e.get("body", "")]
+	# Pull journal entry directly from DaySystem
+	var journal_text := ""
+	if DaySystem.journal_entries.has(day):
+		var entry = DaySystem.journal_entries[day]
+		if entry != "":
+			journal_text = "\n——————————\n%s" % entry
 
-	Tasks.text = tasks_text + entries_text
-
-	# expose currentDay for external callers
+	Tasks.text = tasks_text + journal_text
 	currentDay = day
-	return
 
-func add_entry(id:String, title:String, body:String, day:int = -1) -> void:
-	# store the entry and refresh if visible
+
+func add_entry(id: String, title: String, body: String, day: int = -1) -> void:
 	entries[id] = {"title": title, "body": body, "time": str(Time.get_unix_time_from_system()), "day": day}
 	showDay(currentDay)
 
-func update_entry(id:String, data:Dictionary) -> void:
+
+func update_entry(id: String, data: Dictionary) -> void:
 	if entries.has(id):
 		entries[id].update(data)
 		showDay(currentDay)
 
-func get_entry(id:String) -> Dictionary:
+
+func get_entry(id: String) -> Dictionary:
 	return entries.get(id, {})
-	
-	
-	

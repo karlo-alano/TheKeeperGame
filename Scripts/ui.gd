@@ -1,8 +1,10 @@
 extends Control
+
 @onready var interactLabel = $InteractLabel
 @onready var actionLabel := $ActionLabel
 @onready var journalHintLabel := $JournalHintLabel
 @onready var tracker := $Tracker
+@onready var task_bar = $TaskBar  # ← add this
 
 var _journal_prompt_token := 0
 
@@ -18,7 +20,6 @@ func _show_interact(is_visible):
 func _show_action(is_visible):
 	actionLabel.visible = is_visible
 
-
 func show_journal_prompt() -> void:
 	_journal_prompt_token += 1
 	var token := _journal_prompt_token
@@ -28,11 +29,12 @@ func show_journal_prompt() -> void:
 	if token == _journal_prompt_token and journalHintLabel.visible:
 		journalHintLabel.visible = false
 
-
 func hide_journal_prompt() -> void:
 	_journal_prompt_token += 1
 	journalHintLabel.visible = false
 
 func updateTracker():
 	tracker.text = str(GlobalTracker.eggCounter) + "/6"
-	
+
+func refresh_taskbar():            # ← add this
+	task_bar.refresh()
