@@ -1,11 +1,15 @@
 [gd_scene format=4 uid="uid://dvg3hrs74hfha"]
 
 [ext_resource type="Texture2D" uid="uid://ct86sq6a1jwjd" path="res://Imports/Characters/Forsythe_Character_Female_10.png" id="1_wa3pa"]
+[ext_resource type="Script" path="res://Imports/Characters/forsythe_interact.gd" id="2_forsythe_interact"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inl5b"]
 resource_name = "Character_Female_10"
 cull_mode = 2
 albedo_texture = ExtResource("1_wa3pa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_forsythe_interact"]
+size = Vector3(1.8, 2.8, 1.8)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w2uhd"]
 resource_name = "Forsythe_Character_Female_10"
@@ -943,3 +947,11 @@ skeleton = NodePath("..")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=768948816]
 libraries/ = SubResource("AnimationLibrary_8826o")
 autoplay = &"Armature|mixamo_com|Layer0"
+
+[node name="InteractBody" type="StaticBody3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+script = ExtResource("2_forsythe_interact")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractBody"]
+position = Vector3(0, 1.4, 0)
+shape = SubResource("BoxShape3D_forsythe_interact")

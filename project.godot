@@ -50,21 +50,24 @@ directories/dtl_directory={
 "Lolo_Day1_B": "res://Dialog/Timelines/Lolo_Day1_B.dtl",
 "Lolo_Day1_C": "res://Dialog/Timelines/Lolo_Day1_C.dtl",
 "Lolo_Day2_A": "res://Dialog/Timelines/Lolo_Day2_A.dtl",
+"Lolo_Day3_A": "res://Dialog/Timelines/Lolo_Day3_A.dtl",
+"Lorie_Day1_A": "res://Dialog/Timelines/Lorie_Day1_A.dtl",
 "Monologue1B": "res://Dialog/Timelines/Monologue1B.dtl",
 "Monologue2": "res://Dialog/Timelines/Monologue2.dtl",
 "Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
 "Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
+"Monologue3A": "res://Dialog/Timelines/Monologue3A.dtl",
+"Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
+"Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
 "Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
 "Monologue_Day2_A": "res://Dialog/Timelines/Monologue_Day2_A.dtl",
 "Monologue_Day2_B": "res://Dialog/Timelines/Monologue_Day2_B.dtl",
+"MrsValenciano_PalutoRequest": "res://Dialog/Timelines/MrsValenciano_PalutoRequest.dtl",
 "Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl",
+"Penny_Day1_B": "res://Dialog/Timelines/Penny_Day1_B.dtl",
 "Penny_Day1_C": "res://Dialog/Timelines/Penny_Day1_C.dtl",
 "Penny_Day2_A": "res://Dialog/Timelines/Penny_Day2_A.dtl",
 "Prayer_Day1A": "res://Dialog/Timelines/Prayer_Day1A.dtl",
-"Timelines/Lorie_Day1_A": "res://Dialog/Timelines/Lorie_Day1_A.dtl",
-"Timelines/Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
-"Timelines/Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
-"Timelines/Penny_Day1_B": "res://Dialog/Timelines/Penny_Day1_B.dtl",
 "ValencianoFam_Day1_A": "res://Dialog/Timelines/ValencianoFam_Day1_A.dtl",
 "ifLetterDelivered": "res://Dialog/Timelines/OneLiners/ifLetterDelivered.dtl",
 "monologue": "res://Dialog/Timelines/monologue.dtl"
@@ -83,9 +86,9 @@ variables={
 }
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.03
-text/initial_text_reveal_skippable=false
-text/text_reveal_skip_delay=0.1
+text/letter_speed=0.05
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.2
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0
 text/autoadvance_ignored_characters_enabled=true
@@ -116,7 +119,7 @@ audio/channel_defaults={
 }
 }
 text/input_action="dialogic_default_action"
-text/autoadvance_enabled=true
+text/autoadvance_enabled=false
 text/autoadvance_fixed_delay=1.0
 text/autoadvance_per_word_delay=0
 text/autocolor_names=false
@@ -190,7 +193,7 @@ dialogic_default_action={
 }
 journal={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":71,"physical_keycode":71,"key_label":0,"unicode":103,"location":0,"echo":false,"script":null)
 ]
 }
 

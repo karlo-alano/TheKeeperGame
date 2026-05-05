@@ -2,18 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bhftpw6b1tby5" path="res://Imports/Trees2/tree2.glb" id="1_1m8y5"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r2d5c"]
-points = PackedVector3Array(-1.7870483, -507.00006, -1250, -357.32233, -359.70404, -1250, 1.5876465, -507.00006, -1250, -1.7870483, -507.00006, -250.0979, -359.70447, -357.3219, -1250, -357.32233, -359.70404, -250.0979, 357.22217, -359.70404, -1250, 1.5876465, -507.00006, -250.0979, -0.09970093, -60.049927, 0, -507.0005, -1.7865906, -1250, -359.70447, -357.3219, -250.0979, -52.01065, -30.074585, 0, 359.6043, -357.3219, -1250, 357.22217, -359.70404, -250.0979, 51.91046, -30.074585, 0, -507.0005, 1.5881042, -1250, -507.0005, -1.7865906, -250.0979, -52.01065, 29.975342, 0, 506.99957, -1.7865906, -1250, 359.6043, -357.3219, -250.0979, 51.91046, 29.975342, 0, 506.99957, -1.7865906, -250.0979, -359.70447, 357.22266, -1250, -507.0005, 1.5881042, -250.0979, -0.09970093, 59.950684, 0, -357.32233, 359.6048, -250.0979, -359.70447, 357.22266, -250.0979, 506.99957, 1.5881042, -1250, 506.99957, 1.5881042, -250.0979, 359.6043, 357.22266, -250.0979, 357.22217, 359.6048, -250.0979, -357.32233, 359.6048, -1250, -1.7870483, 507.00006, -250.0979, 1.5876465, 507.00006, -250.0979, 359.6043, 357.22266, -1250, 357.22217, 359.6048, -1250, -1.7870483, 506.90082, -1250, 1.5876465, 506.90082, -1250)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sun8v"]
 
 [node name="tree2" unique_id=361890328 instance=ExtResource("1_1m8y5")]
 
-[node name="Plane" parent="." index="0" unique_id=1864592423]
+[node name="Plane" parent="." index="0" unique_id=1334943771]
 visible = false
 
-[node name="tree20" parent="." index="1" unique_id=215202961]
+[node name="tree20" parent="." index="1" unique_id=368202307]
 visible = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="tree16" parent_id_path=PackedInt32Array(634208271) index="0" unique_id=1604242262]
+[node name="StaticBody3D" type="StaticBody3D" parent="tree16" parent_id_path=PackedInt32Array(563085678) index="0" unique_id=1604242262]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tree16/StaticBody3D" index="0" unique_id=63205475]
-shape = SubResource("ConvexPolygonShape3D_r2d5c")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree16/StaticBody3D" index="0" unique_id=523558979]
+transform = Transform3D(192.81418, 0, 0, 0, 0.00022741343, 151.52498, 0, -635.8946, 5.4189546e-05, 0, 0.00022851297, -638.96906)
+shape = SubResource("CylinderShape3D_sun8v")
