@@ -6,6 +6,12 @@ var Player: CharacterBody3D
 var is_in_dialogue := false
 var current_world_scene := ""
 var current_world: Node3D = null
+var _active_dialogue_timeline := ""
+var _wait_for_mysterious_after_lolo := false
+var _lolo_anchor_position := Vector3.ZERO
+var _mysterious_wait_timer := 0.0
+var _moved_two_meters_from_lolo := false
+var _pending_monologue3b_on_journal_close := false
 var _lock_player_for_monologue3a := false
 var _pending_day3_paluto_objective := false
 
@@ -125,7 +131,7 @@ func _on_dialogic_signal(argument):
 		if viewport:
 			var world = viewport.get_node_or_null("World")
 			if world:
-				var book = world.find_node("book", true, false)
+				var book = world.find_child("book", true, false)
 				if book and book.has_method("add_entry"):
 					book.add_entry(id, title, body, -1)
 					emit_signal("show_action_prompt", true)
@@ -144,7 +150,7 @@ func _on_dialogic_signal(argument):
 			if viewport2:
 				var world2 = viewport2.get_node_or_null("World")
 				if world2:
-					var book2 = world2.find_node("book", true, false)
+					var book2 = world2.find_child("book", true, false)
 					if book2 and book2.has_method("update_entry"):
 						var data := {}
 						if title2 != "":
@@ -191,6 +197,10 @@ func change_viewport_world(new_scene_path: String):
 func start_dialogue(timeline: String, is_monologue: bool = false):
 	if timeline.find("/") != -1 and not timeline.contains("://"):
 		timeline = timeline.get_file().trim_suffix("." + timeline.get_extension())
+	_active_dialogue_timeline = timeline
+
+	# Always connect timeline_ended to handle dialogue completion for all types
+	Dialogic.timeline_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 
 	if is_monologue and timeline == "Monologue3A":
 		_lock_player_for_monologue3a = true
@@ -199,7 +209,6 @@ func start_dialogue(timeline: String, is_monologue: bool = false):
 			Player.set_process(false)
 			Player.set_physics_process(false)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Dialogic.timeline_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 		Dialogic.start(timeline)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		await get_tree().process_frame
@@ -211,7 +220,6 @@ func start_dialogue(timeline: String, is_monologue: bool = false):
 		Player.set_process_input(false)
 		Player.set_physics_process(false)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Dialogic.timeline_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 	Dialogic.start(timeline)
 	
 	if is_monologue:
@@ -233,6 +241,57 @@ func _set_mouse_filter_recursive(node: Node) -> void:
 		
 func _on_dialogue_ended():
 	is_in_dialogue = false
+
+	if _active_dialogue_timeline == "Lolo_Day3_A":
+		print("[Globals] Lolo_Day3_A ended; arming Mysterious watcher")
+		_wait_for_mysterious_after_lolo = true
+		_moved_two_meters_from_lolo = false
+		_mysterious_wait_timer = 0.0
+		if Characters.characters.has("lolo") and Characters.characters["lolo"] and is_instance_valid(Characters.characters["lolo"]):
+			_lolo_anchor_position = Characters.characters["lolo"].global_position
+			print("[Globals] Lolo anchor position (from Characters): %s" % _lolo_anchor_position)
+		elif current_world and current_world.has_node("Lolo"):
+			var lolo_node = current_world.get_node("Lolo")
+			if lolo_node is Node3D:
+				_lolo_anchor_position = lolo_node.global_position
+				print("[Globals] Lolo anchor position (from world): %s" % _lolo_anchor_position)
+
+	if _active_dialogue_timeline == "MysteriousMonologue":
+		print("[Globals] MysteriousMonologue ended; updating tasks and opening journal")
+		# Update Day 3 tasks to new list
+		if DaySystem.dayInfo.has(3):
+			DaySystem.dayInfo[3]["tasks"] = [
+				{"name": "Clean the courtyard", "done": false},
+				{"name": "Feed the cat", "done": false},
+				{"name": "Water the plants", "done": false}
+			]
+			print("[Globals] Day 3 tasks updated")
+
+		# Show journal prompt and open journal
+		emit_signal("show_action_prompt", true)
+		if current_world:
+			print("[Globals] current_world found; looking for book...")
+			var book = current_world.find_child("book", true, false)
+			if book:
+				print("[Globals] book found; opening journal...")
+				if book.has_method("openJournal"):
+					book.openJournal()
+					# Refresh journal page with new tasks
+					var page = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
+					if page and page.has_method("showDay"):
+						page.showDay(3)
+						print("[Globals] Journal page refreshed with new tasks")
+					# Connect to journal close signal to trigger Monologue3B
+					if book.is_connected("journal_closed", Callable(self, "_on_journal_closed")):
+						book.disconnect("journal_closed", Callable(self, "_on_journal_closed"))
+					book.connect("journal_closed", Callable(self, "_on_journal_closed"), CONNECT_ONE_SHOT)
+					_pending_monologue3b_on_journal_close = true
+					print("[Globals] Connected to journal_closed signal")
+				else:
+					print("[Globals] book has no openJournal method")
+			else:
+				print("[Globals] book not found in world")
+
 	if _lock_player_for_monologue3a:
 		_lock_player_for_monologue3a = false
 		Player.set_process(true)
@@ -243,6 +302,41 @@ func _on_dialogue_ended():
 		Player.set_process_input(true)
 		Player.set_physics_process(true)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_active_dialogue_timeline = ""
+
+
+func _process(delta: float) -> void:
+	if not _wait_for_mysterious_after_lolo:
+		return
+	if is_in_dialogue:
+		return
+	if not Player or not is_instance_valid(Player):
+		Player = get_tree().get_first_node_in_group("Player")
+		if not Player:
+			return
+
+	if not _moved_two_meters_from_lolo:
+		var distance = Player.global_position.distance_to(_lolo_anchor_position)
+		if distance >= 2.0:
+			print("[Globals] Player moved %.2f meters from Lolo; starting 3-second timer" % distance)
+			_moved_two_meters_from_lolo = true
+			_mysterious_wait_timer = 0.0
+		return
+
+	_mysterious_wait_timer += delta
+	print("[Globals] Mysterious wait timer: %.1f / 3.0 seconds" % _mysterious_wait_timer)
+	if _mysterious_wait_timer < 3.0:
+		return
+
+	_wait_for_mysterious_after_lolo = false
+	_moved_two_meters_from_lolo = false
+	_mysterious_wait_timer = 0.0
+	print("[Globals] Timer complete; triggering MysteriousMonologue")
+	if GlobalTracker.run_once_per_day("mysterious_monologue_day3"):
+		print("[Globals] Starting MysteriousMonologue")
+		start_dialogue("MysteriousMonologue", true)
+	else:
+		print("[Globals] MysteriousMonologue already ran today; skipping")
 
 
 func _add_day3_paluto_objective() -> void:
@@ -265,7 +359,7 @@ func _add_day3_paluto_objective() -> void:
 	if viewport:
 		var world = viewport.get_node_or_null("World")
 		if world:
-			var book = world.find_node("book", true, false)
+			var book = world.find_child("book", true, false)
 			if book and book.has_method("openJournal"):
 				var page1 = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
 				if page1 and page1.has_method("showDay"):
@@ -274,4 +368,18 @@ func _add_day3_paluto_objective() -> void:
 	var ui = get_tree().root.find_child("UI", true, false)
 	if ui and ui.has_method("show_journal_prompt"):
 		ui.show_journal_prompt()
+	
+
+func _on_journal_closed() -> void:
+	print("[Globals] _on_journal_closed() called")
+	if not _pending_monologue3b_on_journal_close:
+		print("[Globals] No pending Monologue3B; returning")
+		return
+	_pending_monologue3b_on_journal_close = false
+	if GlobalTracker.run_once_per_day("monologue3b_day3"):
+		print("[Globals] Starting Monologue3B")
+		# Monologue3B plays as regular dialogue, player can move
+		start_dialogue("Monologue3B", false)
+	else:
+		print("[Globals] Monologue3B already ran today; skipping")
 	

@@ -2,6 +2,8 @@ extends StaticBody3D
 @onready var animation := $BookAnimation
 @onready var page1 := $Cube_003/Page1/SubViewport/BookContents
 
+signal journal_closed
+
 var counter := 0
 
 func _ready() -> void:
@@ -20,6 +22,7 @@ func openJournal():
 	
 func closeJournal():
 	animation.play("BookClosing")
+	journal_closed.emit()
 
 func toggleJournal():
 	# simple toggle: if Page1 is visible in its viewport, hide/close
