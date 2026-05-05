@@ -69,3 +69,13 @@ offset_right = 630.0
 offset_bottom = 356.0
 theme_override_font_sizes/font_size = 10
 text = "Press [LMB] to interact"
+
+[node name="JournalHintLabel" type="Label" parent="." unique_id=2093846510]
+visible = false
+layout_mode = 0
+offset_left = 433.0
+offset_top = 378.0
+offset_right = 724.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 14
+text = "Press G to open the journal"

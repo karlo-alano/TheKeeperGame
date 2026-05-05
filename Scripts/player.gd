@@ -26,7 +26,7 @@ func _ready() -> void:
 	max_slides = 6
 	journal.visible = isJournalOpen
 	
-	if GlobalTracker.isFirstTimeOpen:
+	if GlobalTracker.current_day == 1 and GlobalTracker.run_once_per_day("player_auto_open_journal"):
 		await get_tree().create_timer(3.0).timeout
 		journalAnimation.play("OpenJournal")
 		journal.openJournal()
@@ -59,6 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if !isJournalOpen:
 			journalAnimation.play("OpenJournal")
 			journal.openJournal()
+			var ui = get_tree().root.find_child("UI", true, false)
+			if ui and ui.has_method("hide_journal_prompt"):
+				ui.hide_journal_prompt()
 			isJournalOpen = true
 			journal.visible = isJournalOpen
 		else:
@@ -78,11 +81,15 @@ func _process(_delta: float):
 		if hit.is_in_group("interactable"):
 			Globals.show_interact_prompt.emit(true)
 			if Input.is_action_just_pressed("interact"):
-				if hit.has_method("interact"):
-					hit.interact()
-				if hit.has_method("obtain"):
-					blip.play()
-					hit.obtain()
+					if hit.has_method("interact"):
+						hit.interact()
+					if hit.has_method("obtain"):
+						# Debug: log which node is being interacted with
+						print("[player] interact hit:", hit, "path:", hit.get_path(), "class:", hit.get_class())
+						blip.play()
+						print("[player] calling obtain() on:", hit.get_path())
+						hit.obtain()
+						print("[player] returned from obtain() call")
 		if hit.is_in_group("pickable"):
 			Globals.show_interact_prompt.emit(true)
 			if Input.is_action_just_pressed("interact") and held_object == null:

@@ -1,0 +1,31 @@
+MrsValenciano: Ay oo nga pala yung bayad ko sa renta.
+MrsValenciano: Pasensya na kung nagmamadali ako kahapon, nakalimutan ko.
+MrsValenciano: Teka sandali... ay... ito na pala oh, nasa bulsa ko lang.
+"Nanay Angelina": Salamat dito, pasensya na rin.
+- Nasaan pala asawa at mga anak mo?
+	"Nanay Angelina": Nasaan pala yung asawa at mga anak mo? Parang di ko sila nakikita.
+	MrsValenciano: Nagpaiwan pa sa probinsya yung asawa ko kasama si bunso.
+	MrsValenciano: Kailangan kasi ng mag-aalaga kay Nanay.
+	[wait time="1.0" hide_text="false"]
+	MrsValenciano: Yung isa ewan ko ba. Di ko na nadatnan dito sa bahay. Andun ata sa kaibigan niya natulog.
+	"Nanay Angelina": Mmm...
+	[wait time="1.0" hide_text="false"]
+	"Nanay Angelina": Ay bago ko malimutan, birthday nga pala ni Penny ngayon.
+	"Nanay Angelina": Pwede ba ako humingi ng tulong sayo para sa mga handa mamaya?
+	MrsValenciano: Ay ganon ba! Siyempre naman. Happy Birthday sa anak mo.
+	MrsValenciano: Napakabait na bata.
+	"Nanay Angelina": Mga hapon sana magsisimula yung party niya. Siyempre invited ka na dun.
+	MrsValenciano: Oh sige sige. Dahil diyan baka pumunta muna ako sa palengke ha.
+	MrsValenciano: Huwag kang mag-alala. Gagawin nating masaya ang birthday niya.
+	"Nanay Angelina": Sige, mare. Maraming salamat.
+- Papaalala ko lang sana birthday ni Penny.
+	"Nanay Angelina": Ay bago ko malimutan, birthday nga pala ni Penny ngayon.
+	"Nanay Angelina": Pwede ba ako humingi ng tulong sayo para sa mga handa mamaya?
+	MrsValenciano: Ay ganon ba! Siyempre naman. Happy Birthday sa anak mo.
+	MrsValenciano: Napakabait na bata.
+	"Nanay Angelina": Mga hapon sana magsisimula yung party niya. Siyempre invited ka na dun.
+	MrsValenciano: Oh sige sige. Dahil diyan baka pumunta muna ako sa palengke ha.
+	MrsValenciano: Huwag kang mag-alala. Gagawin nating masaya ang birthday niya.
+	"Nanay Angelina": Sige, mare. Maraming salamat.
+Monologue: Sana nga maging masaya si Penny ngayon.
+[signal arg="spawn_character_lolo"]

@@ -17,4 +17,10 @@ var dayInfo := {
 				],
 		"counter": "1 day to go"
 		},
+		3: {"label": "July 2",
+			"tasks": [
+					{"name":"Ask Mrs. Valenciano about paluto for Penny's birthday", "done": false}
+					],
+			"counter": "Day 3"
+			},
 }

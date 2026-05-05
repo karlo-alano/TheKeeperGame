@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dkcfomcholcbl" path="res://Imports/Trees2/trees3.glb" id="1_rm7dt"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jnr8a"]
-points = PackedVector3Array(300, 0.93969727, -250.0979, 300, -1.0571594, -250.0979, 300, 0.93969727, -1250, 212.78387, 211.37433, -250.0979, 34.592804, 19.968689, 0, 212.78387, -211.43304, -250.0979, 300, -1.0571594, -1250, 34.592804, -20.027405, 0, 212.78387, 211.37433, -1250, 211.37433, 212.78387, -250.0979, -0.05871582, 39.937347, 0, 211.37433, -212.84259, -250.0979, 212.78387, -211.43304, -1250, -0.05871582, -40.05481, 0, 211.37433, 212.78387, -1250, 0.93969727, 300, -250.0979, -34.65152, 19.968689, 0, -1.0571594, 300, -250.0979, -211.43304, 212.78387, -250.0979, 0.93969727, -300, -250.0979, 211.37433, -212.84259, -1250, -34.65152, -20.027405, 0, -211.43304, -212.84259, -250.0979, -1.0571594, -300, -250.0979, 0.93969727, 300, -1250, -212.84259, 211.37433, -250.0979, -300, 0.93969727, -250.0979, -1.0571594, 300, -1250, -211.43304, 212.78387, -1250, 0.93969727, -300, -1250, -300, -1.0571594, -250.0979, -212.84259, -211.43304, -250.0979, -211.43304, -212.84259, -1250, -1.0571594, -300, -1250, -212.84259, 211.37433, -1250, -300, 0.93969727, -1250, -300, -1.0571594, -1250, -212.84259, -211.43304, -1250)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rm7dt"]
 
 [node name="trees3" unique_id=254225847 instance=ExtResource("1_rm7dt")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="tree13" parent_id_path=PackedInt32Array(609383485) index="0" unique_id=1376335944]
+[node name="StaticBody3D" type="StaticBody3D" parent="tree13" parent_id_path=PackedInt32Array(530237474) index="0" unique_id=1376335944]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tree13/StaticBody3D" index="0" unique_id=491357285]
-shape = SubResource("ConvexPolygonShape3D_jnr8a")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree13/StaticBody3D" index="0" unique_id=2138022498]
+transform = Transform3D(100, 0, 0, 0, 0.00022741353, 100, 0, -635.8946, 3.5762787e-05, 0, 0.00022851306, -638.96906)
+shape = SubResource("CylinderShape3D_rm7dt")
