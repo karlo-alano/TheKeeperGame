@@ -60,6 +60,7 @@ directories/dtl_directory={
 "Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
 "Monologue3A": "res://Dialog/Timelines/Monologue3A.dtl",
 "Monologue3B": "res://Dialog/Timelines/Monologue3B.dtl",
+"MonologueD1A": "res://Dialog/Timelines/Day1/MonologueD1A.dtl",
 "Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
 "Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
 "Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
@@ -90,7 +91,7 @@ variables={
 }
 }
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.05
+text/letter_speed=0.03
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.2
 text/advance_delay=0.1
@@ -123,7 +124,7 @@ audio/channel_defaults={
 }
 }
 text/input_action="dialogic_default_action"
-text/autoadvance_enabled=false
+text/autoadvance_enabled=true
 text/autoadvance_fixed_delay=1.0
 text/autoadvance_per_word_delay=0
 text/autocolor_names=false

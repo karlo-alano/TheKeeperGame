@@ -17,7 +17,7 @@ func openJournal():
 	page1.showDay(GlobalTracker.current_day)
 	if GlobalTracker.current_day == 1 and GlobalTracker.run_once_per_day("journal_open_intro"):
 		await get_tree().create_timer(1.0).timeout
-		Globals.start_dialogue("Monologue2", true)
+		
 	
 	
 func closeJournal():

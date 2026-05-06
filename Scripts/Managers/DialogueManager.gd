@@ -89,8 +89,8 @@ func _add_day3_paluto_objective() -> void:
 		return
 	_pending_day3_paluto_objective = false
 	
-	if DaySystem.dayInfo.has(3):
-		var day3_tasks: Array = DaySystem.dayInfo[3]["tasks"]
+	if DaySystem.get_label(3) != "":
+		var day3_tasks: Array = DaySystem.get_tasks(3)
 		var objective_name := "Ask Mrs. Valenciano about paluto for Penny's birthday"
 		var already_added := false
 		for task in day3_tasks:
@@ -98,14 +98,13 @@ func _add_day3_paluto_objective() -> void:
 				already_added = true
 				break
 		if not already_added:
-			day3_tasks.append({"name": objective_name, "done": false})
-			DaySystem.dayInfo[3]["tasks"] = day3_tasks
+			DaySystem.add_task(3, objective_name)
 
 	var viewport = get_tree().root.find_child("SubViewport", true, false)
 	if viewport:
 		var world = viewport.get_node_or_null("World")
 		if world:
-			var book = world.find_node("book", true, false)
+			var book = world.find_child("book", true, false)
 			if book and book.has_method("openJournal"):
 				var page1 = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
 				if page1 and page1.has_method("showDay"):

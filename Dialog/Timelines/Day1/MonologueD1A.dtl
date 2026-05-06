@@ -1,0 +1,9 @@
+Monologue: Birthday ngayon ng anak ko.
+[wait time="1.0" hide_text="false"]
+Monologue: Nung bata pa siya, palagi siyang masaya sa birthday niya.
+Monologue: Pero simula nang mawala ang daddy niya.
+Monologue: Nawalan na siya ng gana mag-celebrate.
+[wait time="1.0"]
+Monologue: Pero bago ang lahat, kailangan ko munang mag-ayos.
+[signal arg="objectives:update:1|Water the garden;;Collect the eggs;;Feed Cally;;Sweep the litter|This is how we start the day on Samaniego Dormitory"]
+[signal arg="show_journal_prompt"]

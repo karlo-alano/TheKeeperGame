@@ -13,18 +13,19 @@ func _ready():
 
 
 func showDay(day: int):
-	var data = DaySystem.dayInfo[day]
-	DayLabel.text = data["label"]
-	DayCounter.text = data["counter"]
+	var label = DaySystem.get_label(day)
+	DayLabel.text = label
+	DayCounter.text = ""
 
 	var supports_bbcode := Tasks is RichTextLabel
 	if supports_bbcode and not Tasks.bbcode_enabled:
 		Tasks.bbcode_enabled = true
 
-	# Build tasks text
+	# Build tasks text from DaySystem state
 	var tasks_text = ""
-	for task in data["tasks"]:
-		if task["done"]:
+	var tasks := DaySystem.get_tasks(day)
+	for task in tasks:
+		if task.has("done") and task["done"]:
 			if supports_bbcode:
 				tasks_text += "• [s]%s[/s]\n" % task["name"]
 			else:
@@ -34,10 +35,9 @@ func showDay(day: int):
 
 	# Pull journal entry directly from DaySystem
 	var journal_text := ""
-	if DaySystem.journal_entries.has(day):
-		var entry = DaySystem.journal_entries[day]
-		if entry != "":
-			journal_text = "\n——————————\n%s" % entry
+	var entry := DaySystem.get_journal(day)
+	if entry != "":
+		journal_text = "\n——————————\n%s" % entry
 
 	Tasks.text = tasks_text + journal_text
 	currentDay = day

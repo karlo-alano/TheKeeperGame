@@ -104,10 +104,13 @@ func _process(_delta: float):
 			print(hit)
 			if !Globals.is_in_dialogue:
 				Globals.show_action_prompt.emit(true)
-				if hit.slot == held_object.key:
+				# Safely read arbitrary properties using `get()` to avoid errors
+				var hit_slot = hit.get("slot")
+				var held_key = held_object.get("key") if held_object and held_object.has_method("get") else null
+				if hit_slot != null and held_key != null and hit_slot == held_key:
 					if Input.is_action_just_pressed("use"):
 						if held_object.has_method("use"):
-							held_object.use() 
+							held_object.use()
 				
 	else:
 		Globals.show_interact_prompt.emit(false)

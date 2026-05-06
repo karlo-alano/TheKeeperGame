@@ -1,9 +1,8 @@
-extends Node3D
+extends Day1Controller
 
 
 
 func _ready() -> void:
-	Items.items["environment"].dayPosition()
-	await get_tree().create_timer(2.0).timeout
+	await setup_day1_world_b()
 	#Globals.start_dialogue("Timelines/Penny_Day1_B")
 	

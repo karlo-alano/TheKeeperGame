@@ -13,6 +13,9 @@ var scene_manager: Node
 var game_event_handler: Node
 var signal_router: Node
 
+# Internal pending flags (kept for compatibility with older code)
+var _pending_monologue3b_on_journal_close := false
+
 
 # Delegated properties for backward compatibility
 var is_in_dialogue: bool:
@@ -45,8 +48,12 @@ func _ready() -> void:
 	# Wait for Dialogic subsystems to be ready
 	await _wait_for_dialogic_styles()
 	
+	# Skip game startup while Dialogic is running its editor timeline preview.
+	if _is_dialogic_test_scene():
+		return
+
 	# Start dream sequence
-	start_dialogue("Dream_Trigger", true)
+	#start_dialogue("Dream_Trigger", true)
 
 
 func _wait_for_dialogic_styles() -> void:
@@ -64,6 +71,14 @@ func change_viewport_world(new_scene_path: String) -> void:
 
 func get_is_in_dialogue() -> bool:
 	return dialogue_manager.is_in_dialogue
+
+
+func _is_dialogic_test_scene() -> bool:
+	var current_scene := get_tree().current_scene
+	if not current_scene:
+		return false
+	var scene_path: String = current_scene.scene_file_path
+	return scene_path.ends_with("addons/dialogic/Editor/TimelineEditor/test_timeline_scene.tscn")
 	
 
 func _on_journal_closed() -> void:

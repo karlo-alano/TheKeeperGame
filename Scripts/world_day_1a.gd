@@ -1,7 +1,4 @@
-extends Node3D
+extends Day1Controller
 
 func _ready() -> void:
-	if GlobalTracker.run_once_per_day("world_day_1a_intro"):
-		await get_tree().create_timer(3.0).timeout
-		if is_inside_tree():
-			Globals.start_dialogue("Monologue1B", true)
+	await run_day1_intro()

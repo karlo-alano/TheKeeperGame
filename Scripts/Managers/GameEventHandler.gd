@@ -14,7 +14,7 @@ func handle_cutscene2() -> void:
 	if Characters.characters.has("forsythe") and Characters.characters["forsythe"] and is_instance_valid(Characters.characters["forsythe"]):
 		if Characters.characters["forsythe"].has_method("disappear"):
 			Characters.characters["forsythe"].disappear()
-	DaySystem.dayInfo[1]["tasks"][0]["done"] = true
+	DaySystem.set_task_done(1, 0, true)
 
 
 func spawn_character_lolo() -> void:
@@ -72,8 +72,8 @@ func spawn_character_lolo() -> void:
 	world.add_child(lolo_inst)
 
 	# Update Day 3 objective after Mrs. Valenciano dialogue
-	if DaySystem.dayInfo.has(3):
-		var day3_tasks: Array = DaySystem.dayInfo[3]["tasks"]
+	if DaySystem.get_label(3) != "":
+		var day3_tasks: Array = DaySystem.get_tasks(3)
 		var old_objective := "Ask Mrs. Valenciano about paluto for Penny's birthday"
 		var new_objective := "Speak with Lolo Aurelio"
 		var has_new_objective := false
@@ -84,7 +84,7 @@ func spawn_character_lolo() -> void:
 				has_new_objective = true
 		if not has_new_objective:
 			day3_tasks.append({"name": new_objective, "done": false})
-		DaySystem.dayInfo[3]["tasks"] = day3_tasks
+		DaySystem.set_tasks(3, day3_tasks)
 
 	# Refresh journal/book task UI immediately
 	var book_after_spawn = world.find_child("book", true, false)
@@ -110,7 +110,7 @@ func handle_journal_add(argument: String) -> void:
 	if viewport:
 		var world = viewport.get_node_or_null("World")
 		if world:
-			var book = world.find_node("book", true, false)
+			var book = world.find_child("book", true, false)
 			if book and book.has_method("add_entry"):
 				book.add_entry(id, title, body, -1)
 				Globals.show_action_prompt.emit(true)
@@ -130,7 +130,7 @@ func handle_journal_update(argument: String) -> void:
 		if viewport:
 			var world = viewport.get_node_or_null("World")
 			if world:
-				var book = world.find_node("book", true, false)
+				var book = world.find_child("book", true, false)
 				if book and book.has_method("update_entry"):
 					var data := {}
 					if title != "":
@@ -138,3 +138,40 @@ func handle_journal_update(argument: String) -> void:
 					if body != "":
 						data["body"] = body
 					book.update_entry(id, data)
+
+
+func handle_objectives_update(argument: String) -> void:
+	# Format: objectives:update:day|task1;;task2;;task3|journal_text
+	var payload: String = argument.substr("objectives:update:".length())
+	var parts: PackedStringArray = payload.split("|")
+	if parts.size() < 2:
+		return
+
+	var day := int(parts[0])
+	if DaySystem.get_label(day) == "":
+		return
+
+	var tasks_blob: String = parts[1]
+	var task_names: PackedStringArray = tasks_blob.split(";;", false)
+	var new_tasks: Array = []
+	for task_name in task_names:
+		var trimmed := task_name.strip_edges()
+		if trimmed != "":
+			new_tasks.append({"name": trimmed, "done": false})
+
+	if new_tasks.size() > 0:
+		DaySystem.set_tasks(day, new_tasks)
+
+	if parts.size() > 2:
+		DaySystem.set_journal(day, parts[2])
+
+	# Refresh the visible book page so objectives appear immediately.
+	var viewport = get_tree().root.find_child("SubViewport", true, false)
+	if viewport:
+		var world = viewport.get_node_or_null("World")
+		if world:
+			var book = world.find_child("book", true, false)
+			if book:
+				var page = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
+				if page and page.has_method("showDay"):
+					page.showDay(day)
