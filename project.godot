@@ -26,6 +26,7 @@ Items="*uid://cb1obnvmnnshw"
 [dialogic]
 
 directories/dch_directory={
+"": "res://Dialog/Characters/.dch",
 "Dale": "res://Dialog/Characters/Dale.dch",
 "Kei": "res://Dialog/Characters/Kei.dch",
 "Leus": "res://Dialog/Characters/Leus.dch",
@@ -58,12 +59,14 @@ directories/dtl_directory={
 "Monologue2B": "res://Dialog/Timelines/Monologue2B.dtl",
 "Monologue3": "res://Dialog/Timelines/Monologue3.dtl",
 "Monologue3A": "res://Dialog/Timelines/Monologue3A.dtl",
+"Monologue3B": "res://Dialog/Timelines/Monologue3B.dtl",
 "Monologue_Day1_E": "res://Dialog/Timelines/Monologue_Day1_E.dtl",
 "Monologue_Day1_F": "res://Dialog/Timelines/Monologue_Day1_F.dtl",
 "Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
 "Monologue_Day2_A": "res://Dialog/Timelines/Monologue_Day2_A.dtl",
 "Monologue_Day2_B": "res://Dialog/Timelines/Monologue_Day2_B.dtl",
 "MrsValenciano_PalutoRequest": "res://Dialog/Timelines/MrsValenciano_PalutoRequest.dtl",
+"MysteriousMonologue": "res://Dialog/Timelines/MysteriousMonologue.dtl",
 "Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl",
 "Penny_Day1_B": "res://Dialog/Timelines/Penny_Day1_B.dtl",
 "Penny_Day1_C": "res://Dialog/Timelines/Penny_Day1_C.dtl",

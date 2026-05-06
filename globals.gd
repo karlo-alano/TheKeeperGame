@@ -65,3 +65,19 @@ func change_viewport_world(new_scene_path: String) -> void:
 func get_is_in_dialogue() -> bool:
 	return dialogue_manager.is_in_dialogue
 	
+
+func _on_journal_closed() -> void:
+	print("[Globals] _on_journal_closed() called")
+	if not _pending_monologue3b_on_journal_close:
+		print("[Globals] No pending Monologue3B; returning")
+		return
+	_pending_monologue3b_on_journal_close = false
+	if GlobalTracker.run_once_per_day("monologue3b_day3"):
+		print("[Globals] Starting Monologue3B")
+		# Monologue3B plays as regular dialogue, player can move
+		start_dialogue("Monologue3B", false)
+	else:
+		print("[Globals] Monologue3B already ran today; skipping")
+
+
+	
