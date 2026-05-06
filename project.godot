@@ -42,6 +42,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "Dream_Trigger": "res://Dialog/Timelines/Dream_Trigger.dtl",
 "Intro": "res://Dialog/Timelines/Intro.dtl",
+"IntroPrayer": "res://Dialog/Timelines/Day1/IntroPrayer.dtl",
 "Intro_Day2": "res://Dialog/Timelines/Intro_Day2.dtl",
 "Intro_day1": "res://Dialog/Timelines/Intro_day1.dtl",
 "KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",
