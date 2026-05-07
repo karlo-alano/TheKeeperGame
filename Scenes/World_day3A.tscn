@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://clxvj86e4kiin" path="res://Scripts/world_day_3a.gd" id="1_6u783"]
 [ext_resource type="Texture2D" uid="uid://cnbf356hea2e3" path="res://Imports/Skybox/DAYSKY.hdr" id="2_dqj1c"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="3_alsx0"]
+[ext_resource type="Script" uid="uid://chc8m4e44rfpo" path="res://Scripts/environment.gd" id="3_nnmbb"]
 [ext_resource type="PackedScene" uid="uid://7y8wmitboexn" path="res://Scenes/Trees/tree_1.tscn" id="4_d1ll0"]
 [ext_resource type="PackedScene" uid="uid://dksobbw4f2gqi" path="res://Scenes/Trees/tree_2.tscn" id="5_foq0t"]
 [ext_resource type="PackedScene" uid="uid://chlstqx4nyaym" path="res://Scenes/Trees/tree_3.tscn" id="6_htyrv"]
@@ -60,6 +61,7 @@ light_color = Color(0.8794132, 0.77144325, 0.7093011, 1)
 light_energy = 1.2
 light_volumetric_fog_energy = 6.015
 shadow_enabled = true
+script = ExtResource("3_nnmbb")
 
 [node name="Player" parent="." unique_id=240356642 instance=ExtResource("3_alsx0")]
 transform = Transform3D(-0.015567675, 0, -0.99987894, 0, 1, 0, 0.99987894, 0, -0.015567675, -2.0161383, 0.31042206, 16.119194)

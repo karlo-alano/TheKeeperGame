@@ -1,10 +1,8 @@
 extends Node3D
 func _ready():
-	print("Lolo ready!")
 	Characters.characters["lolo"] = self
 
 func interact():
-	# Don't start another dialogue while one is active
 	if Globals.get_is_in_dialogue():
 		return
 

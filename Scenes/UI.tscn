@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbtxw1jpbbb5i"]
 
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://Scripts/ui.gd" id="1_w371h"]
-[ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scenes/task_bar.gd" id="2_nxvpl"]
+[ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scripts/task_bar.gd" id="2_nxvpl"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
 default_font_size = 25

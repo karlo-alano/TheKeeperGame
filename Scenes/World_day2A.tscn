@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dou0ihkf8gdp"]
 
-[ext_resource type="Script" uid="uid://dvnq6ikkruqib" path="res://Scenes/world_day_2a.gd" id="1_jg7lx"]
+[ext_resource type="Script" uid="uid://dvnq6ikkruqib" path="res://Scripts/world_day_2a.gd" id="1_jg7lx"]
 [ext_resource type="Texture2D" uid="uid://cnbf356hea2e3" path="res://Imports/Skybox/DAYSKY.hdr" id="2_4vq3m"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="3_jrdn3"]
+[ext_resource type="Script" uid="uid://chc8m4e44rfpo" path="res://Scripts/environment.gd" id="3_o4xc8"]
 [ext_resource type="PackedScene" uid="uid://7y8wmitboexn" path="res://Scenes/Trees/tree_1.tscn" id="4_rryvk"]
 [ext_resource type="PackedScene" uid="uid://dksobbw4f2gqi" path="res://Scenes/Trees/tree_2.tscn" id="5_4c0fu"]
 [ext_resource type="PackedScene" uid="uid://chlstqx4nyaym" path="res://Scenes/Trees/tree_3.tscn" id="6_d7lv1"]
@@ -14,8 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://duik7asdribty" path="res://Scenes/shed.tscn" id="12_xe6wg"]
 [ext_resource type="AudioStream" uid="uid://bbbck0eqcl4l4" path="res://Audio/bgm/forestAmbience.mp3" id="16_n6p0t"]
 [ext_resource type="PackedScene" uid="uid://ccbejbue7iasx" path="res://Scenes/altar.tscn" id="17_mxr44"]
+[ext_resource type="PackedScene" uid="uid://bct4hfp1xk3tc" path="res://Scenes/lolo_standing.tscn" id="18_7cec8"]
 [ext_resource type="PackedScene" uid="uid://c1o04y54m8wkv" path="res://Imports/GardenPatch/garden_patch.tscn" id="18_npl7o"]
+[ext_resource type="Script" uid="uid://cswtl6gv5k7mg" path="res://Scripts/lolo.gd" id="19_jg7lx"]
 [ext_resource type="PackedScene" uid="uid://b2ti47ng0pr07" path="res://Imports/GardenPatch/chicken_coop.tscn" id="19_vvifo"]
+[ext_resource type="PackedScene" uid="uid://rfgigeci02e5" path="res://Scenes/dialogbox.tscn" id="20_4vq3m"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("2_4vq3m")
@@ -59,9 +63,10 @@ light_color = Color(0.8794132, 0.77144325, 0.7093011, 1)
 light_energy = 1.2
 light_volumetric_fog_energy = 6.015
 shadow_enabled = true
+script = ExtResource("3_o4xc8")
 
 [node name="Player" parent="." unique_id=240356642 instance=ExtResource("3_jrdn3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0161383, 0.82806635, 15.692066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.519258, 3.608994, -6.1103125)
 
 [node name="Tree1" parent="." unique_id=614295700 instance=ExtResource("4_rryvk")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 8.382965, 0.18360358, 14.08987)
@@ -216,13 +221,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8050985, -0.0620656, -1.25
 [node name="MultiMeshInstance3D2" type="MultiMeshInstance3D" parent="." unique_id=1964007980]
 transform = Transform3D(0.28067887, 0, 9.234584, 0, 1.0000002, 0, -18.873888, 0, 0.13733003, -36.72151, -0.111442566, -8.12598)
 
-[node name="Window" type="Window" parent="." unique_id=949913025]
-oversampling_override = 1.0
-initial_position = 1
-size = Vector2i(500, 500)
-visible = false
-always_on_top = true
-
 [node name="BetterCabinw_completefurniture" parent="." unique_id=196858664 instance=ExtResource("11_khisf")]
 transform = Transform3D(0.0273459, 0, -0.99962604, 0, 1.0875554, 0, 0.99962604, 0, 0.0273459, -7.556, 0.28, 14.564)
 
@@ -245,3 +243,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.691422, 0.10713339, -20.25
 
 [node name="chickenCoop" parent="." unique_id=1218012226 instance=ExtResource("19_vvifo")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.219, 0.31386703, -21.327246)
+
+[node name="LoloStanding" parent="." unique_id=2069828129 instance=ExtResource("18_7cec8")]
+transform = Transform3D(-0.033554625, 0, -0.39859015, 0, 0.4, 0, 0.39859015, 0, -0.033554625, -14.468609, 3.5036066, -2.7508426)
+script = ExtResource("19_jg7lx")
+
+[node name="dialog" parent="." unique_id=1324470672 instance=ExtResource("20_4vq3m")]
+visible = false
+force_native = false

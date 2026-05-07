@@ -5,4 +5,5 @@ var items := {
 	"door2c": null,
 	"environment": null,
 	"gardenPatch": null,
+	"dialogbox": null,
 } 

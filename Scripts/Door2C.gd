@@ -9,4 +9,14 @@ func _ready():
 	
 
 func openDoor():
-	$"../../Door2C".play("OpenDoor")
+	$"../Door2C".play("OpenDoor")
+	
+func interact():
+	if !is_open:
+		if GlobalTracker.current_day == 2:
+			$"../Door2C".play("OpenDoor")
+			is_open = !is_open
+			Globals.start_dialogue("Lolo_Day2_A", false)
+	else:
+		$"../Door2C".play("CloseDoor")
+		is_open = !is_open
