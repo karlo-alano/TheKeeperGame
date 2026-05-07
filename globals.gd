@@ -52,6 +52,9 @@ func _ready() -> void:
 	if _is_dialogic_test_scene():
 		return
 
+	GlobalTracker.set_current_day(1)
+	await change_viewport_world("res://Scenes/World_day1A.tscn")
+
 	# Start dream sequence
 	#start_dialogue("Dream_Trigger", true)
 

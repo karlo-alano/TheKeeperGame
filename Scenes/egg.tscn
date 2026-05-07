@@ -57,3 +57,5 @@ script = ExtResource("1_jdgtd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1149954113]
 shape = SubResource("ConvexPolygonShape3D_1iuog")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=364393044]

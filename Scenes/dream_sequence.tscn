@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dkhp867wx7nrp"]
 
 [ext_resource type="Script" uid="uid://dpondt66iaotq" path="res://Scripts/dream_sequence.gd" id="1_lb7nv"]
+[ext_resource type="PackedScene" uid="uid://yl0qp8da8thp" path="res://Imports/Birthday/tent.glb" id="2_6ch0f"]
+[ext_resource type="PackedScene" uid="uid://d2kidhjfxbb3d" path="res://Imports/Birthday/tent_v2.glb" id="3_0qija"]
 
-[node name="Node3D" type="Node3D" unique_id=883704599]
+[node name="PartyScene" type="Node3D" unique_id=883704599]
 script = ExtResource("1_lb7nv")
+
+[node name="tent" parent="." unique_id=67703513 instance=ExtResource("2_6ch0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18426728, 1.1920929e-07, -0.17657018)
+
+[node name="Sketchfab_Scene" parent="." unique_id=580066383 instance=ExtResource("3_0qija")]
+transform = Transform3D(1, 0, 0, 0, 0.6756562, 0, 0, 0, 0.46939963, 0.27464285, -0.8034522, 1.6256487)

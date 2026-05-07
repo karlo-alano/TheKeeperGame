@@ -41,6 +41,8 @@ func change_viewport_world(new_scene_path: String) -> void:
 		current_world_scene = new_scene_path
 		if new_scene_path.find("World_day1") != -1:
 			GlobalTracker.set_current_day(1)
+		elif new_scene_path.find("World_day2A") != -1:
+			GlobalTracker.set_current_day(2)
 		elif new_scene_path.find("World_day3A") != -1:
 			GlobalTracker.set_current_day(3)
 		

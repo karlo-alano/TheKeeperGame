@@ -11,6 +11,21 @@ func onPickup():
 	
 func use():
 	animation.play("Water")
+
+	var player = Characters.characters.get("Player")
+	if player == null:
+		return
+
+	var ray = player.get("ray")
+	if ray == null or not ray.is_colliding():
+		return
+
+	var target = ray.get_collider()
+	if target == null or not is_instance_valid(target):
+		return
+
+	if target.get("slot") == key and target.has_method("water"):
+		target.water()
 	
 func onDrop():
 	collision.disabled = false

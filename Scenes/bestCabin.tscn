@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bqi3domldve1o" path="res://Imports/Cabin/1/BetterCabinw_completefurniture.glb" id="1_lxhp2"]
 [ext_resource type="Texture2D" uid="uid://b3yae638x0eo5" path="res://Imports/Cabin/1/BetterCabinw_completefurniture_Plastic_02.jpg" id="2_lgj25"]
-[ext_resource type="Script" uid="uid://dy23tk5p2w58c" path="res://Scenes/bed.gd" id="2_uy7ya"]
+[ext_resource type="Script" uid="uid://dy23tk5p2w58c" path="res://Scripts/bed.gd" id="2_uy7ya"]
 [ext_resource type="Script" uid="uid://bqmqrixpdmouv" path="res://Scripts/cabinDoor.gd" id="2_x68sl"]
 [ext_resource type="Texture2D" uid="uid://xxxcfmoim08q" path="res://Imports/Cabin/1/BetterCabinw_completefurniture_Foods_07.jpg" id="3_a7ue3"]
 [ext_resource type="Script" uid="uid://d2oy6ur4fluqh" path="res://Scripts/kitchen_area.gd" id="7_8b2mg"]

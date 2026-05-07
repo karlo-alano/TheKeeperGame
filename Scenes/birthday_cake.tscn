@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ckexpt2wa7jr8"]
+
+[ext_resource type="PackedScene" uid="uid://vb05006q6ffd" path="res://Imports/Birthday/birthday cake.glb" id="1_sypyp"]
+
+[node name="Birthday Cake" type="Node3D" unique_id=1037134613]
+
+[node name="birthday cake" parent="." unique_id=1502351989 instance=ExtResource("1_sypyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013887286, 0, -0.025420666)
