@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m6qh0pyktpfi"]
 
-[ext_resource type="Script" uid="uid://dda286py0cjuj" path="res://Scenes/TaskItem.gd" id="1_vra67"]
+[ext_resource type="Script" uid="uid://dda286py0cjuj" path="res://Scripts/TaskItem.gd" id="1_vra67"]
 
 [node name="TaskItem" type="HBoxContainer" unique_id=1787430171]
 offset_right = 40.0

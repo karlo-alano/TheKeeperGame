@@ -1,21 +1,25 @@
 extends Node3D
 
 func _ready() -> void:
+
 	GlobalTracker.set_current_day(2)
+	Items.items["environment"].afternoonPosition()
+	Items.items["door2c"].add_to_group("interactable")
+	
+
+	
 	if GlobalTracker.run_once_per_day("world_day_2a_intro"):
 		await get_tree().create_timer(3.0).timeout
 		if is_inside_tree():
-			Globals.start_dialogue("Monologue_Day2_A", true)
+			#Globals.start_dialogue("Monologue_Day2_A", true)
 			await Dialogic.timeline_ended
 			_setup_day2()
 
 
 func _setup_day2() -> void:
 	GlobalTracker.set_current_day(2)
-	print("[Day2A] current_day: ", GlobalTracker.current_day)
 
 	var book = find_child("book", true, false)
-	print("[Day2A] book found: ", book)
 	if book:
 		var page = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
 		if page and page.has_method("showDay"):

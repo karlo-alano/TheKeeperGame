@@ -17,11 +17,11 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 Globals="*uid://c1f0kq68bytn6"
-DaySystem="*uid://hwgbujqthpck"
 GlobalTracker="*uid://fff305pojt32"
+Items="*uid://cb1obnvmnnshw"
+DaySystem="*uid://hwgbujqthpck"
 Dialogic="*uid://ds2q0uclmolvu"
 Characters="*uid://wcocs8aj1a5f"
-Items="*uid://cb1obnvmnnshw"
 
 [dialogic]
 

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://rfgigeci02e5"]
+
+[ext_resource type="Script" uid="uid://c0osra0jvwuuq" path="res://Scripts/dialogbox.gd" id="1_l66vf"]
+
+[sub_resource type="Theme" id="Theme_3p570"]
+
+[node name="Window" type="Window" unique_id=1324470672]
+oversampling_override = 1.0
+title = "Survey"
+initial_position = 1
+size = Vector2i(600, 500)
+unresizable = true
+borderless = true
+always_on_top = true
+extend_to_title = true
+sharp_corners = true
+script = ExtResource("1_l66vf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=295413046]
+offset_right = 699.0
+offset_bottom = 504.0
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="." unique_id=2030284897]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 701.0
+offset_bottom = 504.0
+
+[node name="Button" type="Button" parent="." unique_id=1123233424]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -30.75
+offset_right = 67.5
+offset_bottom = 30.75
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3p570")
+text = "Start"
