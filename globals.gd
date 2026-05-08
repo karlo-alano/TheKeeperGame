@@ -3,7 +3,6 @@ extends Node
 ## Delegates specific logic to specialized managers.
 
 signal show_interact_prompt(is_visible)
-signal show_action_prompt(is_visible)
 
 var Player: CharacterBody3D
 

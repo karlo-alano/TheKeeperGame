@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b1hwcs0d1rm5d"]
+
+[ext_resource type="PackedScene" uid="uid://d07ea30x5w2qq" path="res://Imports/Characters/calico.glb" id="1_s7han"]
+
+[node name="Node3D" type="Node3D" unique_id=1105783854]
+
+[node name="calico" parent="." unique_id=1913589089 instance=ExtResource("1_s7han")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0069565773, 0, 0.6368127)

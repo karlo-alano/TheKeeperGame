@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://chh8t246l5aqj"]
+
+[ext_resource type="PackedScene" uid="uid://cacxn1p76knrv" path="res://Imports/catfood/catfood_pack.glb" id="1_1tdul"]
+
+[node name="catfood_pack" unique_id=2017589219 instance=ExtResource("1_1tdul")]

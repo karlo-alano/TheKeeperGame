@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
+[ext_resource type="FontFile" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 [ext_resource type="Script" uid="uid://mudfn1oj6fx5" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://cu86qb42cevvq" path="res://Scenes/book.tscn" id="2_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://bfr6ih6kb7k8u" path="res://Audio/UI/BlipConfusedOnce.mp3" id="3_6t5aa"]
@@ -245,6 +246,7 @@ offset_right = 41.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("font_roman")
 theme_override_font_sizes/font_size = 12
 text = "Hold E"
 horizontal_alignment = 1

@@ -1,5 +1,7 @@
 extends Node
 
+signal task_done_changed(day: int, index: int, done: bool)
+
 # Templates: immutable per-day metadata and default task list
 var day_templates := {
 	1: {"label": "June 31",
@@ -76,8 +78,13 @@ func add_task(day: int, task_name: String) -> void:
 
 func set_task_done(day: int, index: int, done: bool) -> void:
 	if not state.has(day):
+		print("[DaySystem] set_task_done: state missing for day ", day)
 		return
 	var tasks: Array = state[day].get("tasks", [])
 	if index >= 0 and index < tasks.size():
 		tasks[index]["done"] = done
 		state[day]["tasks"] = tasks
+		print("[DaySystem] Task %d on day %d marked done=%s" % [index, day, done])
+		task_done_changed.emit(day, index, done)
+	else:
+		print("[DaySystem] set_task_done: index %d out of range (size=%d)" % [index, tasks.size()])

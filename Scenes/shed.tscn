@@ -2189,6 +2189,7 @@ mesh = SubResource("ArrayMesh_1igpx")
 
 [node name="Walis2" type="RigidBody3D" parent="." unique_id=1081358701 groups=["pickable"]]
 transform = Transform3D(-0.3803904, 0.20296761, -0.90227896, 0.078848034, 0.97918546, 0.18702629, 0.92145866, 8.195639e-08, -0.38847625, 3.8458955, 0.8461789, -0.19145179)
+script = ExtResource("15_uwvc2")
 
 [node name="Broom" type="MeshInstance3D" parent="Walis2" unique_id=822620413]
 transform = Transform3D(0.9999999, -0.0005586847, 0.00055906177, 0.0005586152, 1.0000001, 0.00014128792, -0.00055912137, -0.00014102919, 0.9999999, 0, 0, 0)

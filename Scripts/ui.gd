@@ -1,7 +1,6 @@
 extends Control
 
 @onready var interactLabel = $InteractLabel
-@onready var actionLabel := $ActionLabel
 @onready var journalHintLabel := $JournalHintLabel
 @onready var tracker := $Tracker
 @onready var task_bar = $TaskBar  # ← add this
@@ -10,15 +9,15 @@ var _journal_prompt_token := 0
 
 func _ready():
 	Globals.show_interact_prompt.connect(_show_interact)
-	Globals.show_action_prompt.connect(_show_action)
 	GlobalTracker.egg_collected.connect(updateTracker)
+	DaySystem.task_done_changed.connect(_on_task_done_changed)
 	updateTracker()
+
+func _on_task_done_changed(_day: int, _index: int, _done: bool) -> void:
+	task_bar.refresh()
 
 func _show_interact(is_visible):
 	interactLabel.visible = is_visible
-
-func _show_action(is_visible):
-	actionLabel.visible = is_visible
 
 func show_journal_prompt() -> void:
 	_journal_prompt_token += 1
