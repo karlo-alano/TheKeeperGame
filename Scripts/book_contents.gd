@@ -24,6 +24,8 @@ func showDay(day: int):
 	var tasks_text = ""
 	var tasks = TasksManager.get_tasks(day)
 	for task in tasks:
+		if not task.get("unlocked", true):
+			break
 		if task.has("done") and task["done"]:
 			tasks_text += "[color=#888888]✓ %s[/color]\n" % task["name"]
 		else:

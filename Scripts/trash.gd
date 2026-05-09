@@ -20,7 +20,8 @@ func clean(delta: float) -> void:
 		_fully_cleaned = true
 		cleaned_count += 1
 		if cleaned_count >= TOTAL_TRASH:
-			DaySystem.set_task_done(1, 2, true)
+			TasksManager.set_task_done(1, 2, true)
+			TasksManager.add_put_it_back_task(1, "Trash Area")
 		queue_free()
 
 func reset_progress() -> void:

@@ -4,6 +4,10 @@ extends RigidBody3D
 
 var key := "Trash Area"
 var is_equipped := false
+var _home_global_transform: Transform3D
+
+func _ready() -> void:
+	_home_global_transform = global_transform
 
 func onPickup():
 	collision.disabled = true
@@ -15,6 +19,18 @@ func onDrop():
 	is_equipped = false
 	var player = Characters.characters.get("Player")
 	_stop_cleaning(player)
+	var day := GlobalTracker.current_day
+	var zone = _get_return_zone()
+	if zone and zone.check_drop(self):
+		zone.deactivate()
+		global_transform = _home_global_transform
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		freeze = true
+		TasksManager.complete_put_it_back_task(day, key)
+
+func _get_return_zone() -> Node:
+	return get_tree().root.find_child("WalisReturnZone", true, false)
 
 func _process(delta):
 	if not is_equipped:
@@ -25,7 +41,8 @@ func _process(delta):
 		return
 
 	var ray = player.get("ray")
-	var hold_label = player.get_node_or_null("HUD/HoldLabel")
+	var ui = get_tree().root.find_child("UI", true, false)
+	var hold_label = ui.get_node_or_null("HoldLabel") if ui else null
 
 	# Check if crosshair is on a trash node (regardless of button state)
 	var on_trash := false
@@ -37,7 +54,7 @@ func _process(delta):
 				break
 			check = check.get_parent()
 
-	if Input.is_action_pressed("interact") and on_trash and not Globals.is_in_dialogue:
+	if Input.is_action_pressed("use") and on_trash and not Globals.is_in_dialogue:
 		var target = _get_trash_target(ray)
 
 		# Hide "Hold E" prompt and suppress the base interact prompt while actively holding
@@ -54,7 +71,7 @@ func _process(delta):
 			target.clean(delta)
 
 		# Update the radial progress bar
-		var progress_ui = player.get_node_or_null("HUD/TextureProgressBar")
+		var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
 		if progress_ui != null:
 			var ratio = clampf(target.current_clean_time / target.CLEAN_DURATION, 0.0, 1.0)
 			if ratio < 1.0:
@@ -63,7 +80,7 @@ func _process(delta):
 			else:
 				progress_ui.visible = false
 
-	elif on_trash and not Input.is_action_pressed("interact"):
+	elif on_trash and not Input.is_action_pressed("use"):
 		# Aiming at trash with broom — suppress "Press E" and show "Hold E" instead
 		var target = _get_trash_target(ray)
 		Globals.show_interact_prompt.emit(false)
@@ -90,8 +107,8 @@ func _get_trash_target(ray) -> Node:
 	return null
 
 func _stop_cleaning(player_node = null):
-	if player_node != null:
-		var progress_ui = player_node.get_node_or_null("HUD/TextureProgressBar")
-		if progress_ui != null:
-			progress_ui.visible = false
-			progress_ui.value = 0.0
+	var ui = get_tree().root.find_child("UI", true, false)
+	var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
+	if progress_ui != null:
+		progress_ui.visible = false
+		progress_ui.value = 0.0

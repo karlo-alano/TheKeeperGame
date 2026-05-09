@@ -39,18 +39,79 @@ var task_list := {
 }
 
 
+func mark_task_done_by_name(day: int, task_name: String) -> void:
+	var tasks: Array = task_list[day]["tasks"]
+	for i in range(tasks.size()):
+		if tasks[i]["name"] == task_name:
+			mark_task_done(day, i)
+			return
+	# task not in task_list yet — add it as already done so it animates out
+	tasks.append({"name": task_name, "done": false})
+	mark_task_done(day, tasks.size() - 1)
+
 func add_to_tasklist(day: int, name: String) -> void:
 	task_list[day]["tasks"].append({"name": name, "done": false,})
 	Items.items["tasklist"].play_add_task_audio()
 	Items.items["tasklist"].refresh()
 
+func add_to_tasklist_delayed(day: int, name: String, delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	add_to_tasklist(day, name)
+
+func _find_task_index(day: int, task_name: String, item_key: String = "") -> int:
+	var tasks: Array = task_list[day]["tasks"]
+	for i in range(tasks.size()):
+		if tasks[i].get("name", "") != task_name:
+			continue
+		if item_key == "" or tasks[i].get("item_key", "") == item_key:
+			return i
+	return -1
+
+func add_put_it_back_task(day: int, item_key: String = "") -> void:
+	var existing := _find_task_index(day, "Put it back", item_key)
+	if existing != -1 and not task_list[day]["tasks"][existing].get("done", false):
+		# Ensure the drop outline is active even if task already existed.
+		_activate_return_zone(item_key)
+		return
+	task_list[day]["tasks"].insert(0, {"name": "Put it back", "done": false, "item_key": item_key})
+	_activate_return_zone(item_key)
+	Items.items["tasklist"].play_add_task_audio()
+	Items.items["tasklist"].refresh()
+
+func complete_put_it_back_task(day: int, item_key: String = "") -> bool:
+	var idx := _find_task_index(day, "Put it back", item_key)
+	if idx == -1:
+		return false
+	mark_task_done(day, idx)
+	return true
+
+func _activate_return_zone(item_key: String) -> void:
+	var zone_name := ""
+	match item_key:
+		"Garden Area":
+			zone_name = "WateringCanReturnZone"
+		"Trash Area":
+			zone_name = "WalisReturnZone"
+		_:
+			return
+	var zone = get_tree().root.find_child(zone_name, true, false)
+	if zone and zone.has_method("activate"):
+		zone.activate()
+
 func mark_task_done(day: int, task_index: int) -> void:
+	var tasks: Array = task_list[day]["tasks"]
+	if task_index < 0 or task_index >= tasks.size():
+		return
+	if tasks[task_index].get("done", false):
+		return
 	Items.items["tasklist"].play_complete_task_audio()
-	task_list[day]["tasks"][task_index]["done"] = true
+	tasks[task_index]["done"] = true
+	set_task_done(day, task_index, true)
 	Items.items["tasklist"].refresh()
 	await get_tree().create_timer(2.0).timeout
-	task_list[day]["tasks"].remove_at(task_index)
-	Items.items["tasklist"].refresh()
+	if task_index < tasks.size():
+		tasks.remove_at(task_index)
+		Items.items["tasklist"].refresh()
 	
 
 
@@ -58,15 +119,15 @@ func mark_task_done(day: int, task_index: int) -> void:
 var state := {}
 
 func _ready() -> void:
-	# Initialize state from templates if missing
 	for day in day_templates.keys():
 		if not state.has(day):
 			state[day] = {"tasks": _deep_copy_tasks(day_templates[day]["tasks"]), "journal": ""}
 
 func _deep_copy_tasks(tasks: Array) -> Array:
 	var out := []
-	for t in tasks:
-		out.append({"name": t["name"], "done": t.has("done") and t["done"] or false})
+	for i in range(tasks.size()):
+		var t = tasks[i]
+		out.append({"name": t["name"], "done": t.has("done") and t["done"] or false, "unlocked": i == 0})
 	return out
 
 # Getters
@@ -111,7 +172,16 @@ func set_task_done(day: int, index: int, done: bool) -> void:
 	var tasks: Array = state[day].get("tasks", [])
 	if index >= 0 and index < tasks.size():
 		tasks[index]["done"] = done
+		if done and index + 1 < tasks.size():
+			tasks[index + 1]["unlocked"] = true
 		state[day]["tasks"] = tasks
+		# sync task_list by name so index mismatch doesn't matter
+		var task_name: String = tasks[index]["name"]
+		var tl: Array = task_list[day]["tasks"]
+		for i in range(tl.size()):
+			if tl[i]["name"] == task_name:
+				tl[i]["done"] = done
+				break
 		print("[DaySystem] Task %d on day %d marked done=%s" % [index, day, done])
 		task_done_changed.emit(day, index, done)
 	else:

@@ -7,7 +7,7 @@
 [node name="Window" type="Window" unique_id=1324470672]
 oversampling_override = 1.0
 title = "Survey"
-initial_position = 1
+initial_position = 0
 size = Vector2i(600, 500)
 unresizable = true
 borderless = true

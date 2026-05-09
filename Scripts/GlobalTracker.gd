@@ -7,6 +7,8 @@ var eggCounter: int:
 	get:
 		return _eggCounter
 	set(value):
+		if value == _eggCounter:
+			return
 		_eggCounter = value
 		egg_collected.emit()
 

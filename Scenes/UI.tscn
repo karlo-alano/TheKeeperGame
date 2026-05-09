@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://b8dged18hndun" path="res://Audio/UI/BlipPositive.mp3" id="3_dewlx"]
 [ext_resource type="AudioStream" uid="uid://ynn3ixqhfp7i" path="res://Audio/UI/BlipConfused.mp3" id="4_hfhsn"]
 [ext_resource type="FontFile" uid="uid://cs3rksfptro8t" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
+[ext_resource type="Script" uid="uid://ceej0fxxyao60" path="res://Scenes/texture_progress_bar.gd" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://5rrrv0uksq7a" path="res://Imports/radial-progress-bar.png" id="5_x3wgy"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
 default_font = ExtResource("font_roman")
@@ -130,3 +132,42 @@ volume_db = -12.0
 [node name="AddTask" type="AudioStreamPlayer" parent="." unique_id=560826466]
 stream = ExtResource("4_hfhsn")
 volume_db = -12.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=77532984]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 450.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("5_x3wgy")
+script = ExtResource("5_fkybt")
+
+[node name="HoldLabel" type="Label" parent="." unique_id=112233445]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -9.0
+offset_right = 41.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("font_roman")
+theme_override_font_sizes/font_size = 12
+text = "Hold"
+horizontal_alignment = 1
