@@ -4,6 +4,8 @@ extends Window
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Items.items["dialogbox"] = self
+	var screen_size = DisplayServer.screen_get_size()
+	position = Vector2i((screen_size.x - size.x) / 2, (screen_size.y - size.y) / 2)
 	var cursor = preload("res://Imports/cursor.png")
 	await get_tree().create_timer(2.0).timeout
 	Input.set_custom_mouse_cursor(cursor)

@@ -10,30 +10,35 @@ var current_water_time := 0.0
 var _fully_watered := false
 var _wet_material: StandardMaterial3D
 
-# This signal will tell our UI to update the circle
+static var watered_count := 0
+static var total_patches := 0
+
 signal watering_progress(progress_ratio)
 
 func _ready():
-	Items.items["gardenPatch"] = self
+	total_patches += 1
 	_setup_wet_material()
 	_apply_water_state()
 
-# Now accepts 'delta' from the watering can's _process function
+func _exit_tree() -> void:
+	total_patches -= 1
+	if _fully_watered:
+		watered_count -= 1
+
 func water(delta: float) -> void:
 	if _fully_watered:
 		return
-
 	current_water_time += delta
-	var progress_ratio = current_water_time / WATER_DURATION
-	
-	emit_signal("watering_progress", progress_ratio)
+	emit_signal("watering_progress", current_water_time / WATER_DURATION)
 	_apply_water_state()
-
 	if current_water_time >= WATER_DURATION:
 		_fully_watered = true
 		current_water_time = WATER_DURATION
-		emit_signal("watering_progress", 1.0) # Ensure UI completes
-		TasksManager.set_task_done(1, 0, true)
+		emit_signal("watering_progress", 1.0)
+		watered_count += 1
+		if watered_count >= total_patches:
+			TasksManager.set_task_done(1, 0, true)
+			TasksManager.add_to_tasklist_delayed(1, "Put it back", 3.0)
 
 func _setup_wet_material() -> void:
 	var patch_root := get_parent().get_parent()

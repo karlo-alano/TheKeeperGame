@@ -77,9 +77,9 @@ func _process(_delta: float):
 		if hit == null or not is_instance_valid(hit):
 			Globals.show_interact_prompt.emit(false)
 			return
-		if hit.is_in_group("interactable"):
+		if hit.is_in_group("interactable") and not (held_object != null and str(held_object.get("key")) == str(hit.get("slot"))):
 			Globals.show_interact_prompt.emit(true)
-			if Input.is_action_just_pressed("interact") and not Globals.is_in_dialogue:
+			if Input.is_action_just_pressed("interact") and not Globals.is_in_dialogue and not (held_object != null and str(held_object.get("key")) == str(hit.get("slot"))):
 					# Walk up parent chain to find a node with interact() or obtain()
 					var interact_target = hit
 					while interact_target != null:
@@ -95,7 +95,7 @@ func _process(_delta: float):
 							print("[player] calling obtain() on:", interact_target.get_path())
 							interact_target.obtain()
 							print("[player] returned from obtain() call")
-		if hit.is_in_group("pickable"):
+		if hit.is_in_group("pickable") and held_object == null:
 			Globals.show_interact_prompt.emit(true)
 			if Input.is_action_just_pressed("interact") and held_object == null and not Globals.is_in_dialogue:
 				held_object = hit

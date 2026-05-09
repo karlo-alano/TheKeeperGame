@@ -157,13 +157,18 @@ func handle_objectives_update(argument: String) -> void:
 	var tasks_blob: String = parts[1]
 	var task_names: PackedStringArray = tasks_blob.split(";;", false)
 	var new_tasks: Array = []
-	for task_name in task_names:
-		var trimmed := task_name.strip_edges()
+	for i in range(task_names.size()):
+		var trimmed := task_names[i].strip_edges()
 		if trimmed != "":
-			new_tasks.append({"name": trimmed, "done": false})
+			new_tasks.append({"name": trimmed, "done": false, "unlocked": i == 0})
 
 	if new_tasks.size() > 0:
 		TasksManager.set_tasks(day, new_tasks)
+		if day == GlobalTracker.current_day:
+			TasksManager.task_list[day]["tasks"] = TasksManager._deep_copy_tasks(new_tasks)
+			if Items.items.has("tasklist"):
+				Items.items["tasklist"].visible = true
+				Items.items["tasklist"].refresh()
 
 	if parts.size() > 2:
 		TasksManager.set_journal(day, parts[2])

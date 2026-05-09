@@ -13,7 +13,7 @@ func onPickup():
 	is_equipped = true
 	if GlobalTracker.current_day == 2:
 		await Globals.wait(2.0)
-		TasksManager.mark_task_done(2,0)
+		TasksManager.mark_task_done(2, 0)
 		await Globals.wait(3.0)
 		TasksManager.add_to_tasklist(2, "Put it back")
 
@@ -22,8 +22,16 @@ func onDrop():
 	is_equipped = false
 	var player = Characters.characters.get("Player")
 	_stop_watering(player)
-	if TasksManager.task_list[2]["tasks"][0]["name"] == "Put it back":
-		TasksManager.mark_task_done(2, 0)
+	var day := GlobalTracker.current_day
+	var tasks: Array = TasksManager.task_list[day]["tasks"]
+	if tasks.size() > 0 and tasks[0]["name"] == "Put it back":
+		var zone = _get_return_zone()
+		if zone and zone.check_drop(self):
+			zone.deactivate()
+			TasksManager.mark_task_done(day, 0)
+
+func _get_return_zone() -> Node:
+	return get_tree().root.find_child("WateringCanReturnZone", true, false)
 
 func _process(delta):
 	if not is_equipped:
@@ -34,7 +42,8 @@ func _process(delta):
 		return
 
 	var ray = player.get("ray")
-	var hold_label = player.get_node_or_null("HUD/HoldLabel")
+	var ui = get_tree().root.find_child("UI", true, false)
+	var hold_label = ui.get_node_or_null("HoldLabel") if ui else null
 
 	# Check if crosshair is on the garden patch (regardless of button state)
 	var on_patch := false
@@ -43,7 +52,7 @@ func _process(delta):
 		if target != null and is_instance_valid(target) and target.get("slot") == key:
 			on_patch = true
 
-	if Input.is_action_pressed("interact") and on_patch:
+	if Input.is_action_pressed("use") and on_patch:
 		var target = ray.get_collider()
 
 		# Hide "Hold E" prompt while actively holding
@@ -63,7 +72,7 @@ func _process(delta):
 			animation.play("Water")
 
 		# Update the radial progress bar
-		var progress_ui = player.get_node_or_null("HUD/TextureProgressBar")
+		var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
 		if progress_ui != null:
 			var ratio = clampf(target.current_water_time / target.WATER_DURATION, 0.0, 1.0)
 			if ratio < 1.0:
@@ -72,7 +81,7 @@ func _process(delta):
 			else:
 				progress_ui.visible = false
 
-	elif on_patch and not Input.is_action_pressed("interact"):
+	elif on_patch and not Input.is_action_pressed("use"):
 		# Aiming at patch but not holding — show the "Hold E" prompt
 		if hold_label != null and not ray.get_collider().get("_fully_watered"):
 			hold_label.visible = true
@@ -87,9 +96,8 @@ func _process(delta):
 func _stop_watering(player_node = null):
 	if animation.is_playing() and animation.current_animation == "Water":
 		animation.stop()
-
-	if player_node != null:
-		var progress_ui = player_node.get_node_or_null("HUD/TextureProgressBar")
-		if progress_ui != null:
-			progress_ui.visible = false
-			progress_ui.value = 0.0
+	var ui = get_tree().root.find_child("UI", true, false)
+	var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
+	if progress_ui != null:
+		progress_ui.visible = false
+		progress_ui.value = 0.0
