@@ -48,6 +48,7 @@ directories/dtl_directory={
 "Intro_day1": "res://Dialog/Timelines/Intro_day1.dtl",
 "KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",
 "Leus_Day1_A": "res://Dialog/Timelines/Leus_Day1_A.dtl",
+"Leus_Day2_A": "res://Dialog/Timelines/Leus_Day2_A.dtl",
 "Lolo_Day1_A": "res://Dialog/Timelines/Lolo_Day1_A.dtl",
 "Lolo_Day1_B": "res://Dialog/Timelines/Lolo_Day1_B.dtl",
 "Lolo_Day1_C": "res://Dialog/Timelines/Lolo_Day1_C.dtl",
@@ -81,10 +82,11 @@ directories/dtl_directory={
 layout/style_directory={
 "": "res://Dialog/Styles/New_File.tres",
 "Dialog": "res://Dialog/Styles/Dialog.tres",
+"DialogStyle": "res://Dialog/Styles/DialogStyle.tres",
 "New_File": "res://Dialog/Styles/New_File.tres",
 "tip": "res://Dialog/Characters/tip.tres"
 }
-layout/style_list=["res://Dialog/Styles/New_File.tres", "res://Dialog/Styles/Dialog.tres", "res://Dialog/Characters/tip.tres"]
+layout/style_list=["res://Dialog/Styles/New_File.tres", "res://Dialog/Styles/Dialog.tres", "res://Dialog/Characters/tip.tres", "res://Dialog/Styles/DialogStyle.tres"]
 layout/default_style="res://Dialog/Styles/New_File.tres"
 variables={
 "Day1": {

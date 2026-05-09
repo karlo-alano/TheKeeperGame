@@ -25,6 +25,10 @@ func onDrop():
 	is_equipped = false
 	var player = Characters.characters.get("Player")
 	_stop_watering(player)
+	if TasksManager.task_list[2]["tasks"][0]["name"] == "Put it back":
+		TasksManager.mark_task_done(2, 0)
+		GlobalTracker.day2LeusFlag = true
+		Characters.characters["leus"].showSelf()
 	var day := GlobalTracker.current_day
 	var zone = _get_return_zone()
 	if zone and zone.check_drop(self):

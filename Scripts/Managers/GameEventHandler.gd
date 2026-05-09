@@ -102,6 +102,9 @@ func lolo_day2a_end_sequence() -> void:
 	await get_tree().create_timer(3.0).timeout
 	TasksManager.add_to_tasklist(2, "Water the garden")
 
+func leus_day2a_end_sequence() -> void:
+	Characters.characters["leus"].disappear()
+
 func handle_journal_add(argument: String) -> void:
 	var payload: String = argument.substr("journal:add:".length())
 	var parts: PackedStringArray = payload.split("|")
