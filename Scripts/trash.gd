@@ -21,7 +21,7 @@ func clean(delta: float) -> void:
 		cleaned_count += 1
 		if cleaned_count >= TOTAL_TRASH:
 			TasksManager.set_task_done(1, 2, true)
-			TasksManager.add_to_tasklist_delayed(1, "Put it back", 3.0)
+			TasksManager.add_put_it_back_task(1, "Trash Area")
 		queue_free()
 
 func reset_progress() -> void:

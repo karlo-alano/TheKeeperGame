@@ -49,10 +49,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 	if held_object:
 		if event.is_action_pressed("drop"):
+			held_object.freeze = false
 			if held_object.has_method("onDrop"):
 				held_object.onDrop()
 			held_object.reparent(get_tree().current_scene)
-			held_object.freeze = false
 			held_object = null
 
 	if event.is_action_pressed("journal"):

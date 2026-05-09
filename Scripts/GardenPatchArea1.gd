@@ -38,7 +38,7 @@ func water(delta: float) -> void:
 		watered_count += 1
 		if watered_count >= total_patches:
 			TasksManager.set_task_done(1, 0, true)
-			TasksManager.add_to_tasklist_delayed(1, "Put it back", 3.0)
+			TasksManager.add_put_it_back_task(1, "Garden Area")
 
 func _setup_wet_material() -> void:
 	var patch_root := get_parent().get_parent()

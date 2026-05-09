@@ -4,6 +4,10 @@ extends RigidBody3D
 
 var key := "Trash Area"
 var is_equipped := false
+var _home_global_transform: Transform3D
+
+func _ready() -> void:
+	_home_global_transform = global_transform
 
 func onPickup():
 	collision.disabled = true
@@ -16,12 +20,14 @@ func onDrop():
 	var player = Characters.characters.get("Player")
 	_stop_cleaning(player)
 	var day := GlobalTracker.current_day
-	var tasks: Array = TasksManager.task_list[day]["tasks"]
-	if tasks.size() > 0 and tasks[0]["name"] == "Put it back":
-		var zone = _get_return_zone()
-		if zone and zone.check_drop(self):
-			zone.deactivate()
-			TasksManager.mark_task_done(day, 0)
+	var zone = _get_return_zone()
+	if zone and zone.check_drop(self):
+		zone.deactivate()
+		global_transform = _home_global_transform
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		freeze = true
+		TasksManager.complete_put_it_back_task(day, key)
 
 func _get_return_zone() -> Node:
 	return get_tree().root.find_child("WalisReturnZone", true, false)
