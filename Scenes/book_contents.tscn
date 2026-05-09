@@ -23,6 +23,7 @@ rotation = -1.5707964
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_4btx7")
 theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
 text = "June 31"
 
 [node name="Tasks" type="RichTextLabel" parent="." unique_id=657112934]
@@ -36,6 +37,7 @@ bbcode_enabled = true
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_4btx7")
 theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
 
 [node name="DayCounter" type="RichTextLabel" parent="." unique_id=15207266]
 layout_mode = 0
@@ -47,4 +49,5 @@ rotation = -1.5707964
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_4btx7")
 theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
 text = "N more days to go"

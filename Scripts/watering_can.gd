@@ -11,12 +11,19 @@ func onPickup():
 	rotation = Vector3(-PI/2, -19.5, -PI/2)
 	position = Vector3(0, -1, 0)
 	is_equipped = true
+	if GlobalTracker.current_day == 2:
+		await Globals.wait(2.0)
+		TasksManager.mark_task_done(2,0)
+		await Globals.wait(3.0)
+		TasksManager.add_to_tasklist(2, "Put it back")
 
 func onDrop():
 	collision.disabled = false
 	is_equipped = false
 	var player = Characters.characters.get("Player")
 	_stop_watering(player)
+	if TasksManager.task_list[2]["tasks"][0]["name"] == "Put it back":
+		TasksManager.mark_task_done(2, 0)
 
 func _process(delta):
 	if not is_equipped:

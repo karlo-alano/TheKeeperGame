@@ -10,7 +10,7 @@ var _journal_prompt_token := 0
 func _ready():
 	Globals.show_interact_prompt.connect(_show_interact)
 	GlobalTracker.egg_collected.connect(updateTracker)
-	DaySystem.task_done_changed.connect(_on_task_done_changed)
+	TasksManager.task_done_changed.connect(_on_task_done_changed)
 	updateTracker()
 
 func _on_task_done_changed(_day: int, _index: int, _done: bool) -> void:
@@ -35,5 +35,5 @@ func hide_journal_prompt() -> void:
 func updateTracker():
 	tracker.text = str(GlobalTracker.eggCounter) + "/6"
 
-func refresh_taskbar():            # ← add this
+func refresh_taskbar():
 	task_bar.refresh()

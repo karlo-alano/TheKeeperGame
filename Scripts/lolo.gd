@@ -1,5 +1,6 @@
 extends Node3D
 func _ready():
+	print("Lolo loaded!")
 	Characters.characters["lolo"] = self
 
 func interact():
@@ -12,4 +13,5 @@ func interact():
 		Globals.start_dialogue("Lolo_Day3_A", false)
 	
 func disappear():
-	owner.queue_free()
+	print("Despawn lolo script firing")
+	queue_free()

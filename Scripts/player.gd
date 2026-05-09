@@ -106,7 +106,6 @@ func _process(_delta: float):
 				if hit.has_method("onPickup"):
 					hit.onPickup()
 		if hit.is_in_group("actionable") and held_object:
-			print(hit)
 			if !Globals.is_in_dialogue:
 				# Safely read arbitrary properties using `get()` to avoid errors
 				var hit_slot = hit.get("slot")

@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://Scripts/ui.gd" id="1_w371h"]
 [ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scripts/task_bar.gd" id="2_nxvpl"]
-[ext_resource type="FontFile" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
+[ext_resource type="AudioStream" uid="uid://b8dged18hndun" path="res://Audio/UI/BlipPositive.mp3" id="3_dewlx"]
+[ext_resource type="AudioStream" uid="uid://ynn3ixqhfp7i" path="res://Audio/UI/BlipConfused.mp3" id="4_hfhsn"]
+[ext_resource type="FontFile" uid="uid://cs3rksfptro8t" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
 default_font = ExtResource("font_roman")
@@ -11,6 +13,20 @@ default_font_size = 25
 [sub_resource type="Theme" id="Theme_w371h"]
 default_font = ExtResource("font_roman")
 default_font_size = 10
+
+[sub_resource type="Theme" id="Theme_nxvpl"]
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxvpl"]
+bg_color = Color(0.6789437, 0.6789437, 0.6789437, 0.34117648)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
 
 [node name="UI" type="Control" unique_id=1864939403]
 layout_mode = 3
@@ -77,9 +93,17 @@ text = "Press G to open the journal"
 
 [node name="TaskBar" type="PanelContainer" parent="." unique_id=1765240496]
 layout_direction = 3
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -251.0
+offset_right = 50.0
+offset_bottom = -211.0
+grow_vertical = 2
+theme = SubResource("Theme_nxvpl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nxvpl")
 script = ExtResource("2_nxvpl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TaskBar" unique_id=684834112]
@@ -88,11 +112,21 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="TaskBar/VBoxContainer" unique_id=1863205502]
 layout_mode = 2
 
-[node name="DayLabel" type="Label" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=277441655]
+[node name="DayLabel" type="RichTextLabel" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=1425622274]
 layout_mode = 2
+bbcode_enabled = true
 
-[node name="DayCounter" type="Label" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=321018580]
+[node name="DayCounter" type="RichTextLabel" parent="TaskBar/VBoxContainer/HBoxContainer" unique_id=2103401998]
 layout_mode = 2
+bbcode_enabled = true
 
 [node name="TaskList" type="VBoxContainer" parent="TaskBar/VBoxContainer" unique_id=2092191060]
 layout_mode = 2
+
+[node name="CompleteTask" type="AudioStreamPlayer" parent="." unique_id=1395127757]
+stream = ExtResource("3_dewlx")
+volume_db = -12.0
+
+[node name="AddTask" type="AudioStreamPlayer" parent="." unique_id=560826466]
+stream = ExtResource("4_hfhsn")
+volume_db = -12.0

@@ -26,6 +26,34 @@ var day_templates := {
 	}
 }
 
+var task_list := {
+	1: {"tasks": [
+		]
+	},
+	2: {"tasks": [
+		]
+	},
+	3: {"tasks": [
+		]
+	},
+}
+
+
+func add_to_tasklist(day: int, name: String) -> void:
+	task_list[day]["tasks"].append({"name": name, "done": false,})
+	Items.items["tasklist"].play_add_task_audio()
+	Items.items["tasklist"].refresh()
+
+func mark_task_done(day: int, task_index: int) -> void:
+	Items.items["tasklist"].play_complete_task_audio()
+	task_list[day]["tasks"][task_index]["done"] = true
+	Items.items["tasklist"].refresh()
+	await get_tree().create_timer(2.0).timeout
+	task_list[day]["tasks"].remove_at(task_index)
+	Items.items["tasklist"].refresh()
+	
+
+
 # Mutable state: current tasks and journal per day
 var state := {}
 

@@ -33,7 +33,7 @@ func water(delta: float) -> void:
 		_fully_watered = true
 		current_water_time = WATER_DURATION
 		emit_signal("watering_progress", 1.0) # Ensure UI completes
-		DaySystem.set_task_done(1, 0, true)
+		TasksManager.set_task_done(1, 0, true)
 
 func _setup_wet_material() -> void:
 	var patch_root := get_parent().get_parent()

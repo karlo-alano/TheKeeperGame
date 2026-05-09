@@ -89,8 +89,8 @@ func _add_day3_paluto_objective() -> void:
 		return
 	_pending_day3_paluto_objective = false
 	
-	if DaySystem.get_label(3) != "":
-		var day3_tasks: Array = DaySystem.get_tasks(3)
+	if TasksManager.get_label(3) != "":
+		var day3_tasks: Array = TasksManager.get_tasks(3)
 		var objective_name := "Ask Mrs. Valenciano about paluto for Penny's birthday"
 		var already_added := false
 		for task in day3_tasks:
@@ -98,7 +98,7 @@ func _add_day3_paluto_objective() -> void:
 				already_added = true
 				break
 		if not already_added:
-			DaySystem.add_task(3, objective_name)
+			TasksManager.add_task(3, objective_name)
 
 	var viewport = get_tree().root.find_child("SubViewport", true, false)
 	if viewport:

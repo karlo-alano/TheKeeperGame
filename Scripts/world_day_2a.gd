@@ -18,7 +18,6 @@ func _ready() -> void:
 
 func _setup_day2() -> void:
 	GlobalTracker.set_current_day(2)
-
 	var book = find_child("book", true, false)
 	if book:
 		var page = book.get_node_or_null("Cube_003/Page1/SubViewport/BookContents")
