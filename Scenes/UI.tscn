@@ -4,11 +4,14 @@
 [ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scripts/task_bar.gd" id="2_nxvpl"]
 [ext_resource type="AudioStream" uid="uid://b8dged18hndun" path="res://Audio/UI/BlipPositive.mp3" id="3_dewlx"]
 [ext_resource type="AudioStream" uid="uid://ynn3ixqhfp7i" path="res://Audio/UI/BlipConfused.mp3" id="4_hfhsn"]
+[ext_resource type="FontFile" uid="uid://cs3rksfptro8t" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
+default_font = ExtResource("font_roman")
 default_font_size = 25
 
 [sub_resource type="Theme" id="Theme_w371h"]
+default_font = ExtResource("font_roman")
 default_font_size = 10
 
 [sub_resource type="Theme" id="Theme_nxvpl"]
@@ -77,16 +80,6 @@ offset_top = 28.0
 offset_right = 259.0
 offset_bottom = 189.0
 
-[node name="ActionLabel" type="Label" parent="." unique_id=1393830777]
-visible = false
-layout_mode = 0
-offset_left = 520.0
-offset_top = 333.0
-offset_right = 630.0
-offset_bottom = 356.0
-theme_override_font_sizes/font_size = 10
-text = "Press [LMB] to interact"
-
 [node name="JournalHintLabel" type="Label" parent="." unique_id=2093846510]
 visible = false
 layout_mode = 0
@@ -94,6 +87,7 @@ offset_left = 433.0
 offset_top = 378.0
 offset_right = 724.0
 offset_bottom = 402.0
+theme_override_fonts/font = ExtResource("font_roman")
 theme_override_font_sizes/font_size = 14
 text = "Press G to open the journal"
 

@@ -76,23 +76,28 @@ func _process(_delta: float):
 		var hit = ray.get_collider()
 		if hit == null or not is_instance_valid(hit):
 			Globals.show_interact_prompt.emit(false)
-			Globals.show_action_prompt.emit(false)
 			return
 		if hit.is_in_group("interactable"):
 			Globals.show_interact_prompt.emit(true)
-			if Input.is_action_just_pressed("interact"):
-					if hit.has_method("interact"):
-						hit.interact()
-					if hit.has_method("obtain"):
-						# Debug: log which node is being interacted with
-						print("[player] interact hit:", hit, "path:", hit.get_path(), "class:", hit.get_class())
-						blip.play()
-						print("[player] calling obtain() on:", hit.get_path())
-						hit.obtain()
-						print("[player] returned from obtain() call")
+			if Input.is_action_just_pressed("interact") and not Globals.is_in_dialogue:
+					# Walk up parent chain to find a node with interact() or obtain()
+					var interact_target = hit
+					while interact_target != null:
+						if interact_target.has_method("interact") or interact_target.has_method("obtain"):
+							break
+						interact_target = interact_target.get_parent()
+					if interact_target != null:
+						if interact_target.has_method("interact"):
+							interact_target.interact()
+						if interact_target.has_method("obtain"):
+							print("[player] interact hit:", hit, "path:", hit.get_path(), "class:", hit.get_class())
+							blip.play()
+							print("[player] calling obtain() on:", interact_target.get_path())
+							interact_target.obtain()
+							print("[player] returned from obtain() call")
 		if hit.is_in_group("pickable"):
 			Globals.show_interact_prompt.emit(true)
-			if Input.is_action_just_pressed("interact") and held_object == null:
+			if Input.is_action_just_pressed("interact") and held_object == null and not Globals.is_in_dialogue:
 				held_object = hit
 				hit.freeze = true
 				hit.reparent(hand)
@@ -102,7 +107,6 @@ func _process(_delta: float):
 					hit.onPickup()
 		if hit.is_in_group("actionable") and held_object:
 			if !Globals.is_in_dialogue:
-				Globals.show_action_prompt.emit(true)
 				# Safely read arbitrary properties using `get()` to avoid errors
 				var hit_slot = hit.get("slot")
 				var held_key = held_object.get("key") if held_object and held_object.has_method("get") else null
@@ -113,7 +117,6 @@ func _process(_delta: float):
 				
 	else:
 		Globals.show_interact_prompt.emit(false)
-		Globals.show_action_prompt.emit(false)
 	
 
 func _physics_process(delta: float) -> void:

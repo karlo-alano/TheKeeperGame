@@ -3,7 +3,6 @@ extends Node
 ## Delegates specific logic to specialized managers.
 
 signal show_interact_prompt(is_visible)
-signal show_action_prompt(is_visible)
 
 var Player: CharacterBody3D
 
@@ -54,13 +53,12 @@ func _ready() -> void:
 	if _is_dialogic_test_scene():
 		return
 
-	#GlobalTracker.set_current_day(1)
-	#await change_viewport_world("res://Scenes/World_day1A.tscn")
+	GlobalTracker.set_current_day(2)
+	await change_viewport_world("res://Scenes/World_day2A.tscn")
 	
 	# Start dream sequence
 	#start_dialogue("Dream_Trigger", true)
-	GlobalTracker.set_current_day(2)
-	await change_viewport_world("res://Scenes/World_day2A.tscn")
+
 
 
 

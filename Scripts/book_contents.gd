@@ -18,28 +18,24 @@ func showDay(day: int):
 	DayCounter.text = ""
 
 	var supports_bbcode := Tasks is RichTextLabel
-	if supports_bbcode and not Tasks.bbcode_enabled:
-		Tasks.bbcode_enabled = true
+	Tasks.bbcode_enabled = true
 
-	# Build tasks text from DaySystem state
+	# Build tasks text from TasksManager state
 	var tasks_text = ""
-	var tasks := TasksManager.get_tasks(day)
+	var tasks = TasksManager.get_tasks(day)
 	for task in tasks:
 		if task.has("done") and task["done"]:
-			if supports_bbcode:
-				tasks_text += "• [s]%s[/s]\n" % task["name"]
-			else:
-				tasks_text += "• %s (done)\n" % task["name"]
+			tasks_text += "[color=#888888]✓ %s[/color]\n" % task["name"]
 		else:
 			tasks_text += "• %s\n" % task["name"]
 
-	# Pull journal entry directly from DaySystem
+	# Pull journal entry directly from TasksManager
 	var journal_text := ""
-	var entry := TasksManager.get_journal(day)
+	var entry = TasksManager.get_journal(day)
 	if entry != "":
 		journal_text = "\n——————————\n%s" % entry
 
-	Tasks.text = tasks_text + journal_text
+	Tasks.parse_bbcode(tasks_text + journal_text)
 	currentDay = day
 
 

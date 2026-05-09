@@ -35,7 +35,7 @@ func refresh():
 	for child in task_list.get_children():
 		child.queue_free()
 	
-	var tasklist := TasksManager.task_list
+	var tasklist = TasksManager.task_list
 	print("Task list:", tasklist)
 	for task in tasklist[day]["tasks"]:
 		print("Adding task:", task)

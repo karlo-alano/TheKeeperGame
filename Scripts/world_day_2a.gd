@@ -28,5 +28,3 @@ func _setup_day2() -> void:
 			print("[Day2A] page not found or missing showDay")
 	else:
 		print("[Day2A] book not found")
-
-	Globals.emit_signal("show_action_prompt", true)

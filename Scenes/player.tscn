@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
+[ext_resource type="FontFile" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 [ext_resource type="Script" uid="uid://mudfn1oj6fx5" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://cu86qb42cevvq" path="res://Scenes/book.tscn" id="2_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://bfr6ih6kb7k8u" path="res://Audio/UI/BlipConfusedOnce.mp3" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dp37pcfbxmbat" path="res://Imports/letter/letter.glb" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://ceej0fxxyao60" path="res://Scenes/texture_progress_bar.gd" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://5rrrv0uksq7a" path="res://Imports/radial-progress-bar.png" id="5_x3wgy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
 
@@ -206,3 +209,44 @@ visible = false
 
 [node name="GiveLetter" type="AnimationPlayer" parent="." unique_id=856452116]
 libraries/ = SubResource("AnimationLibrary_8erm5")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=345275712]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD" unique_id=77532984]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 450.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("5_x3wgy")
+script = ExtResource("5_fkybt")
+
+[node name="HoldLabel" type="Label" parent="HUD" unique_id=112233445]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -9.0
+offset_right = 41.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("font_roman")
+theme_override_font_sizes/font_size = 12
+text = "Hold E"
+horizontal_alignment = 1

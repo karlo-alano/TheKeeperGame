@@ -117,7 +117,6 @@ func handle_journal_add(argument: String) -> void:
 			var book = world.find_child("book", true, false)
 			if book and book.has_method("add_entry"):
 				book.add_entry(id, title, body, -1)
-				Globals.show_action_prompt.emit(true)
 				if auto_open and book.has_method("openJournal"):
 					book.openJournal()
 

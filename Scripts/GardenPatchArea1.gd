@@ -1,29 +1,38 @@
 extends StaticBody3D
 
-const MAX_WATERS := 7
+const WATER_DURATION := 10.0
 const DRY_TINT := Color.WHITE
 const WET_TINT := Color(0.45734924, 0.30687293, 0.16883647, 1.0)
 const WET_ROUGHNESS := 0.15
 
-var slot := "Garden"
-var water_count := 0
+var slot := "Garden Area"
+var current_water_time := 0.0
 var _fully_watered := false
 var _wet_material: StandardMaterial3D
+
+# This signal will tell our UI to update the circle
+signal watering_progress(progress_ratio)
 
 func _ready():
 	Items.items["gardenPatch"] = self
 	_setup_wet_material()
 	_apply_water_state()
 
-func water() -> void:
+# Now accepts 'delta' from the watering can's _process function
+func water(delta: float) -> void:
 	if _fully_watered:
 		return
 
-	water_count = min(water_count + 1, MAX_WATERS)
+	current_water_time += delta
+	var progress_ratio = current_water_time / WATER_DURATION
+	
+	emit_signal("watering_progress", progress_ratio)
 	_apply_water_state()
 
-	if water_count >= MAX_WATERS:
+	if current_water_time >= WATER_DURATION:
 		_fully_watered = true
+		current_water_time = WATER_DURATION
+		emit_signal("watering_progress", 1.0) # Ensure UI completes
 		TasksManager.set_task_done(1, 0, true)
 
 func _setup_wet_material() -> void:
@@ -49,7 +58,6 @@ func _apply_water_state() -> void:
 	if _wet_material == null:
 		return
 
-	var wetness_ratio := float(water_count) / float(MAX_WATERS)
+	var wetness_ratio := current_water_time / WATER_DURATION
 	_wet_material.albedo_color = DRY_TINT.lerp(WET_TINT, wetness_ratio)
 	_wet_material.roughness = lerp(1.0, WET_ROUGHNESS, wetness_ratio)
-	

@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-Globals="*uid://c1f0kq68bytn6"
+Globals="*uid://dfcixtequvb1c"
 GlobalTracker="*uid://fff305pojt32"
 Items="*uid://cb1obnvmnnshw"
 Characters="*uid://wcocs8aj1a5f"
@@ -66,6 +66,7 @@ directories/dtl_directory={
 "Monologue_Day1_G": "res://Dialog/Timelines/Monologue_Day1_G.dtl",
 "Monologue_Day2_A": "res://Dialog/Timelines/Monologue_Day2_A.dtl",
 "Monologue_Day2_B": "res://Dialog/Timelines/Monologue_Day2_B.dtl",
+"Monologue_TrashInspect": "res://Dialog/Timelines/Monologue_TrashInspect.dtl",
 "MrsValenciano_PalutoRequest": "res://Dialog/Timelines/MrsValenciano_PalutoRequest.dtl",
 "MysteriousMonologue": "res://Dialog/Timelines/MysteriousMonologue.dtl",
 "Penny_Day1_A": "res://Dialog/Timelines/Penny_Day1_A.dtl",

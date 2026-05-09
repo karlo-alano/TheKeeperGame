@@ -1,8 +1,19 @@
 [gd_scene format=3 uid="uid://btwemrvql86hb"]
 
 [ext_resource type="PackedScene" uid="uid://dqgf0cdqoubjk" path="res://Imports/Garbage/psx-style_garbage_heap.glb" id="1_y6qn0"]
+[ext_resource type="Script" uid="uid://b3kx7m2nqp4vc" path="res://Scripts/trash.gd" id="2_trash"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trash"]
+size = Vector3(2.0, 1.5, 2.0)
 
 [node name="Trash" type="Node3D" unique_id=566705858]
+script = ExtResource("2_trash")
 
 [node name="GarbageHeap" parent="." unique_id=248798020 instance=ExtResource("1_y6qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09289348, -0.08941424, -1.0909536)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09289348, 0.65, -1.0909536)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_trash")

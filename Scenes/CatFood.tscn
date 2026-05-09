@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c481v7okmrycj"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddfgy8fivgc8r" path="res://Imports/catfood/catfood.tres" id="1_qvslk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nao0m"]
+size = Vector3(0.49145508, 0.8485718, 0.22558594)
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=588360412]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1839126653]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_qvslk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1450088969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 0.42636108, -0.010253906)
+shape = SubResource("BoxShape3D_nao0m")
