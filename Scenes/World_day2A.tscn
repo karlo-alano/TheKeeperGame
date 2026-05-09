@@ -250,4 +250,3 @@ script = ExtResource("19_jg7lx")
 
 [node name="dialog" parent="." unique_id=1324470672 instance=ExtResource("20_4vq3m")]
 visible = false
-force_native = false

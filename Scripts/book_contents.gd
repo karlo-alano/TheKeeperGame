@@ -13,7 +13,7 @@ func _ready():
 
 
 func showDay(day: int):
-	var label = DaySystem.get_label(day)
+	var label = TasksManager.get_label(day)
 	DayLabel.text = label
 	DayCounter.text = ""
 
@@ -23,7 +23,7 @@ func showDay(day: int):
 
 	# Build tasks text from DaySystem state
 	var tasks_text = ""
-	var tasks := DaySystem.get_tasks(day)
+	var tasks := TasksManager.get_tasks(day)
 	for task in tasks:
 		if task.has("done") and task["done"]:
 			if supports_bbcode:
@@ -35,7 +35,7 @@ func showDay(day: int):
 
 	# Pull journal entry directly from DaySystem
 	var journal_text := ""
-	var entry := DaySystem.get_journal(day)
+	var entry := TasksManager.get_journal(day)
 	if entry != "":
 		journal_text = "\n——————————\n%s" % entry
 

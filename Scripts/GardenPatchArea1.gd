@@ -5,7 +5,7 @@ const DRY_TINT := Color.WHITE
 const WET_TINT := Color(0.45734924, 0.30687293, 0.16883647, 1.0)
 const WET_ROUGHNESS := 0.15
 
-var slot := "Garden Area"
+var slot := "Garden"
 var water_count := 0
 var _fully_watered := false
 var _wet_material: StandardMaterial3D
@@ -24,7 +24,7 @@ func water() -> void:
 
 	if water_count >= MAX_WATERS:
 		_fully_watered = true
-		DaySystem.set_task_done(1, 0, true)
+		TasksManager.set_task_done(1, 0, true)
 
 func _setup_wet_material() -> void:
 	var patch_root := get_parent().get_parent()

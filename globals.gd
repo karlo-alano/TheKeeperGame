@@ -16,6 +16,8 @@ var signal_router: Node
 # Internal pending flags (kept for compatibility with older code)
 var _pending_monologue3b_on_journal_close := false
 
+func wait(seconds: float):
+	await get_tree().create_timer(seconds).timeout
 
 # Delegated properties for backward compatibility
 var is_in_dialogue: bool:
@@ -52,9 +54,9 @@ func _ready() -> void:
 	if _is_dialogic_test_scene():
 		return
 
-	GlobalTracker.set_current_day(1)
-	await change_viewport_world("res://Scenes/World_day1A.tscn")
-
+	#GlobalTracker.set_current_day(1)
+	#await change_viewport_world("res://Scenes/World_day1A.tscn")
+	
 	# Start dream sequence
 	#start_dialogue("Dream_Trigger", true)
 	GlobalTracker.set_current_day(2)

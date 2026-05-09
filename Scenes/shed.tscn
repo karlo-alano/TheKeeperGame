@@ -1928,7 +1928,6 @@ shape = SubResource("ConcavePolygonShape3D_3yy5d")
 
 [node name="Roof" type="MeshInstance3D" parent="." unique_id=863745139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9087949, 2.3432777, -1.0999998)
-visible = false
 mesh = SubResource("ArrayMesh_0wp7j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Roof" unique_id=849707281]

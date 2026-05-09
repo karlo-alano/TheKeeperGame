@@ -14,7 +14,7 @@ func handle_cutscene2() -> void:
 	if Characters.characters.has("forsythe") and Characters.characters["forsythe"] and is_instance_valid(Characters.characters["forsythe"]):
 		if Characters.characters["forsythe"].has_method("disappear"):
 			Characters.characters["forsythe"].disappear()
-	DaySystem.set_task_done(1, 0, true)
+	TasksManager.set_task_done(1, 0, true)
 
 
 func spawn_character_lolo() -> void:
@@ -72,8 +72,8 @@ func spawn_character_lolo() -> void:
 	world.add_child(lolo_inst)
 
 	# Update Day 3 objective after Mrs. Valenciano dialogue
-	if DaySystem.get_label(3) != "":
-		var day3_tasks: Array = DaySystem.get_tasks(3)
+	if TasksManager.get_label(3) != "":
+		var day3_tasks: Array = TasksManager.get_tasks(3)
 		var old_objective := "Ask Mrs. Valenciano about paluto for Penny's birthday"
 		var new_objective := "Speak with Lolo Aurelio"
 		var has_new_objective := false
@@ -84,7 +84,7 @@ func spawn_character_lolo() -> void:
 				has_new_objective = true
 		if not has_new_objective:
 			day3_tasks.append({"name": new_objective, "done": false})
-		DaySystem.set_tasks(3, day3_tasks)
+		TasksManager.set_tasks(3, day3_tasks)
 
 	# Refresh journal/book task UI immediately
 	var book_after_spawn = world.find_child("book", true, false)
@@ -97,6 +97,10 @@ func spawn_character_lolo() -> void:
 	if ui_after_spawn and ui_after_spawn.has_method("show_journal_prompt"):
 		ui_after_spawn.show_journal_prompt()
 
+func lolo_day2a_end_sequence() -> void:
+	Characters.characters["lolo"].disappear()
+	await get_tree().create_timer(3.0).timeout
+	TasksManager.add_to_tasklist(2, "Water the garden")
 
 func handle_journal_add(argument: String) -> void:
 	var payload: String = argument.substr("journal:add:".length())
@@ -148,7 +152,7 @@ func handle_objectives_update(argument: String) -> void:
 		return
 
 	var day := int(parts[0])
-	if DaySystem.get_label(day) == "":
+	if TasksManager.get_label(day) == "":
 		return
 
 	var tasks_blob: String = parts[1]
@@ -160,10 +164,10 @@ func handle_objectives_update(argument: String) -> void:
 			new_tasks.append({"name": trimmed, "done": false})
 
 	if new_tasks.size() > 0:
-		DaySystem.set_tasks(day, new_tasks)
+		TasksManager.set_tasks(day, new_tasks)
 
 	if parts.size() > 2:
-		DaySystem.set_journal(day, parts[2])
+		TasksManager.set_journal(day, parts[2])
 
 	# Refresh the visible book page so objectives appear immediately.
 	var viewport = get_tree().root.find_child("SubViewport", true, false)

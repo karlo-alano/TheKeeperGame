@@ -36,5 +36,5 @@ func hide_journal_prompt() -> void:
 func updateTracker():
 	tracker.text = str(GlobalTracker.eggCounter) + "/6"
 
-func refresh_taskbar():            # ← add this
+func refresh_taskbar():
 	task_bar.refresh()

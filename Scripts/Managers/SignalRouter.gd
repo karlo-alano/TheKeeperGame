@@ -40,6 +40,8 @@ func _on_dialogic_signal(argument: String) -> void:
 			game_event_handler.spawn_character_lolo()
 		"show_journal_prompt", "journal:prompt":
 			_show_journal_prompt()
+		"lolo_day2a_end_sequence":
+			game_event_handler.lolo_day2a_end_sequence()
 		_:
 			# Check for journal events
 			if argument.begins_with("journal:add:"):

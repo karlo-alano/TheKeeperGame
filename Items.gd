@@ -6,4 +6,5 @@ var items := {
 	"environment": null,
 	"gardenPatch": null,
 	"dialogbox": null,
+	"tasklist": null,
 } 
