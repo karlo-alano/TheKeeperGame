@@ -14,6 +14,7 @@ var eggTaskCompleted := false
 var dialogDone := false
 var current_day: int = 1
 var daily_event_flags := {}
+var day2LeusFlag = false
 
 # LunchBox
 var isHoldingLunchbox := false

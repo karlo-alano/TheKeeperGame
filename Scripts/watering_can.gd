@@ -24,6 +24,8 @@ func onDrop():
 	_stop_watering(player)
 	if TasksManager.task_list[2]["tasks"][0]["name"] == "Put it back":
 		TasksManager.mark_task_done(2, 0)
+		GlobalTracker.day2LeusFlag = true
+		Characters.characters["leus"].showSelf()
 
 func _process(delta):
 	if not is_equipped:

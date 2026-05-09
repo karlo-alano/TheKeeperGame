@@ -3,7 +3,7 @@ extends Node3D
 func _ready() -> void:
 
 	GlobalTracker.set_current_day(2)
-	Items.items["environment"].afternoonPosition()
+	Items.items["environment"].nightPosition()
 	Items.items["door2c"].add_to_group("interactable")
 	
 
