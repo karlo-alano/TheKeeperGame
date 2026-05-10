@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+@export var item_id: String = "watering_can"
 @onready var collision := $CollisionShape3D
 @onready var animation := $WateringCanAnimation
 
@@ -9,6 +10,13 @@ var _home_global_transform: Transform3D
 
 func _ready() -> void:
 	_home_global_transform = global_transform
+	call_deferred("_sync_objective_slot_home")
+
+
+func _sync_objective_slot_home() -> void:
+	for node in get_tree().get_nodes_in_group("objective_return_slots"):
+		if node.has_method("sync_home_from_world_item"):
+			node.sync_home_from_world_item(self)
 
 func onPickup():
 	collision.disabled = true
@@ -25,10 +33,14 @@ func onDrop():
 	is_equipped = false
 	var player = Characters.characters.get("Player")
 	_stop_watering(player)
-	if TasksManager.task_list[2]["tasks"][0]["name"] == "Put it back":
-		TasksManager.mark_task_done(2, 0)
-		GlobalTracker.day2LeusFlag = true
-		Characters.characters["leus"].showSelf()
+	# Day 2 only: first UI task can be "Put it back" — never index [0] when the list is empty
+	# (Day 1 drop used to crash here: task_list[2]["tasks"] is []).
+	if GlobalTracker.current_day == 2:
+		var d2_tasks: Array = TasksManager.task_list.get(2, {}).get("tasks", [])
+		if d2_tasks.size() > 0 and str(d2_tasks[0].get("name", "")) == "Put it back":
+			TasksManager.mark_task_done(2, 0)
+			GlobalTracker.day2LeusFlag = true
+			Characters.characters["leus"].showSelf()
 	var day := GlobalTracker.current_day
 	var zone = _get_return_zone()
 	if zone and zone.check_drop(self):
@@ -38,6 +50,30 @@ func onDrop():
 		angular_velocity = Vector3.ZERO
 		freeze = true
 		TasksManager.complete_put_it_back_task(day, key)
+
+
+## Tinatawag ng ObjectiveSlot pagkatapos ng tween snap (hindi na physics drop).
+func finalize_return_at_objective_slot() -> void:
+	collision.disabled = false
+	is_equipped = false
+	var player = Characters.characters.get("Player")
+	if player:
+		_stop_watering(player)
+	if GlobalTracker.current_day == 2:
+		var d2_tasks: Array = TasksManager.task_list.get(2, {}).get("tasks", [])
+		if d2_tasks.size() > 0 and str(d2_tasks[0].get("name", "")) == "Put it back":
+			TasksManager.mark_task_done(2, 0)
+			GlobalTracker.day2LeusFlag = true
+			Characters.characters["leus"].showSelf()
+	var day := GlobalTracker.current_day
+	var zone = _get_return_zone()
+	if zone and zone.has_method("deactivate"):
+		zone.deactivate()
+	global_transform = _home_global_transform
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	freeze = true
+	TasksManager.complete_put_it_back_task(day, key)
 
 func _get_return_zone() -> Node:
 	return get_tree().root.find_child("WateringCanReturnZone", true, false)

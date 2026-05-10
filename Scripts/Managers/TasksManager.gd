@@ -72,9 +72,11 @@ func add_put_it_back_task(day: int, item_key: String = "") -> void:
 	if existing != -1 and not task_list[day]["tasks"][existing].get("done", false):
 		# Ensure the drop outline is active even if task already existed.
 		_activate_return_zone(item_key)
+		_set_put_back_objective_ghost(item_key, true)
 		return
 	task_list[day]["tasks"].insert(0, {"name": "Put it back", "done": false, "item_key": item_key})
 	_activate_return_zone(item_key)
+	_set_put_back_objective_ghost(item_key, true)
 	Items.items["tasklist"].play_add_task_audio()
 	Items.items["tasklist"].refresh()
 
@@ -84,6 +86,25 @@ func complete_put_it_back_task(day: int, item_key: String = "") -> bool:
 		return false
 	mark_task_done(day, idx)
 	return true
+
+
+func _put_back_expected_item_id(item_key: String) -> String:
+	match item_key:
+		"Garden Area":
+			return "watering_can"
+		_:
+			return ""
+
+
+func _set_put_back_objective_ghost(item_key: String, visible: bool) -> void:
+	var want_id := _put_back_expected_item_id(item_key)
+	if want_id == "":
+		return
+	for node in get_tree().get_nodes_in_group("objective_return_slots"):
+		if str(node.get("expected_item_id")) != want_id:
+			continue
+		if node.has_method("set_return_objective_active"):
+			node.set_return_objective_active(visible)
 
 func _activate_return_zone(item_key: String) -> void:
 	var zone_name := ""
@@ -104,6 +125,8 @@ func mark_task_done(day: int, task_index: int) -> void:
 		return
 	if tasks[task_index].get("done", false):
 		return
+	if str(tasks[task_index].get("name", "")) == "Put it back":
+		_set_put_back_objective_ghost(str(tasks[task_index].get("item_key", "")), false)
 	Items.items["tasklist"].play_complete_task_audio()
 	tasks[task_index]["done"] = true
 	set_task_done(day, task_index, true)

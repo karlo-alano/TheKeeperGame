@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@export var item_id: String = "walis"
+
 @onready var collision := $CollisionShape3D
 
 var key := "Trash Area"
@@ -8,6 +10,13 @@ var _home_global_transform: Transform3D
 
 func _ready() -> void:
 	_home_global_transform = global_transform
+	call_deferred("_sync_objective_slot_home")
+
+
+func _sync_objective_slot_home() -> void:
+	for node in get_tree().get_nodes_in_group("objective_return_slots"):
+		if node.has_method("sync_home_from_world_item"):
+			node.sync_home_from_world_item(self)
 
 func onPickup():
 	collision.disabled = true
@@ -28,6 +37,22 @@ func onDrop():
 		angular_velocity = Vector3.ZERO
 		freeze = true
 		TasksManager.complete_put_it_back_task(day, key)
+
+
+func finalize_return_at_objective_slot() -> void:
+	collision.disabled = false
+	is_equipped = false
+	var player = Characters.characters.get("Player")
+	_stop_cleaning(player)
+	var day := GlobalTracker.current_day
+	var zone = _get_return_zone()
+	if zone and zone.has_method("deactivate"):
+		zone.deactivate()
+	global_transform = _home_global_transform
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	freeze = true
+	TasksManager.complete_put_it_back_task(day, key)
 
 func _get_return_zone() -> Node:
 	return get_tree().root.find_child("WalisReturnZone", true, false)

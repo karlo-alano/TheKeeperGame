@@ -47,14 +47,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
-	if held_object:
-		if event.is_action_pressed("drop"):
-			held_object.freeze = false
-			if held_object.has_method("onDrop"):
-				held_object.onDrop()
-			held_object.reparent(get_tree().current_scene)
-			held_object = null
-
 	if event.is_action_pressed("journal"):
 		if !isJournalOpen:
 			journalAnimation.play("OpenJournal")
@@ -71,7 +63,48 @@ func _unhandled_input(event: InputEvent) -> void:
 			await get_tree().create_timer(1.0).timeout
 			journal.visible = isJournalOpen
 
+func _drop_held_object() -> void:
+	if held_object == null:
+		return
+	if _try_snap_held_to_objective_slot():
+		return
+	held_object.freeze = false
+	if held_object.has_method("onDrop"):
+		held_object.onDrop()
+	held_object.reparent(get_tree().current_scene)
+	held_object = null
+
+
+func _try_snap_held_to_objective_slot() -> bool:
+	var item: Node3D = held_object as Node3D
+	if item == null:
+		return false
+	var hit_slot: Node = null
+	if ray.is_colliding():
+		var n: Node = ray.get_collider() as Node
+		while n != null:
+			if n.is_in_group("objective_return_slots"):
+				hit_slot = n
+				break
+			n = n.get_parent()
+	var order: Array = []
+	if hit_slot != null:
+		order.append(hit_slot)
+	for node in get_tree().get_nodes_in_group("objective_return_slots"):
+		if node != hit_slot:
+			order.append(node)
+	for slot in order:
+		if slot.has_method("try_place_item") and slot.try_place_item(item, self):
+			return true
+	return false
+
+
 func _process(_delta: float):
+	# Same key as interact (E): release / return item — objective slot snap muna kung valid.
+	if held_object and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("drop")):
+		_drop_held_object()
+		return
+
 	if ray.is_colliding():
 		var hit = ray.get_collider()
 		if hit == null or not is_instance_valid(hit):

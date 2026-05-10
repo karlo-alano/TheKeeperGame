@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://btwemrvql86hb" path="res://Scenes/garbageheap.tscn" id="20_f2kev"]
 [ext_resource type="PackedScene" uid="uid://b6mo8lf65i7ta" path="res://Imports/catfood/cat food bowl.glb" id="22_elrir"]
 [ext_resource type="PackedScene" uid="uid://c481v7okmrycj" path="res://Scenes/CatFood.tscn" id="23_ojqxf"]
+[ext_resource type="PackedScene" uid="uid://b58xu0nrrv03x" path="res://Scenes/objective_slot.tscn" id="24_76mku"]
+[ext_resource type="ArrayMesh" uid="uid://cl6ot227tmw81" path="res://addons/watering_can_mesh.tres" id="25_55y6p"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("1_eira3")
@@ -293,5 +295,10 @@ transform = Transform3D(2.0705795, 0, 0, 0, 0.9999996, 0, 0, 0, 1.7265735, -2.79
 
 [node name="RigidBody3D" parent="." unique_id=588360412 instance=ExtResource("23_ojqxf")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 11.486527, 0.97478145, -23.31189)
+
+[node name="ObjectiveSlot" parent="." unique_id=1493726696 instance=ExtResource("24_76mku")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 12.072125, 1.0116827, -22.936644)
+expected_item_id = "watering_can"
+ghost_model = ExtResource("25_55y6p")
 
 [connection signal="body_entered" from="Lolo/DetectionArea" to="Lolo/DetectionArea" method="_on_body_entered"]
