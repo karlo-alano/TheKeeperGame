@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b44jpt6deulyw"]
+
+[ext_resource type="PackedScene" uid="uid://b6mo8lf65i7ta" path="res://Imports/catfood/cat food bowl.glb" id="1_bowl"]
+[ext_resource type="Script" uid="uid://chr8wlnixtpv5" path="res://Scripts/cat_bowl.gd" id="2_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bowl"]
+size = Vector3(0.25802612, 0.045410156, 0.123046875)
+
+[node name="CatBowl" type="Node3D" unique_id=1568969978]
+script = ExtResource("2_script")
+
+[node name="BowlMesh" parent="." unique_id=312262967 instance=ExtResource("1_bowl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1418598201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2091206142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0033721924, -0.1230887, -0.0078125)
+shape = SubResource("BoxShape3D_bowl")

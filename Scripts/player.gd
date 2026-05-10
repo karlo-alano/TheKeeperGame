@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 3.5
+const SPEED = 6.5
 const MOUSE_SENSITIVITY = 0.005
 
 @onready var camera: Camera3D = $Camera3D

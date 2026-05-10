@@ -8,7 +8,7 @@ var day_templates := {
 		"tasks": [
 			{"name": "Water the Garden", "done": false},
 			{"name": "Collect eggs", "done": false},
-			{"name": "Sweep litter", "done": false},
+			{"name": "Sweep trash", "done": false},
 			{"name": "Feed Cally", "done": false}
 		]
 	},
@@ -92,6 +92,10 @@ func _put_back_expected_item_id(item_key: String) -> String:
 	match item_key:
 		"Garden Area":
 			return "watering_can"
+		"Trash Area":
+			return "walis"
+		"Cat Bowl":
+			return "cat_food"
 		_:
 			return ""
 
@@ -113,6 +117,8 @@ func _activate_return_zone(item_key: String) -> void:
 			zone_name = "WateringCanReturnZone"
 		"Trash Area":
 			zone_name = "WalisReturnZone"
+		"Cat Bowl":
+			zone_name = "CatFoodReturnZone"
 		_:
 			return
 	var zone = get_tree().root.find_child(zone_name, true, false)

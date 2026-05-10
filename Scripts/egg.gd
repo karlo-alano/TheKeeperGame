@@ -34,7 +34,7 @@ func obtain():
 		despawn()
 	if GlobalTracker.eggCounter == 6:
 		GlobalTracker.eggTaskCompleted = true
-		TasksManager.mark_task_done_by_name(1, "Collect the eggs")
+		TasksManager.set_task_done(1, 1, true)
 
 func despawn():
 	# Safely free this node (deferred to avoid tree modification during physics callbacks)

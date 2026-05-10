@@ -1,0 +1,131 @@
+extends RigidBody3D
+
+@export var item_id: String = "cat_food"
+
+@onready var collision := $CollisionShape3D
+
+var key := "Cat Bowl"
+var is_equipped := false
+var _home_global_transform: Transform3D
+
+func _ready() -> void:
+	_home_global_transform = global_transform
+	call_deferred("_sync_objective_slot_home")
+
+func _sync_objective_slot_home() -> void:
+	for node in get_tree().get_nodes_in_group("objective_return_slots"):
+		if node.has_method("sync_home_from_world_item"):
+			node.sync_home_from_world_item(self)
+
+func onPickup():
+	collision.disabled = true
+	position = Vector3(0, -1, 0)
+	is_equipped = true
+
+func onDrop():
+	collision.disabled = false
+	is_equipped = false
+	var player = Characters.characters.get("Player")
+	_stop_feeding(player)
+	var day := GlobalTracker.current_day
+	var zone = _get_return_zone()
+	if zone and zone.check_drop(self):
+		zone.deactivate()
+		global_transform = _home_global_transform
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		freeze = true
+		TasksManager.complete_put_it_back_task(day, key)
+
+func finalize_return_at_objective_slot() -> void:
+	collision.disabled = false
+	is_equipped = false
+	var player = Characters.characters.get("Player")
+	_stop_feeding(player)
+	var day := GlobalTracker.current_day
+	var zone = _get_return_zone()
+	if zone and zone.has_method("deactivate"):
+		zone.deactivate()
+	global_transform = _home_global_transform
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	freeze = true
+	TasksManager.complete_put_it_back_task(day, key)
+
+func _get_return_zone() -> Node:
+	return get_tree().root.find_child("CatFoodReturnZone", true, false)
+
+func _process(delta):
+	if not is_equipped:
+		return
+
+	var player = Characters.characters.get("Player")
+	if player == null:
+		return
+
+	var ray = player.get("ray")
+	var ui = get_tree().root.find_child("UI", true, false)
+	var hold_label = ui.get_node_or_null("HoldLabel") if ui else null
+
+	var on_bowl := false
+	if ray != null and ray.is_colliding():
+		var check = ray.get_collider()
+		while check != null:
+			if check.get("slot") == key:
+				on_bowl = true
+				break
+			check = check.get_parent()
+
+	if Input.is_action_pressed("use") and on_bowl and not Globals.is_in_dialogue:
+		var target = _get_bowl_target(ray)
+
+		if hold_label != null:
+			hold_label.visible = false
+		Globals.show_interact_prompt.emit(false)
+
+		if target == null or target.get("_fully_fed"):
+			_stop_feeding(player)
+			return
+
+		if target.has_method("feed"):
+			target.feed(delta)
+
+		var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
+		if progress_ui != null:
+			var ratio = clampf(target.current_feed_time / target.FEED_DURATION, 0.0, 1.0)
+			if ratio < 1.0:
+				progress_ui.visible = true
+				progress_ui.value = ratio
+			else:
+				progress_ui.visible = false
+
+	elif on_bowl and not Input.is_action_pressed("use"):
+		var target = _get_bowl_target(ray)
+		Globals.show_interact_prompt.emit(false)
+		if hold_label != null and (target == null or not target.get("_fully_fed")):
+			hold_label.visible = true
+		_stop_feeding(player)
+		if target != null and target.has_method("reset_progress"):
+			target.reset_progress()
+
+	else:
+		if hold_label != null:
+			hold_label.visible = false
+		_stop_feeding(player)
+
+func _get_bowl_target(ray) -> Node:
+	if ray == null or not ray.is_colliding():
+		return null
+	var node = ray.get_collider()
+	while node != null:
+		if node.get("slot") == key:
+			return node
+		node = node.get_parent()
+	return null
+
+func _stop_feeding(player_node = null):
+	var ui = get_tree().root.find_child("UI", true, false)
+	var progress_ui = ui.get_node_or_null("TextureProgressBar") if ui else null
+	if progress_ui != null:
+		progress_ui.visible = false
+		progress_ui.value = 0.0
