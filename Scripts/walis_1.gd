@@ -3,6 +3,7 @@ extends RigidBody3D
 @export var item_id: String = "walis"
 
 @onready var collision := $CollisionShape3D
+@onready var sweepAnim := $"../Walis1/Walis1Sweep"
 
 var key := "Trash Area"
 var is_equipped := false
@@ -86,8 +87,8 @@ func _process(delta):
 
 	if Input.is_action_pressed("use") and on_trash and not Globals.is_in_dialogue:
 		var target = _get_trash_target(ray)
+		sweepAnim.play("Sweep")
 
-		# Hide "Hold E" prompt and suppress the base interact prompt while actively holding
 		if hold_label != null:
 			hold_label.visible = false
 		Globals.show_interact_prompt.emit(false)
@@ -122,9 +123,11 @@ func _process(delta):
 
 	else:
 		# Not aiming at trash at all
+		sweepAnim.play("RESET")
 		if hold_label != null:
 			hold_label.visible = false
 		_stop_cleaning(player)
+		
 
 func _get_trash_target(ray) -> Node:
 	if ray == null or not ray.is_colliding():

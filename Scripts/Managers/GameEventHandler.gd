@@ -104,6 +104,8 @@ func lolo_day2a_end_sequence() -> void:
 
 func leus_day2a_end_sequence() -> void:
 	Characters.characters["leus"].disappear()
+	await Globals.wait(2.0)
+	TasksManager.add_to_tasklist(2, "Get some eggs")
 
 func handle_journal_add(argument: String) -> void:
 	var payload: String = argument.substr("journal:add:".length())

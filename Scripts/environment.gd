@@ -4,9 +4,7 @@ extends DirectionalLight3D
 @onready var audio := $"../AudioStreamPlayer"
 
 func _ready():
-	print("🌍 ENVIRONMENT READY - registering...")
 	Items.items["environment"] = self
-	print("✅ Environment registered: ", Items.items["environment"])
 
 func dayPosition():
 	sun.rotation_degrees = Vector3(-44.4, 56.5, -13.2)

@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-Globals="*uid://dfcixtequvb1c"
+Globals="*uid://gjh11ecwto6e"
 GlobalTracker="*uid://fff305pojt32"
 Items="*uid://cb1obnvmnnshw"
 Characters="*uid://wcocs8aj1a5f"
