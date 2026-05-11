@@ -48,8 +48,24 @@ func refresh():
 		richtext_label.bbcode_enabled = true
 		richtext_label.custom_minimum_size = Vector2(200, 30)
 		richtext_label.fit_content = true
-		richtext_label.text = "☐ %s" % current_task["name"]
+		var progress_text = TasksManager.get_task_progress_text(current_task["name"])
+		if progress_text != "":
+			richtext_label.text = "☐ %s  %s" % [current_task["name"], progress_text]
+		else:
+			richtext_label.text = "☐ %s" % current_task["name"]
 		task_list.add_child(richtext_label)
+
+		# Show subtasks if any
+		var subtasks = TasksManager.get_subtasks(current_task["name"])
+		for subtask in subtasks:
+			var sub_label = Label.new()
+			sub_label.add_theme_font_size_override("font_size", 12)
+			if subtask["done"]:
+				sub_label.text = "     ✓ %s" % subtask["name"]
+				sub_label.modulate = Color(0.6, 0.6, 0.6)
+			else:
+				sub_label.text = "     ☐ %s" % subtask["name"]
+			task_list.add_child(sub_label)
 
 	visible = current_task != null
 

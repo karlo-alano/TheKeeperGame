@@ -8,8 +8,11 @@ func obtain():
 	if hasEgg:
 		print("[egg] already obtained, ignoring")
 		return
+	if not TasksManager.is_task_unlocked(1, "Collect eggs"):
+		return
 	GlobalTracker.eggCounter += 1
 	hasEgg = true
+	TasksManager.update_task_progress("Collect eggs", GlobalTracker.eggCounter)
 	# immediate feedback: hide the whole egg root (mesh is a sibling of this StaticBody3D)
 	var root = get_parent()
 	if root:

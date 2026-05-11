@@ -5,7 +5,13 @@ var slot := "Cat Bowl"
 var current_feed_time := 0.0
 var _fully_fed := false
 
-@export var full_bowl_scene: PackedScene
+var _full_bowl: Node3D = null
+
+func _ready() -> void:
+	# Find the CatBowlWithFood node in the world and hide it at start
+	_full_bowl = get_tree().root.find_child("CatBowlWithFood", true, false)
+	if _full_bowl:
+		_full_bowl.visible = false
 
 func feed(delta: float) -> void:
 	if _fully_fed:
@@ -13,20 +19,18 @@ func feed(delta: float) -> void:
 	current_feed_time += delta
 	if current_feed_time >= FEED_DURATION:
 		_fully_fed = true
-		TasksManager.set_task_done(1, 3, true)
+		TasksManager.update_task_progress("Feed Cally", 1)
+		TasksManager.mark_task_done_by_name(1, "Feed Cally")
 		TasksManager.add_put_it_back_task(1, "Cat Bowl")
-		_swap_to_full_bowl()
+		_show_full_bowl()
+		# After feeding, prompt the next task on the taskbar
+		TasksManager.add_to_tasklist_delayed(1, "Go to the mailbox", 3.0)
 
 func reset_progress() -> void:
 	current_feed_time = 0.0
 
-func _swap_to_full_bowl() -> void:
-	if full_bowl_scene == null:
-		full_bowl_scene = load("res://cat_bowl_with_food.tscn")
-	var pos = global_position
-	var rot = global_rotation
-	var full_bowl = full_bowl_scene.instantiate()
-	get_parent().add_child(full_bowl)
-	full_bowl.global_position = pos
-	full_bowl.global_rotation = rot
-	queue_free()
+func _show_full_bowl() -> void:
+	# Hide empty bowl, show full bowl
+	visible = false
+	if _full_bowl:
+		_full_bowl.visible = true

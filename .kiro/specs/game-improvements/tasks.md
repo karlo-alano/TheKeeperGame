@@ -18,3 +18,12 @@
 - [x] 4.2 Apply `palatinolinotype_italic.ttf` font overrides on `DialogicNode_DialogText` in `Dialog/Styles/VisualNovelTextbox/custom_visual_novel_textbox.tscn` (monologue style)
 - [x] 4.3 Create `Dialog/Styles/VisualNovelTextbox/dialogue_vn_textbox.tscn` as a copy of `custom_visual_novel_textbox.tscn` with `palatinolinotype_roman.ttf` applied to `DialogicNode_DialogText`, then update `Dialog/Styles/Dialog.tres` layer 13 to reference this new scene
 - [x] 4.4 Apply `palatinolinotype_roman.ttf` font override on `HUD/HoldLabel` in `Scenes/player.tscn`
+
+## Task 5: Cat bowl visibility toggle (empty/full stacked)
+- [x] 5.1 Update `Scenes/cat_bowl.tscn` to include both empty bowl and full bowl meshes as children, with full bowl set to `visible = false`
+- [x] 5.2 Rewrite `Scripts/cat_bowl.gd` to toggle visibility (empty → hidden, full → visible) instead of swapping scenes
+- [x] 5.3 Remove standalone `CatBowlWithFood` node from `Scenes/World_day1A.tscn` and remove `full_bowl_scene` export from the cat bowl instance
+
+## Task 6: Add "Deliver the mails" task
+- [x] 6.1 Add `{"name": "Deliver the mails", "done": false}` to day 1 tasks in `Scripts/Managers/TasksManager.gd`
+- [x] 6.2 Update `Scripts/mailbox.gd` to call `TasksManager.mark_task_done_by_name(1, "Deliver the mails")` on first interaction

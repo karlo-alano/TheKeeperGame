@@ -17,6 +17,11 @@ func _sync_objective_slot_home() -> void:
 		if node.has_method("sync_home_from_world_item"):
 			node.sync_home_from_world_item(self)
 
+func can_pickup() -> bool:
+	if GlobalTracker.current_day != 1:
+		return true
+	return TasksManager.is_task_unlocked(1, "Feed Cally")
+
 func onPickup():
 	collision.disabled = true
 	position = Vector3(0, -1, 0)

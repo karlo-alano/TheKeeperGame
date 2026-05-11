@@ -22,6 +22,7 @@ var day2LeusFlag = false
 var isHoldingLunchbox := false
 
 # Letters
+var mailCollected := false
 var letterInventory := {
 	"lorie": {"delivered": false},
 	"leus": {"delivered": false},

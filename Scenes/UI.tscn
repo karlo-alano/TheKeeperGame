@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://b3ak2q6paxbfs" path="res://Scripts/task_bar.gd" id="2_nxvpl"]
 [ext_resource type="AudioStream" uid="uid://b8dged18hndun" path="res://Audio/UI/BlipPositive.mp3" id="3_dewlx"]
 [ext_resource type="AudioStream" uid="uid://ynn3ixqhfp7i" path="res://Audio/UI/BlipConfused.mp3" id="4_hfhsn"]
-[ext_resource type="FontFile" uid="uid://cs3rksfptro8t" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 [ext_resource type="Script" uid="uid://ceej0fxxyao60" path="res://Scenes/texture_progress_bar.gd" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://5rrrv0uksq7a" path="res://Imports/radial-progress-bar.png" id="5_x3wgy"]
+[ext_resource type="FontFile" uid="uid://cs3rksfptro8t" path="res://Fonts/palatinolinotype_roman.ttf" id="font_roman"]
 
 [sub_resource type="Theme" id="Theme_3iaii"]
 default_font = ExtResource("font_roman")
@@ -96,14 +96,14 @@ text = "Press G to open the journal"
 [node name="TaskBar" type="PanelContainer" parent="." unique_id=1765240496]
 layout_direction = 3
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 10.0
-offset_top = -251.0
-offset_right = 50.0
-offset_bottom = -211.0
-grow_vertical = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -274.0
+offset_top = 70.0
+offset_right = -84.0
+offset_bottom = 110.0
+grow_horizontal = 0
 theme = SubResource("Theme_nxvpl")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nxvpl")
 script = ExtResource("2_nxvpl")
@@ -135,7 +135,7 @@ volume_db = -12.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=77532984]
 visible = false
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -156,7 +156,7 @@ script = ExtResource("5_fkybt")
 
 [node name="HoldLabel" type="Label" parent="." unique_id=112233445]
 visible = false
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

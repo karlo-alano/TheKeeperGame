@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://6gwg5ilh4yrr" path="res://Imports/catfood/cat food bowl with catfood.glb" id="1_j7f8x"]
 
 [node name="CatBowlWithFood" type="Node3D" unique_id=565949430]
-transform = Transform3D(0.153, 0, 0, 0, 0.056, 0, 0, 0, 0.127, 0, 0, 0)
 
 [node name="cat food bowl with catfood" parent="." unique_id=23011208 instance=ExtResource("1_j7f8x")]
 transform = Transform3D(0.153, 0, 0, 0, 0.056, 0, 0, 0, 0.127, 0.20175636, 0, 0.1942513)

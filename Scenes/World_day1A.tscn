@@ -22,12 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://b2ti47ng0pr07" path="res://Imports/GardenPatch/chicken_coop.tscn" id="18_b68dp"]
 [ext_resource type="PackedScene" uid="uid://btwemrvql86hb" path="res://Scenes/garbageheap.tscn" id="20_f2kev"]
 [ext_resource type="PackedScene" uid="uid://b44jpt6deulyw" path="res://Scenes/cat_bowl.tscn" id="22_elrir"]
-[ext_resource type="PackedScene" uid="uid://6gwg5ilh4yrr" path="res://Imports/catfood/cat food bowl with catfood.glb" id="23_fykdy"]
 [ext_resource type="PackedScene" uid="uid://c481v7okmrycj" path="res://Scenes/CatFood.tscn" id="23_ojqxf"]
 [ext_resource type="PackedScene" uid="uid://b58xu0nrrv03x" path="res://Scenes/objective_slot.tscn" id="24_76mku"]
 [ext_resource type="ArrayMesh" uid="uid://cl6ot227tmw81" path="res://addons/watering_can_mesh.tres" id="25_55y6p"]
 [ext_resource type="ArrayMesh" uid="uid://byjllf2ohhwxq" path="res://addons/walis.tres" id="26_fqk6p"]
 [ext_resource type="ArrayMesh" uid="uid://ddfgy8fivgc8r" path="res://Imports/catfood/catfood.tres" id="27_ss7vg"]
+[ext_resource type="PackedScene" uid="uid://nojguwnftyee" path="res://cat_bowl_with_food.tscn" id="29_ip1j4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("1_eira3")
@@ -295,11 +295,9 @@ transform = Transform3D(0.28525078, 0, 0, 0, 0.39799312, 0, 0, 0, 0.23801878, -2
 
 [node name="cat food bowl" parent="." unique_id=150117678 instance=ExtResource("22_elrir")]
 transform = Transform3D(2.0705795, 0, 0, 0, 0.9999996, 0, 0, 0, 1.7265735, -2.7938483, 0.17056996, 13.970279)
-full_bowl_scene = ExtResource("23_fykdy")
 
 [node name="CatFood" parent="." unique_id=588360412 instance=ExtResource("23_ojqxf")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 11.486527, 0.97478145, -23.31189)
-item_id = null
 
 [node name="WalisGhostMesh" parent="." unique_id=1493726696 instance=ExtResource("24_76mku")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 12.072125, 1.0116827, -22.936644)
@@ -318,5 +316,8 @@ transform = Transform3D(0.0004189907, 0, 0.11999927, 0, 0.12, 0, -0.11999927, 0,
 expected_item_id = "cat_food"
 ghost_model = ExtResource("27_ss7vg")
 max_place_distance = 2.0
+
+[node name="CatBowlWithFood" parent="." unique_id=565949430 instance=ExtResource("29_ip1j4")]
+transform = Transform3D(1.0601021, 0, 0, 0, 1.1989427, 0, 0, 0, 1.0222052, -3.0044003, 0.27716532, 13.770726)
 
 [connection signal="body_entered" from="Lolo/DetectionArea" to="Lolo/DetectionArea" method="_on_body_entered"]

@@ -2,6 +2,69 @@ extends Node
 
 signal task_done_changed(day: int, index: int, done: bool)
 
+## ─── DEBUG: Set to true to skip all task gating (lets you interact with anything) ───
+const DEBUG_SKIP_TASK_GATES := true
+
+## Task progress tracking: { "task_name": { "current": 0, "total": N } }
+var task_progress := {
+	"Water the Garden": {"current": 0, "total": 2},
+	"Collect eggs": {"current": 0, "total": 6},
+	"Sweep trash": {"current": 0, "total": 6},
+	"Feed Cally": {"current": 0, "total": 1},
+	"Deliver Mails": {"current": 0, "total": 5},
+}
+
+## Subtasks: { "task_name": [ {"name": "...", "done": false}, ... ] }
+var task_subtasks := {
+	"Deliver Mails": [
+		{"name": "Go to the Valenciano's unit", "done": false},
+		{"name": "Go to Lorie's unit", "done": false},
+		{"name": "Go to Lolo Aurelio's unit", "done": false},
+		{"name": "Go to Leus' unit", "done": false},
+		{"name": "Go to Kei and Dale's unit", "done": false},
+	]
+}
+
+func update_task_progress(task_name: String, current: int) -> void:
+	if task_progress.has(task_name):
+		task_progress[task_name]["current"] = current
+		Items.items["tasklist"].refresh()
+
+func complete_subtask(task_name: String, subtask_name: String) -> void:
+	if not task_subtasks.has(task_name):
+		return
+	for subtask in task_subtasks[task_name]:
+		if subtask["name"] == subtask_name and not subtask["done"]:
+			subtask["done"] = true
+			# Also update progress count
+			if task_progress.has(task_name):
+				task_progress[task_name]["current"] += 1
+			Items.items["tasklist"].refresh()
+			# Check if all subtasks are done
+			var all_done := true
+			for s in task_subtasks[task_name]:
+				if not s["done"]:
+					all_done = false
+					break
+			if all_done:
+				mark_task_done_by_name(1, task_name)
+				mark_state_task_done_by_name(1, task_name)
+				# After Deliver Mails is done, add next task
+				if task_name == "Deliver Mails":
+					add_to_tasklist_delayed(1, "Check on Forsythe", 2.0)
+			return
+
+func get_task_progress_text(task_name: String) -> String:
+	if task_progress.has(task_name):
+		var p = task_progress[task_name]
+		return "%d/%d" % [p["current"], p["total"]]
+	return ""
+
+func get_subtasks(task_name: String) -> Array:
+	if task_subtasks.has(task_name):
+		return task_subtasks[task_name]
+	return []
+
 # Templates: immutable per-day metadata and default task list
 var day_templates := {
 	1: {"label": "June 31",
@@ -9,7 +72,9 @@ var day_templates := {
 			{"name": "Water the Garden", "done": false},
 			{"name": "Collect eggs", "done": false},
 			{"name": "Sweep trash", "done": false},
-			{"name": "Feed Cally", "done": false}
+			{"name": "Feed Cally", "done": false},
+			{"name": "Deliver Mails", "done": false},
+			{"name": "Check on Forsythe", "done": false}
 		]
 	},
 	2: {"label": "July 1",
@@ -48,6 +113,31 @@ func mark_task_done_by_name(day: int, task_name: String) -> void:
 	# task not in task_list yet — add it as already done so it animates out
 	tasks.append({"name": task_name, "done": false})
 	mark_task_done(day, tasks.size() - 1)
+
+func mark_state_task_done_by_name(day: int, task_name: String) -> void:
+	if not state.has(day):
+		return
+	var tasks: Array = state[day].get("tasks", [])
+	for i in range(tasks.size()):
+		if tasks[i]["name"] == task_name:
+			set_task_done(day, i, true)
+			return
+
+## Returns true if the given task is allowed to be started (previous task is done).
+## First task of the day is always unlocked.
+func is_task_unlocked(day: int, task_name: String) -> bool:
+	if DEBUG_SKIP_TASK_GATES:
+		return true
+	if not state.has(day):
+		return false
+	var tasks: Array = state[day].get("tasks", [])
+	for i in range(tasks.size()):
+		if tasks[i]["name"] == task_name:
+			if i == 0:
+				return true
+			return tasks[i - 1].get("done", false)
+	# Task not found in templates — allow by default
+	return true
 
 func add_to_tasklist(day: int, name: String) -> void:
 	task_list[day]["tasks"].append({"name": name, "done": false,})

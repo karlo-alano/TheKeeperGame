@@ -36,6 +36,7 @@ func water(delta: float) -> void:
 		current_water_time = WATER_DURATION
 		emit_signal("watering_progress", 1.0)
 		watered_count += 1
+		TasksManager.update_task_progress("Water the Garden", watered_count)
 		if watered_count >= total_patches:
 			TasksManager.set_task_done(1, 0, true)
 			TasksManager.add_put_it_back_task(1, "Garden Area")

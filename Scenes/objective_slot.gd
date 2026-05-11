@@ -30,7 +30,15 @@ func sync_home_from_world_item(item: Node3D) -> void:
 		return
 	if str(item.get("item_id")) != expected_item_id:
 		return
+	# Use the item's transform but apply the internal mesh scale so the ghost
+	# matches the visual size of the actual item (mesh is often scaled down inside).
+	var mesh_scale := Vector3.ONE
+	for child in item.get_children():
+		if child is MeshInstance3D:
+			mesh_scale = child.transform.basis.get_scale()
+			break
 	final_position.global_transform = item.global_transform
+	final_position.scale = final_position.scale * mesh_scale
 	_update_ghost_transform()
 
 

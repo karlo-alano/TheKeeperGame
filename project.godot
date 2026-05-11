@@ -41,7 +41,13 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Door1A_D1TaskDeliverMails": "res://Dialog/Timelines/Door1A_D1TaskDeliverMails.dtl",
+"Door1B_D1TaskDeliverMails": "res://Dialog/Timelines/Door1B_D1TaskDeliverMails.dtl",
+"Door1C_D1TaskDeliverMails": "res://Dialog/Timelines/Door1C_D1TaskDeliverMails.dtl",
+"Door2A_D1TaskDeliverMails": "res://Dialog/Timelines/Door2A_D1TaskDeliverMails.dtl",
+"Door2B_D1TaskDeliverMails": "res://Dialog/Timelines/Door2B_D1TaskDeliverMails.dtl",
 "Dream_Trigger": "res://Dialog/Timelines/Dream_Trigger.dtl",
+"Forsythe_D1TaskCheckForsythe": "res://Dialog/Timelines/Forsythe_D1TaskCheckForsythe.dtl",
 "Intro": "res://Dialog/Timelines/Intro.dtl",
 "IntroPrayer": "res://Dialog/Timelines/Day1/IntroPrayer.dtl",
 "Intro_Day2": "res://Dialog/Timelines/Intro_Day2.dtl",

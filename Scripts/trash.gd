@@ -19,6 +19,7 @@ func clean(delta: float) -> void:
 	if current_clean_time >= CLEAN_DURATION:
 		_fully_cleaned = true
 		cleaned_count += 1
+		TasksManager.update_task_progress("Sweep trash", cleaned_count)
 		if cleaned_count >= TOTAL_TRASH:
 			TasksManager.set_task_done(1, 2, true)
 			TasksManager.add_put_it_back_task(1, "Trash Area")

@@ -157,6 +157,18 @@ func handle_objectives_update(argument: String) -> void:
 	if TasksManager.get_label(day) == "":
 		return
 
+	# DEBUG: Skip taskbar overwrite so we can test later tasks directly
+	if TasksManager.DEBUG_SKIP_TASK_GATES and day == 1:
+		# Still set journal text if present
+		if parts.size() > 2:
+			TasksManager.set_journal(day, parts[2])
+		# Populate taskbar with "Go to the mailbox" directly
+		TasksManager.task_list[day]["tasks"] = [{"name": "Go to the mailbox", "done": false}]
+		if Items.items.has("tasklist"):
+			Items.items["tasklist"].visible = true
+			Items.items["tasklist"].refresh()
+		return
+
 	var tasks_blob: String = parts[1]
 	var task_names: PackedStringArray = tasks_blob.split(";;", false)
 	var new_tasks: Array = []

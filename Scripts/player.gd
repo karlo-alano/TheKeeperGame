@@ -131,6 +131,8 @@ func _process(_delta: float):
 		if hit.is_in_group("pickable") and held_object == null:
 			Globals.show_interact_prompt.emit(true)
 			if Input.is_action_just_pressed("interact") and held_object == null and not Globals.is_in_dialogue:
+				if hit.has_method("can_pickup") and not hit.can_pickup():
+					return
 				held_object = hit
 				hit.freeze = true
 				hit.reparent(hand)
