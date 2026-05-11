@@ -15,7 +15,6 @@ func openDoor():
 	$"../Door2C".play("OpenDoor")
 	
 func interact():
-	# Day 1: Check on Forsythe task — only available after ALL mail deliveries are done
 	if GlobalTracker.current_day == 1 and not _forsythe_checked:
 		# Hard check: all 5 mail subtasks must be done (not bypassed by debug flag)
 		var subtasks = TasksManager.get_subtasks("Deliver Mails")
@@ -31,13 +30,17 @@ func interact():
 		TasksManager.mark_state_task_done_by_name(1, "Check on Forsythe")
 		Globals.start_dialogue("Forsythe_D1TaskCheckForsythe", true)
 		return
+	
 
 	# Day 2 behavior
 	if !is_open:
 		if GlobalTracker.current_day == 2 and !isOpenedOnce:
 			Globals.start_dialogue("monologue", false)
 		$"../Door2C".play("OpenDoor")
+		$"../OpenSound".play()
 		is_open = !is_open
 	else:
 		$"../Door2C".play("CloseDoor")
+		await Globals.wait(0.3)
+		$"../CloseSound".play()
 		is_open = !is_open

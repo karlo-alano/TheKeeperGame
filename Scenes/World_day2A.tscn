@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://c1o04y54m8wkv" path="res://Imports/GardenPatch/garden_patch.tscn" id="18_npl7o"]
 [ext_resource type="Script" uid="uid://cswtl6gv5k7mg" path="res://Scripts/lolo.gd" id="19_jg7lx"]
 [ext_resource type="PackedScene" uid="uid://b2ti47ng0pr07" path="res://Imports/GardenPatch/chicken_coop.tscn" id="19_vvifo"]
-[ext_resource type="PackedScene" uid="uid://rfgigeci02e5" path="res://Scenes/dialogbox.tscn" id="20_4vq3m"]
 [ext_resource type="PackedScene" uid="uid://bcm560d1kwql6" path="res://Imports/Characters/leus_standing.tscn" id="21_jrdn3"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
@@ -248,9 +247,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.
 [node name="LoloStanding" parent="." unique_id=2069828129 instance=ExtResource("18_7cec8")]
 transform = Transform3D(-0.033554625, 0, -0.39859015, 0, 0.4, 0, 0.39859015, 0, -0.033554625, -14.468609, 3.5036066, -2.7508426)
 script = ExtResource("19_jg7lx")
-
-[node name="dialog" parent="." unique_id=1324470672 instance=ExtResource("20_4vq3m")]
-visible = false
 
 [node name="LeusStanding" parent="." unique_id=628587969 instance=ExtResource("21_jrdn3")]
 transform = Transform3D(-0.4, 0, 3.4969112e-08, 0, 0.4, 0, -3.4969112e-08, 0, -0.4, 10.379078, 0.26327604, -18.24995)

@@ -1294,6 +1294,7 @@ points = PackedVector3Array(-0.12512095, -0.84777576, 0.07223783, -0.05092503, -
 
 [sub_resource type="Animation" id="Animation_t3q0i"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1309,6 +1310,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_76e8c"]
 resource_name = "Sweep"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -170,7 +170,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-
-
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.
