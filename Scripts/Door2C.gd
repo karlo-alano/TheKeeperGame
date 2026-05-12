@@ -55,7 +55,7 @@ func interact():
 
 	# Day 2 behavior
 	if !is_open:
-		if GlobalTracker.current_day == 2 and !isOpenedOnce:
+		if GlobalTracker.current_day == 2:
 			Globals.start_dialogue("monologue", false)
 		$"../Door2C".play("OpenDoor")
 		$"../OpenSound".play()

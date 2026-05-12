@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ndc3w1snwoyg" path="res://Imports/NewDorm/BetterDormBuildingw_furniture.glb" id="1_tirfk"]
 [ext_resource type="Script" uid="uid://dd1v8dj6fgmhv" path="res://Scripts/door1b.gd" id="2_0nuou"]
-[ext_resource type="Script" uid="uid://dg68qghgesd3b" path="res://Scripts/door2c.gd" id="2_pant0"]
+[ext_resource type="Script" uid="uid://dg68qghgesd3b" path="res://Scripts/Door2C.gd" id="2_pant0"]
 [ext_resource type="Script" uid="uid://d3d57svnkjcqu" path="res://Scripts/door1a.gd" id="3_0nuou"]
 [ext_resource type="Script" uid="uid://d1bmlmqhad4ak" path="res://Scripts/door1c.gd" id="3_y308v"]
 [ext_resource type="Script" uid="uid://dm3gshka53o4i" path="res://Scripts/door2b.gd" id="5_f48h3"]

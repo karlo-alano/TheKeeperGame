@@ -9,5 +9,5 @@ var characters = {
 	"leus": null,
 	"mrsValenciano": null,
 	"mrValenciano": null,
-	"cally": null
+	"cally": null,
 }
