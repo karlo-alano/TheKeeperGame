@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bfe7tt5uluqg7"]
+
+[ext_resource type="Script" uid="uid://bacjlvkph7x7x" path="res://Scripts/kopol_day_2.gd" id="1_1jkd5"]
+[ext_resource type="PackedScene" uid="uid://42dyf2e2wcyk" path="res://Imports/Characters/kei_standing.tscn" id="1_yvr13"]
+[ext_resource type="PackedScene" uid="uid://cb0pl4h3ev3u7" path="res://Imports/Characters/dale_standing.tscn" id="2_1jkd5"]
+
+[node name="Node3D" type="Node3D" unique_id=1472115342]
+script = ExtResource("1_1jkd5")
+
+[node name="KeiStanding" parent="." unique_id=863547443 instance=ExtResource("1_yvr13")]
+visible = false
+
+[node name="DaleStanding" parent="." unique_id=2039566072 instance=ExtResource("2_1jkd5")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.7189921, 0, -0.66622424)
+visible = false

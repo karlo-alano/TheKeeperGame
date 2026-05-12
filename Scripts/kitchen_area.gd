@@ -37,7 +37,9 @@ func interact():
 			if Items.items["radio"].has_method("disappear"):
 				Items.items["radio"].disappear()
 	elif GlobalTracker.current_day == 2:
-		if GlobalTracker.eggTaskCompleted:
+		if GlobalTracker.eggTaskCompleted2:
 			await Globals.wait(2.0)
 			$"../../Door_001/Knock".play()
+			Items.items["kopol"].appear()
+			GlobalTracker.day2KopolFlag == true
 		

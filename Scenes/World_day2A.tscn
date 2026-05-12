@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cswtl6gv5k7mg" path="res://Scripts/lolo.gd" id="19_jg7lx"]
 [ext_resource type="PackedScene" uid="uid://b2ti47ng0pr07" path="res://Imports/GardenPatch/chicken_coop.tscn" id="19_vvifo"]
 [ext_resource type="PackedScene" uid="uid://bcm560d1kwql6" path="res://Imports/Characters/leus_standing.tscn" id="21_jrdn3"]
+[ext_resource type="PackedScene" uid="uid://bfe7tt5uluqg7" path="res://Imports/Characters/kopol_day2.tscn" id="21_rryvk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("2_4vq3m")
@@ -250,3 +251,6 @@ script = ExtResource("19_jg7lx")
 
 [node name="LeusStanding" parent="." unique_id=628587969 instance=ExtResource("21_jrdn3")]
 transform = Transform3D(-0.4, 0, 3.4969112e-08, 0, 0.4, 0, -3.4969112e-08, 0, -0.4, 10.379078, 0.26327604, -18.24995)
+
+[node name="Kopol" parent="." unique_id=1472115342 instance=ExtResource("21_rryvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7108151, 0.2788081, 13.142945)

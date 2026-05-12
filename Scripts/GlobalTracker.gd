@@ -12,11 +12,13 @@ var eggCounter: int:
 		_eggCounter = value
 		egg_collected.emit()
 
-var eggTaskCompleted := false
+var eggTaskCompleted1 := false
+var eggTaskCompleted2 := false
 var dialogDone := false
 var current_day: int = 1
 var daily_event_flags := {}
-var day2LeusFlag = false
+var day2LeusFlag := false
+var day2KopolFlag := false
 
 # LunchBox
 var isHoldingLunchbox := false

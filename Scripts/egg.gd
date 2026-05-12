@@ -4,9 +4,7 @@ var hasEgg := false
 @onready var sound := get_node_or_null("../Blip")
 
 func obtain():
-	print("[egg] obtain() called on", get_path(), "hasEgg=" , hasEgg)
 	if hasEgg:
-		print("[egg] already obtained, ignoring")
 		return
 	if not TasksManager.is_task_unlocked(1, "Collect eggs"):
 		return
@@ -35,12 +33,19 @@ func obtain():
 		root.call_deferred("queue_free")
 	else:
 		despawn()
-	if GlobalTracker.eggCounter == 6:
-		GlobalTracker.eggTaskCompleted = true
-		TasksManager.set_task_done(1, 1, true)
+	if GlobalTracker.current_day == 1:
+		if GlobalTracker.eggCounter == 6:
+			GlobalTracker.eggTaskCompleted1 = true
+			TasksManager.set_task_done(1, 1, true)
+			GlobalTracker.eggCounter == null
+	if GlobalTracker.current_day == 2:
+		if GlobalTracker.eggCounter == 6:
+			GlobalTracker.eggTaskCompleted2 = true
+			TasksManager.mark_task_done(2, 0)
+			GlobalTracker.eggCounter == null
+	
 
 func despawn():
-	# Safely free this node (deferred to avoid tree modification during physics callbacks)
 	if is_inside_tree():
 		call_deferred("queue_free")
 	else:
