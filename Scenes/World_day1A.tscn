@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://duik7asdribty" path="res://Scenes/shed.tscn" id="11_fykdy"]
 [ext_resource type="PackedScene" uid="uid://dfkm1j3kka7ba" path="res://Scenes/lolo.tscn" id="12_ip1j4"]
 [ext_resource type="Script" uid="uid://dbre2vejt5284" path="res://Scripts/loloDetectionArea.gd" id="13_l858n"]
+[ext_resource type="Script" path="res://Scripts/loloAfterForsytheDetectionArea.gd" id="30_l858n"]
 [ext_resource type="AudioStream" uid="uid://bbbck0eqcl4l4" path="res://Audio/bgm/forestAmbience.mp3" id="14_5dn08"]
 [ext_resource type="PackedScene" uid="uid://ccbejbue7iasx" path="res://Scenes/altar.tscn" id="15_78iwl"]
 [ext_resource type="PackedScene" uid="uid://d2pfl86t5acox" path="res://Imports/radio/radio.tscn" id="16_auoy3"]
@@ -28,6 +29,7 @@
 [ext_resource type="ArrayMesh" uid="uid://byjllf2ohhwxq" path="res://addons/walis.tres" id="26_fqk6p"]
 [ext_resource type="ArrayMesh" uid="uid://ddfgy8fivgc8r" path="res://Imports/catfood/catfood.tres" id="27_ss7vg"]
 [ext_resource type="PackedScene" uid="uid://nojguwnftyee" path="res://cat_bowl_with_food.tscn" id="29_ip1j4"]
+[ext_resource type="PackedScene" uid="uid://bct4hfp1xk3tc" path="res://Scenes/lolo_standing.tscn" id="29_l858n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("1_eira3")
@@ -320,4 +322,15 @@ max_place_distance = 2.0
 [node name="CatBowlWithFood" parent="." unique_id=565949430 instance=ExtResource("29_ip1j4")]
 transform = Transform3D(1.0601021, 0, 0, 0, 1.1989427, 0, 0, 0, 1.0222052, -3.0044003, 0.27716532, 13.770726)
 
+[node name="LoloAfterForsythe" parent="." unique_id=2069828129 instance=ExtResource("29_l858n")]
+transform = Transform3D(-0.38123193, 0, 0.12108766, 0, 0.4, 0, -0.12108766, 0, -0.38123193, -22.23745, 0.29624227, -7.6319942)
+
+[node name="DetectionArea" type="Area3D" parent="LoloAfterForsythe" unique_id=1155184812]
+script = ExtResource("30_l858n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoloAfterForsythe/DetectionArea" unique_id=1604568044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039604187, 1.65065, 3.307251)
+shape = SubResource("BoxShape3D_aih36")
+
 [connection signal="body_entered" from="Lolo/DetectionArea" to="Lolo/DetectionArea" method="_on_body_entered"]
+[connection signal="body_entered" from="LoloAfterForsythe/DetectionArea" to="LoloAfterForsythe/DetectionArea" method="_on_body_entered"]

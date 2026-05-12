@@ -9,6 +9,13 @@ var _forsythe_checked := false
 func _ready():
 	Items.items["door2c"] = self
 	add_to_group("interactable")
+	# Hide LoloAfterForsythe until Check on Forsythe task is done
+	call_deferred("_hide_lolo_after_forsythe")
+
+func _hide_lolo_after_forsythe() -> void:
+	var node = get_tree().root.find_child("LoloAfterForsythe", true, false)
+	if node:
+		node.visible = false
 	
 
 func openDoor():
@@ -16,7 +23,15 @@ func openDoor():
 	
 func interact():
 	if GlobalTracker.current_day == 1 and not _forsythe_checked:
-		# Hard check: all 5 mail subtasks must be done (not bypassed by debug flag)
+		# Day1B: Check on Forsythe (after talking to Lolo)
+		if TasksManager.task_list[1]["tasks"].any(func(t): return t["name"] == "Check on Forsythe" and not t["done"]):
+			_forsythe_checked = true
+			TasksManager.mark_task_done_by_name(1, "Check on Forsythe")
+			Globals.start_dialogue("Forsythe_Day1B", true)
+			await Dialogic.timeline_ended
+			TasksManager.add_to_tasklist_delayed(1, "Return to the party", 1.5)
+			return
+		# Day1A: Check on Forsythe (after mail deliveries)
 		var subtasks = TasksManager.get_subtasks("Deliver Mails")
 		var all_delivered := subtasks.size() > 0
 		for s in subtasks:
@@ -28,6 +43,12 @@ func interact():
 		_forsythe_checked = true
 		TasksManager.mark_task_done_by_name(1, "Check on Forsythe")
 		TasksManager.mark_state_task_done_by_name(1, "Check on Forsythe")
+		# Show LoloAfterForsythe now
+		var lolo_after = get_tree().root.find_child("LoloAfterForsythe", true, false)
+		if lolo_after:
+			lolo_after.visible = true
+		# Add "Take a nap" to taskbar after a delay
+		TasksManager.add_to_tasklist_delayed(1, "Take a nap", 2.0)
 		Globals.start_dialogue("Forsythe_D1TaskCheckForsythe", true)
 		return
 	

@@ -41,13 +41,16 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Bed_NotYet": "res://Dialog/Timelines/Bed_NotYet.dtl",
 "Door1A_D1TaskDeliverMails": "res://Dialog/Timelines/Door1A_D1TaskDeliverMails.dtl",
 "Door1B_D1TaskDeliverMails": "res://Dialog/Timelines/Door1B_D1TaskDeliverMails.dtl",
 "Door1C_D1TaskDeliverMails": "res://Dialog/Timelines/Door1C_D1TaskDeliverMails.dtl",
 "Door2A_D1TaskDeliverMails": "res://Dialog/Timelines/Door2A_D1TaskDeliverMails.dtl",
 "Door2B_D1TaskDeliverMails": "res://Dialog/Timelines/Door2B_D1TaskDeliverMails.dtl",
 "Dream_Trigger": "res://Dialog/Timelines/Dream_Trigger.dtl",
+"FoodBox_Day1B_Intro": "res://Dialog/Timelines/FoodBox_Day1B_Intro.dtl",
 "Forsythe_D1TaskCheckForsythe": "res://Dialog/Timelines/Forsythe_D1TaskCheckForsythe.dtl",
+"Forsythe_Day1B": "res://Dialog/Timelines/Forsythe_Day1B.dtl",
 "Intro": "res://Dialog/Timelines/Intro.dtl",
 "IntroPrayer": "res://Dialog/Timelines/Day1/IntroPrayer.dtl",
 "Intro_Day2": "res://Dialog/Timelines/Intro_Day2.dtl",
@@ -55,7 +58,9 @@ directories/dtl_directory={
 "KeiDale_Day1_A": "res://Dialog/Timelines/KeiDale_Day1_A.dtl",
 "Leus_Day1_A": "res://Dialog/Timelines/Leus_Day1_A.dtl",
 "Leus_Day2_A": "res://Dialog/Timelines/Leus_Day2_A.dtl",
+"Lolo_Day1B_A": "res://Dialog/Timelines/Lolo_Day1B_A.dtl",
 "Lolo_Day1_A": "res://Dialog/Timelines/Lolo_Day1_A.dtl",
+"Lolo_Day1_AfterForsythe": "res://Dialog/Timelines/Lolo_Day1_AfterForsythe.dtl",
 "Lolo_Day1_B": "res://Dialog/Timelines/Lolo_Day1_B.dtl",
 "Lolo_Day1_C": "res://Dialog/Timelines/Lolo_Day1_C.dtl",
 "Lolo_Day2_A": "res://Dialog/Timelines/Lolo_Day2_A.dtl",

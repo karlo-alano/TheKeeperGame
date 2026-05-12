@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cmkxeg8itle8v" path="res://Scenes/objective_slot.gd" id="1_ty5no"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_slot"]
+radius = 1.0
+
 [node name="ObjectiveSlot" type="Node3D" unique_id=1493726696]
 script = ExtResource("1_ty5no")
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=1819050735]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=649546472]
+shape = SubResource("SphereShape3D_slot")
 
 [node name="FinalPosition" type="Marker3D" parent="." unique_id=850156660]
 

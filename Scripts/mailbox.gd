@@ -23,11 +23,8 @@ func interact():
 		Globals.start_dialogue("Timelines/Monologue_Day1_E", true)
 
 func _remove_lolo() -> void:
-	# Find and remove ALL nodes named "Lolo" in the entire tree
+	# Just hide and free - no await needed
 	var found = get_tree().root.find_child("Lolo", true, false)
-	while found and is_instance_valid(found):
-		var parent = found.get_parent()
-		if parent:
-			parent.remove_child(found)
+	if found and is_instance_valid(found):
+		found.visible = false
 		found.queue_free()
-		found = get_tree().root.find_child("Lolo", true, false)

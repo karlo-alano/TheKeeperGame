@@ -13,14 +13,19 @@ func change_viewport_world(new_scene_path: String) -> void:
 	var viewport = get_tree().root.find_child("SubViewport", true, false)
 	
 	if viewport:
-		# Create fade-in overlay
+		# Create fade overlay (starts transparent, fades to black, then fades out after load)
 		var fade_overlay = _create_fade_overlay()
+		fade_overlay.modulate = Color(1, 1, 1, 0)  # Start transparent
 		var ui_layer = get_tree().root
 		ui_layer.add_child(fade_overlay)
-		
+
+		# Fade TO black first
+		await _fade_in_overlay(fade_overlay, 1.0)
+
 		# Load new world
 		var old_world = viewport.get_node_or_null("World")
 		if old_world:
+			viewport.remove_child(old_world)
 			old_world.queue_free()
 		
 		var new_world_res = load(new_scene_path)
@@ -73,14 +78,14 @@ func _create_fade_overlay() -> ColorRect:
 
 func _fade_out_overlay(overlay: ColorRect, audio_player: AudioStreamPlayer = null, duration: float = 1.5) -> void:
 	var tween = create_tween()
-	tween.set_parallel(true)  # Run both animations at the same time
-	
-	# Fade out visual overlay
+	tween.set_parallel(true)
 	tween.tween_property(overlay, "modulate", Color(1, 1, 1, 0), duration)
-	
-	# Fade in audio if available
 	if audio_player:
 		tween.tween_property(audio_player, "volume_db", 0.0, duration)
-	
 	await tween.finished
 	overlay.queue_free()
+
+func _fade_in_overlay(overlay: ColorRect, duration: float = 1.0) -> void:
+	var tween = create_tween()
+	tween.tween_property(overlay, "modulate", Color(1, 1, 1, 1), duration)
+	await tween.finished

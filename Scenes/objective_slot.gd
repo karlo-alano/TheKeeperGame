@@ -30,6 +30,9 @@ func sync_home_from_world_item(item: Node3D) -> void:
 		return
 	if str(item.get("item_id")) != expected_item_id:
 		return
+	# food_box slot stays at its placed position — don't override with item's transform
+	if expected_item_id == "food_box":
+		return
 	# Use the item's transform but apply the internal mesh scale so the ghost
 	# matches the visual size of the actual item (mesh is often scaled down inside).
 	var mesh_scale := Vector3.ONE
@@ -48,8 +51,8 @@ func set_return_objective_active(active: bool) -> void:
 		_update_ghost_transform()
 		ghost_mesh.visible = true
 	else:
-		if current_item == null:
-			ghost_mesh.visible = false
+		ghost_mesh.visible = false
+		current_item = null
 
 
 func _update_ghost_transform() -> void:
@@ -61,8 +64,9 @@ func _update_ghost_transform() -> void:
 func _on_body_entered(body):
 	if body.get("item_id") == expected_item_id:
 		current_item = body
-		_update_ghost_transform()
-		ghost_mesh.visible = true
+		if _return_objective_active:
+			_update_ghost_transform()
+			ghost_mesh.visible = true
 
 
 # Item umalis sa area
@@ -116,8 +120,10 @@ func try_place_item(item: Node3D, player: Node3D) -> bool:
 
 	player.held_object = null
 
-	var scene: Node = get_tree().current_scene
-	item.reparent(scene)
+	# Reparent to the current world (SubViewport world, not root scene)
+	var world: Node = get_tree().root.find_child("World", true, false)
+	var target_parent: Node = world if world else get_tree().current_scene
+	item.reparent(target_parent)
 	item.global_transform = item.global_transform
 	if item is RigidBody3D:
 		var rb := item as RigidBody3D
@@ -126,6 +132,7 @@ func try_place_item(item: Node3D, player: Node3D) -> bool:
 		rb.freeze = true
 
 	ghost_mesh.visible = false
+	_return_objective_active = false
 
 	var tw := create_tween()
 	tw.set_parallel(true)

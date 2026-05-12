@@ -222,7 +222,7 @@ data = PackedVector3Array(1, -0.1924, -1, -1, 0.1218, -1, -1, -0.1924, -1, 1, -0
 size = Vector3(1.6907429, 4.345188, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4o50d"]
-size = Vector3(0.437841, 0.95696014, 0.44318277)
+size = Vector3(0.437841, 0.4565074, 0.44318277)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5g0me"]
 size = Vector3(0.8002727, 1.3913535, 0.7666439)
@@ -254,7 +254,7 @@ libraries/ = SubResource("AnimationLibrary_p8u1a")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1240796888]
 root_node = NodePath("../Door_001")
 
-[node name="Rice Bowl_001" parent="." index="3" unique_id=193103520 groups=["pickable"]]
+[node name="Rice Bowl_001" parent="." index="3" unique_id=2082081404 groups=["pickable"]]
 visible = false
 
 [node name="RiceBowl" type="RigidBody3D" parent="." index="4" unique_id=876216441 groups=["pickable"]]
@@ -266,7 +266,7 @@ mesh = SubResource("ArrayMesh_p8u1a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RiceBowl" index="1" unique_id=222205108]
 shape = SubResource("ConvexPolygonShape3D_8b2mg")
 
-[node name="Mattress_001" parent="." index="5" unique_id=163454939 groups=["interactable"]]
+[node name="Mattress_001" parent="." index="5" unique_id=868529524 groups=["interactable"]]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mattress_001" index="0" unique_id=1792516525 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5211604, -0.0049806237)
@@ -275,7 +275,7 @@ script = ExtResource("2_uy7ya")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mattress_001/StaticBody3D" index="0" unique_id=1826016834]
 shape = SubResource("BoxShape3D_lgj25")
 
-[node name="StaticBody3D" type="Area3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="0" unique_id=1859053885 groups=["interactable"]]
+[node name="StaticBody3D" type="Area3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(2015574541) index="0" unique_id=1859053885 groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2724234, -0.8047634, 0.2592209)
 script = ExtResource("7_8b2mg")
 
@@ -283,14 +283,14 @@ script = ExtResource("7_8b2mg")
 transform = Transform3D(0.9999895, 0, 6.4801498e-12, 0, 0.9999887, 0, 3.6948222e-13, 0, 0.9999999, -0.09790802, 0.37155533, -0.22026157)
 shape = SubResource("BoxShape3D_p8u1a")
 
-[node name="pan" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="1" unique_id=652526463 instance=ExtResource("7_p8u1a")]
+[node name="pan" parent="Induction Stove_001" parent_id_path=PackedInt32Array(2015574541) index="1" unique_id=652526463 instance=ExtResource("7_p8u1a")]
 transform = Transform3D(4.9251475, 0, 2.5033216, 0, 5.524825, 0, -1.5233493, 0, 2.9971058, 0.948246, -0.54645014, 0.4536543)
 visible = false
 
-[node name="cookingSounds" type="AudioStreamPlayer3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="2" unique_id=1785119223]
+[node name="cookingSounds" type="AudioStreamPlayer3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(2015574541) index="2" unique_id=1785119223]
 stream = ExtResource("7_p5v5y")
 
-[node name="LunchBox" type="RigidBody3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(724941606) index="3" unique_id=699773826 groups=["pickable"]]
+[node name="LunchBox" type="RigidBody3D" parent="Induction Stove_001" parent_id_path=PackedInt32Array(2015574541) index="3" unique_id=699773826 groups=["pickable"]]
 transform = Transform3D(0.99999946, 0, 2.842171e-13, 0, 0.99999946, 0, 5.684342e-14, 0, 0.9999999, -2.85853, -0.84458065, -0.8035774)
 visible = false
 script = ExtResource("8_p5v5y")
@@ -302,7 +302,7 @@ mesh = SubResource("ArrayMesh_l2lid")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Induction Stove_001/LunchBox" index="1" unique_id=1236046749]
 shape = SubResource("BoxShape3D_jt68x")
 
-[node name="Door_001" parent="." index="7" unique_id=192315920 groups=["interactable"]]
+[node name="Door_001" parent="." index="7" unique_id=221156736 groups=["interactable"]]
 transform = Transform3D(0.38136902, 0, 0, 0, 0.38136902, 0, 0, 0, 0.38136902, 0.047684193, 1.0999999, -8.987417)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door_001" index="0" unique_id=197132787 groups=["interactable"]]
@@ -325,82 +325,83 @@ volume_db = -10.0
 stream = ExtResource("11_6nih8")
 volume_db = -10.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CabinWalls_001" parent_id_path=PackedInt32Array(712536198) index="0" unique_id=361302331]
+[node name="StaticBody3D" type="StaticBody3D" parent="CabinWalls_001" parent_id_path=PackedInt32Array(1067523367) index="0" unique_id=361302331]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CabinWalls_001/StaticBody3D" index="0" unique_id=1736182596]
 shape = SubResource("ConcavePolygonShape3D_4uxbc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Furniture" parent_id_path=PackedInt32Array(1535972382) index="0" unique_id=973684297]
+[node name="StaticBody3D" type="StaticBody3D" parent="Furniture" parent_id_path=PackedInt32Array(219753250) index="0" unique_id=973684297]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/StaticBody3D" index="0" unique_id=228887057]
 shape = SubResource("ConcavePolygonShape3D_jbb14")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Refrigerator" parent_id_path=PackedInt32Array(1193658744) index="3" unique_id=1007176558]
+[node name="StaticBody3D" type="StaticBody3D" parent="Refrigerator" parent_id_path=PackedInt32Array(960937922) index="3" unique_id=1007176558]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Refrigerator/StaticBody3D" index="0" unique_id=1432553508]
 shape = SubResource("BoxShape3D_h7ojv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Chair_15" parent_id_path=PackedInt32Array(1382689467) index="0" unique_id=1358676673]
+[node name="StaticBody3D" type="StaticBody3D" parent="Chair_15" parent_id_path=PackedInt32Array(1228528843) index="0" unique_id=1358676673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768785, 0.003657192, 5.066395e-07)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chair_15/StaticBody3D" index="0" unique_id=199320936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25022638, 0)
 shape = SubResource("BoxShape3D_4o50d")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Armchair_01" parent_id_path=PackedInt32Array(863716355) index="0" unique_id=1871767509]
+[node name="StaticBody3D" type="StaticBody3D" parent="Armchair_01" parent_id_path=PackedInt32Array(1725435086) index="0" unique_id=1871767509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0.12645537, 0.0066334605)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armchair_01/StaticBody3D" index="0" unique_id=1560093523]
 shape = SubResource("BoxShape3D_5g0me")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Toilet" parent_id_path=PackedInt32Array(192088516) index="0" unique_id=393951754]
+[node name="StaticBody3D" type="StaticBody3D" parent="Toilet" parent_id_path=PackedInt32Array(866774650) index="0" unique_id=393951754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03548622, -0.022314757)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Toilet/StaticBody3D" index="0" unique_id=731010332]
 shape = SubResource("BoxShape3D_ew7m4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Trash_can_01" parent_id_path=PackedInt32Array(1843091463) index="0" unique_id=856958830]
+[node name="StaticBody3D" type="StaticBody3D" parent="Trash_can_01" parent_id_path=PackedInt32Array(1650432535) index="0" unique_id=856958830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08085877, 0.14327891, -0.011593014)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trash_can_01/StaticBody3D" index="0" unique_id=572036439]
 shape = SubResource("BoxShape3D_ws6fs")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Table_40" parent_id_path=PackedInt32Array(115635024) index="0" unique_id=1192891992]
+[node name="StaticBody3D" type="StaticBody3D" parent="Table_40" parent_id_path=PackedInt32Array(1609326515) index="0" unique_id=1192891992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032666922, -0.16244093, -0.020308286)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table_40/StaticBody3D" index="0" unique_id=1844852858]
 shape = SubResource("BoxShape3D_xvtk6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Table_42" parent_id_path=PackedInt32Array(539127497) index="1" unique_id=1313060487]
+[node name="StaticBody3D" type="StaticBody3D" parent="Table_42" parent_id_path=PackedInt32Array(915489550) index="1" unique_id=1313060487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, -0.10550448, -0.0007612407)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table_42/StaticBody3D" index="0" unique_id=1606238654]
 shape = SubResource("BoxShape3D_o8ojx")
 
-[node name="OmniLight3D1" type="OmniLight3D" parent="Lamps_02" parent_id_path=PackedInt32Array(1438548410) index="0" unique_id=1622895026]
+[node name="OmniLight3D1" type="OmniLight3D" parent="Lamps_02" parent_id_path=PackedInt32Array(163129982) index="0" unique_id=1622895026]
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps_04" parent_id_path=PackedInt32Array(1549210773) index="0" unique_id=1861712933]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lamps_04" parent_id_path=PackedInt32Array(1595086634) index="0" unique_id=1861712933]
 transform = Transform3D(1.3852857, -0.11272292, 0, 0.11272292, 1.3852857, 0, 0, 0, 1.3898643, -0.47172877, 0.30135465, 0)
 light_energy = 1.792
 shadow_enabled = true
 
-[node name="Cooking_pot_01" parent="." index="25" unique_id=110185055]
+[node name="Cooking_pot_01" parent="." index="25" unique_id=1577794219]
 visible = false
 
-[node name="Radio_01" parent="." index="27" unique_id=119938743]
+[node name="Radio_01" parent="." index="27" unique_id=593584323]
 transform = Transform3D(-0.11095826, 0, 0.040385514, 0, -0.118079305, 0, -0.040385514, 0, -0.11095826, 0.43615872, 0.77374154, -7.635172)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Plane_001" parent_id_path=PackedInt32Array(1213035264) index="0" unique_id=1720023370]
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_001" parent_id_path=PackedInt32Array(2116353813) index="0" unique_id=1720023370]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="0" unique_id=1188809710]
 shape = SubResource("ConcavePolygonShape3D_4p66y")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door_002" parent_id_path=PackedInt32Array(825919495) index="0" unique_id=1576051797]
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_002" parent_id_path=PackedInt32Array(2036406936) index="0" unique_id=1576051797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.427267e-07, 0, 1.4264394)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_002/StaticBody3D" index="0" unique_id=1059594258]
 shape = SubResource("BoxShape3D_tf8bh")
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lamps_02_001" parent_id_path=PackedInt32Array(390349949) index="0" unique_id=1782443387]
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lamps_02_001" parent_id_path=PackedInt32Array(816377963) index="0" unique_id=1782443387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09030485, 0)
 light_energy = 3.851
 shadow_enabled = true

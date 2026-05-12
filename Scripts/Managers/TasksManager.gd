@@ -74,7 +74,8 @@ var day_templates := {
 			{"name": "Sweep trash", "done": false},
 			{"name": "Feed Cally", "done": false},
 			{"name": "Deliver Mails", "done": false},
-			{"name": "Check on Forsythe", "done": false}
+			{"name": "Check on Forsythe", "done": false},
+			{"name": "Take a nap", "done": false}
 		]
 	},
 	2: {"label": "July 1",

@@ -17,9 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://ccbejbue7iasx" path="res://Scenes/altar.tscn" id="14_b5cy3"]
 [ext_resource type="PackedScene" uid="uid://c1o04y54m8wkv" path="res://Imports/GardenPatch/garden_patch.tscn" id="15_i84vc"]
 [ext_resource type="PackedScene" uid="uid://b2ti47ng0pr07" path="res://Imports/GardenPatch/chicken_coop.tscn" id="16_mcu5n"]
-[ext_resource type="PackedScene" uid="uid://dvg3hrs74hfha" path="res://Imports/Characters/forsythe.tscn" id="17_ys2gv"]
-[ext_resource type="Script" uid="uid://ltblpyncmrk" path="res://Imports/Characters/forsythe.gd" id="18_el34e"]
+[ext_resource type="PackedScene" uid="uid://bct4hfp1xk3tc" path="res://Scenes/lolo_standing.tscn" id="19_6rwhj"]
 [ext_resource type="PackedScene" uid="uid://dar30klcrnbpy" path="res://Scenes/birthday_party.tscn" id="20_7tqx7"]
+[ext_resource type="PackedScene" uid="uid://knqobpdm50k2" path="res://foodbox.tscn" id="20_yl1j3"]
+[ext_resource type="PackedScene" uid="uid://b58xu0nrrv03x" path="res://Scenes/objective_slot.tscn" id="22_5w5b7"]
+[ext_resource type="Script" uid="uid://dsg4gypxne7oj" path="res://Scripts/FoodBoxDetectionArea.gd" id="22_yl1j3"]
+[ext_resource type="ArrayMesh" uid="uid://8blbhucnv2ot" path="res://Imports/cardboard-box-psx/PSXCardboardBoxes/Models/OBJ/CardboardBox_1.obj" id="23_r24kp"]
+[ext_resource type="Script" path="res://Scripts/lolo_standing.gd" id="24_yl1j3"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5v1tr"]
 panorama = ExtResource("2_6rwhj")
@@ -49,6 +53,13 @@ volumetric_fog_ambient_inject = 0.23
 
 [sub_resource type="Compositor" id="Compositor_5ukr8"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5w5b7"]
+size = Vector3(1.5960464, 4.3013, 2.45813)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lolo"]
+radius = 0.4
+height = 1.8
+
 [node name="World" type="Node3D" unique_id=1036162655]
 script = ExtResource("1_c3p7q")
 
@@ -66,7 +77,7 @@ shadow_enabled = true
 script = ExtResource("3_6rwhj")
 
 [node name="Player" parent="." unique_id=240356642 instance=ExtResource("3_7tqx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.567871, 0.29075813, -8.412377)
+transform = Transform3D(-0.005724681, 0, -0.9999836, 0, 1, 0, 0.9999836, 0, -0.005724681, -2.0962467, 0.2958939, 16.158888)
 
 [node name="Tree1" parent="." unique_id=614295700 instance=ExtResource("4_yl1j3")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 8.382965, 0.18360358, 14.08987)
@@ -244,9 +255,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.691422, 0.10713339, -20.25
 [node name="chickenCoop" parent="." unique_id=1218012226 instance=ExtResource("16_mcu5n")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.219, 0.31386703, -21.327246)
 
-[node name="Forsythe" parent="." unique_id=252410366 instance=ExtResource("17_ys2gv")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -20.441133, 0.24864544, -25.292574)
-script = ExtResource("18_el34e")
-
 [node name="Party" parent="." unique_id=656103850 instance=ExtResource("20_7tqx7")]
 transform = Transform3D(2.2531788, 0, 0, 0, 3.149261, 0, 0, 0, 1.8172557, -26.047932, 1.47863, -3.6415305)
+
+[node name="LoloStanding" parent="." unique_id=2069828129 instance=ExtResource("19_6rwhj")]
+transform = Transform3D(-0.16773012, 0, -0.36313435, 0, 0.39999998, 0, 0.36313435, 0, -0.16773012, -22.116623, 0.29624203, -6.137874)
+
+[node name="InteractBody" type="StaticBody3D" parent="LoloStanding" unique_id=2169828129 groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+script = ExtResource("24_yl1j3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LoloStanding/InteractBody" unique_id=2269828129]
+shape = SubResource("CapsuleShape3D_lolo")
+
+[node name="FoodBox" parent="." unique_id=291569520 instance=ExtResource("20_yl1j3")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.29639208, 1.0430738, 13.950887)
+
+[node name="DetectionArea" type="Area3D" parent="FoodBox" unique_id=89616246]
+transform = Transform3D(-0.07805404, 0, 3.632092, 0, 1, 0, -0.6993936, 0, -0.40535042, 0, 0, 0)
+script = ExtResource("22_yl1j3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodBox/DetectionArea" unique_id=720814812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3917179, 1.6506499, 0.7290647)
+shape = SubResource("BoxShape3D_5w5b7")
+
+[node name="FoodBoxGhostMesh" parent="." unique_id=1493726696 instance=ExtResource("22_5w5b7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.228708, 1.6064571, -4.2851276)
+expected_item_id = "food_box"
+ghost_model = ExtResource("23_r24kp")
+
+[connection signal="body_entered" from="FoodBox/DetectionArea" to="FoodBox/DetectionArea" method="_on_body_entered"]

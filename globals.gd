@@ -54,7 +54,7 @@ func _ready() -> void:
 		return
 
 	GlobalTracker.set_current_day(2)
-	await change_viewport_world("res://Scenes/World_day1A.tscn")
+	await change_viewport_world("res://Scenes/World_day1B.tscn")
 	
 	# Start dream sequence
 	#start_dialogue("Dream_Trigger", true)
